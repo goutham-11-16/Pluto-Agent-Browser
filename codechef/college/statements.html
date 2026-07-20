@@ -1,0 +1,2368 @@
+<html lang="en">
+
+<head>
+    <meta name="emotion-insertion-point" content="">
+    <style data-emotion="css" data-s=""></style>
+    <link rel="icon" href="https://www.codechef.com/favicon.ico" type="image/x-icon">
+    <title>Introduction to the module on Strings in Design and Analysis of Algorithms</title>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="Test your Design and Analysis of Algorithms knowledge with our Introduction to the module on Strings practice problem.  Dive into the world of kare-cse3301-daa-2026 challenges at CodeChef.">
+    <meta name="og:image" content="https://cdn.codechef.com/sites/all/themes/abessive/cc-logo.png">
+    <meta name="og:type" content="website">
+    <meta name="theme-color" content="#000000">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO05/problems/MDDYQ36">
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" async=""
+        src="https://www.googletagmanager.com/gtag/js?id=G-C8RQQ7NY18&amp;cx=c&amp;gtm=4e67f0h1"></script>
+    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-TV5X2M"></script>
+    <script src="https://accounts.google.com/gsi/client" async=""></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="prefetch" href="https://cdn.codechef.com/images/cc-logo.svg" as="image" type="image/svg+xml">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;family=Roboto+Mono:wght@100;300;400;500;700&amp;family=Fustat:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- Initial loader classes -->
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loadingIcon {
+            border: 0.4em solid rgba(0, 0, 0, 0.0);
+            border-top: 0.4em solid #2A67B1;
+            border-radius: 50%;
+            width: 4em;
+            height: 4em;
+            animation: spin 1s linear infinite;
+            color: #2A67B1;
+        }
+
+        .loading {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: rgb(108, 116, 134);
+            background: inherit;
+            z-index: 100;
+            position: absolute;
+        }
+
+        .message {
+            padding: 16px;
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        /* Dark Mode styles */
+        .loader-icon-dark {
+            border-top: 0.4em solid #5780b0;
+        }
+
+        .dark {
+            background: #1d1e23;
+            color: rgb(255 255 255 / 60%);
+        }
+    </style>
+    <script>
+
+        const languageIdeRoutes = [
+            'python', 'java', 'cpp', 'c', 'pypy', 'csharp', 'javascript', 'go', 'php', 'kotlin', 'rust', 'r', 'sql', 'html',
+            'oracledb', 'react'
+        ];
+
+        if (
+            (['faq', 'pro', 'contests'].includes(window.location.pathname.split('/').filter(Boolean).pop())) ||
+            (['learn', 'games', 'viewsolution',
+                'submit', 'practice', 'dashboard', 'getting-started', 'college-program', 'practice-old',
+                'roadmap', 'blogs', 'roadmaps', 'blogs', 'skill-tests', 'ide', 'mobile'
+            ].includes(window.location.pathname.split('/').filter(Boolean)[0])) ||
+            (['submit'].includes(window.location.pathname.split('/').filter(Boolean)[1])) ||
+            (['status'].includes(window.location.pathname.split('/').filter(Boolean).slice(-2, -1).pop())) || [
+                // Regex to match the practice and contest submit routes
+                /^\/(submit\/([A-Z]+[A-Z0-9_]*)+|problems\/([A-Z]+[A-Z0-9_]*)+|([A-Z]+[A-Z0-9_]*)+\/submit\/([A-Z]+[A-Z0-9_]*)+|([A-Z]+[A-Z0-9_]*)+\/problems\/([A-Z]+[A-Z0-9_]*)+)$/
+            ].some((regexp) => (regexp.test(window.location.pathname))) ||
+            (languageIdeRoutes.some(lang => window.location.pathname.includes(`${lang}-online-compiler`)))
+        ) {
+            const metaElement = document.createElement('meta');
+            metaElement.setAttribute('name', 'viewport');
+            metaElement.setAttribute('content', 'width=device-width, initial-scale=1');
+            document.head.appendChild(metaElement);
+        }
+
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TV5X2M');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="module" crossorigin="" src="/build/react2/assets/index-BnYAzZ1s.js"></script>
+    <link rel="modulepreload" crossorigin="" href="/build/react2/assets/__commonjsHelpers__-BosuxZz1.js">
+    <link rel="modulepreload" crossorigin="" href="/build/react2/assets/vendor-mui-D95mtM6a.js">
+    <link rel="modulepreload" crossorigin="" href="/build/react2/assets/vendor-sweetalert2-CokzRhbv.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/index-8JvKpkpw.css">
+    <style id="googleidentityservice_button_styles">
+        .qJTHM {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            color: #202124;
+            direction: ltr;
+            -webkit-touch-callout: none;
+            font-family: Roboto-Regular, arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 400;
+            margin: 0;
+            overflow: hidden;
+            -webkit-text-size-adjust: 100%
+        }
+
+        .ynRLnc {
+            left: -9999px;
+            position: absolute;
+            top: -9999px
+        }
+
+        .L6cTce {
+            display: none
+        }
+
+        .bltWBb {
+            overflow-wrap: break-word;
+            word-break: break-word
+        }
+
+        .hSRGPd {
+            color: #1a73e8;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none
+        }
+
+        .Bz112c-W3lGp {
+            height: 16px;
+            width: 16px
+        }
+
+        .Bz112c-E3DyYd {
+            height: 20px;
+            width: 20px
+        }
+
+        .Bz112c-r9oPif {
+            height: 24px;
+            width: 24px
+        }
+
+        .Bz112c-u2z5K {
+            height: 36px;
+            width: 36px
+        }
+
+        .Bz112c-uaxL4e {
+            border-radius: 10px
+        }
+
+        .LgbsSe-Bz112c {
+            display: block
+        }
+
+        .S9gUrf-YoZ4jf {
+            border: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .S9gUrf-YoZ4jf * {
+            border: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .fFW7wc-ibnC6b>.aZ2wEe>div {
+            border-color: #4285f4
+        }
+
+        .P1ekSe-ZMv3u {
+            -webkit-transition: height .2s linear;
+            transition: height .2s linear
+        }
+
+        .P1ekSe-ZMv3u>div:first-child {
+            background-color: #1a73e8 !important;
+            -webkit-transition: width .3s linear;
+            transition: width .3s linear
+        }
+
+        .P1ekSe-ZMv3u>div:nth-child(2) {
+            background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, .7)), to(rgba(255, 255, 255, .7))), -webkit-gradient(linear, left top, right top, from(#1a73e8), to(#1a73e8)) !important;
+            background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), -webkit-linear-gradient(left, #1a73e8, #1a73e8) !important;
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), linear-gradient(90deg, #1a73e8, #1a73e8) !important
+        }
+
+        .P1ekSe-ZMv3u>div:nth-child(3) {
+            background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, .7)), to(rgba(255, 255, 255, .7))), -webkit-gradient(linear, left top, right top, from(#1a73e8), to(#1a73e8)) !important;
+            background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), -webkit-linear-gradient(left, #1a73e8, #1a73e8) !important;
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), linear-gradient(90deg, #1a73e8, #1a73e8) !important
+        }
+
+        .haAclf {
+            display: inline-block
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe {
+            border-radius: 4px;
+            box-sizing: border-box;
+            -webkit-transition: background-color .218s, border-color .218s;
+            transition: background-color .218s, border-color .218s;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -webkit-appearance: none;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #dadce0;
+            color: #3c4043;
+            cursor: pointer;
+            font-family: Google Sans, arial, sans-serif;
+            font-size: .875rem;
+            height: 40px;
+            letter-spacing: .25px;
+            outline: none;
+            overflow: hidden;
+            padding: 0 12px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+            width: auto
+        }
+
+        @media screen and (-ms-high-contrast:active) {
+            .nsm7Bb-HzV7m-LgbsSe {
+                border: 2px solid windowText;
+                color: windowText
+            }
+        }
+
+        @media screen and (preferes-contrast:more) {
+            .nsm7Bb-HzV7m-LgbsSe {
+                color: #000
+            }
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe {
+            font-size: .875rem;
+            height: 32px;
+            letter-spacing: .25px;
+            padding: 0 10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe {
+            font-size: .6875rem;
+            height: 20px;
+            letter-spacing: .3px;
+            padding: 0 8px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe {
+            padding: 0;
+            width: 40px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.pSzOP-SxQuSe {
+            width: 32px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.purZT-SxQuSe {
+            width: 20px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK {
+            border-radius: 20px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK.pSzOP-SxQuSe {
+            border-radius: 16px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK.purZT-SxQuSe {
+            border-radius: 10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.i5vt6e-to915-Ia7Qfc {
+            border: 1px solid #8e918f;
+            background-color: #131314;
+            color: #e3e3e3
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc {
+            border: none;
+            color: #fff
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-v3pZbf-Ia7Qfc {
+            background-color: #1a73e8
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-JaPV2b-Ia7Qfc {
+            background-color: #202124;
+            color: #e8eaed
+        }
+
+        @media screen and (prefers-contrast:more) {
+            .nsm7Bb-HzV7m-LgbsSe.MFS4be-JaPV2b-Ia7Qfc {
+                color: #fff
+            }
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            height: 18px;
+            margin-right: 8px;
+            min-width: 18px;
+            width: 18px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            height: 14px;
+            min-width: 14px;
+            width: 14px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            height: 10px;
+            min-width: 10px;
+            width: 10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            margin-left: 8px;
+            margin-right: -4px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            margin: 0;
+            padding: 10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            padding: 8px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            padding: 4px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            background-color: #fff;
+            height: 36px;
+            margin-left: -10px;
+            margin-right: 12px;
+            min-width: 36px;
+            width: 36px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf .nsm7Bb-HzV7m-LgbsSe-Bz112c,
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            margin: 0;
+            padding: 0
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            height: 28px;
+            margin-left: -8px;
+            margin-right: 10px;
+            min-width: 28px;
+            width: 28px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            height: 16px;
+            margin-left: -6px;
+            margin-right: 8px;
+            min-width: 16px;
+            width: 16px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 3px;
+            margin-left: 2px;
+            margin-right: 0;
+            padding: 0
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 18px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 14px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 8px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-bN97Pc-sM5MNb {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-flex-direction: row;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            flex-direction: row;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            height: 100%;
+            position: relative;
+            width: 100%
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .oXtfBe-l4eHX {
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-BPrWId {
+            -webkit-flex-grow: 1;
+            -webkit-box-flex: 1;
+            flex-grow: 1;
+            font-family: Google Sans, arial, sans-serif;
+            font-weight: 500;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: top
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-BPrWId {
+            font-weight: 300
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .oXtfBe-l4eHX .nsm7Bb-HzV7m-LgbsSe-BPrWId {
+            -webkit-flex-grow: 0;
+            -webkit-box-flex: 0;
+            flex-grow: 0
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            -webkit-transition: background-color .218s;
+            transition: background-color .218s;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe:focus,
+        .nsm7Bb-HzV7m-LgbsSe:hover {
+            box-shadow: none;
+            border-color: rgb(210, 227, 252);
+            outline: none
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe:focus-within {
+            outline: 2px solid #00639b;
+            border-color: transparent
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe:hover .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(66, 133, 244, .08)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe:active .nsm7Bb-HzV7m-LgbsSe-MJoBVe,
+        .nsm7Bb-HzV7m-LgbsSe:focus .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(66, 133, 244, .1)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.i5vt6e-to915-Ia7Qfc:hover .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(255, 255, 255, .08)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.i5vt6e-to915-Ia7Qfc:active .nsm7Bb-HzV7m-LgbsSe-MJoBVe,
+        .nsm7Bb-HzV7m-LgbsSe.i5vt6e-to915-Ia7Qfc:focus .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(255, 255, 255, .12)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:hover .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(255, 255, 255, .24)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:active .nsm7Bb-HzV7m-LgbsSe-MJoBVe,
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:focus .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(255, 255, 255, .32)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .n1UuX-DkfjY {
+            border-radius: 50%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            height: 20px;
+            margin-left: -4px;
+            margin-right: 8px;
+            min-width: 20px;
+            width: 20px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId {
+            font-family: Roboto;
+            font-size: 12px;
+            text-align: left
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff .fmcmS,
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .ssJRIf {
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            -webkit-box-align: center;
+            align-items: center;
+            color: #5f6368;
+            fill: #5f6368;
+            font-size: 11px;
+            font-weight: 400
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe.i5vt6e-to915-Ia7Qfc .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff {
+            color: #c4c7c5;
+            fill: #c4c7c5
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe.MFS4be-Ia7Qfc .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff {
+            color: #e8eaed;
+            fill: #e8eaed
+        }
+
+        @media screen and (prefers-contrast:more) {
+
+            .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff,
+            .nsm7Bb-HzV7m-LgbsSe.jVeSEe.MFS4be-Ia7Qfc .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff {
+                color: #000;
+                fill: #000
+            }
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff .Bz112c {
+            height: 18px;
+            margin: -3px -3px -3px 2px;
+            min-width: 18px;
+            width: 18px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            margin-left: 12px;
+            margin-right: -10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 18px
+        }
+
+        .L5Fo6c-sM5MNb {
+            border: 0;
+            display: block;
+            left: 0;
+            position: relative;
+            top: 0
+        }
+
+        .L5Fo6c-bF1uUb {
+            border-radius: 4px;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0
+        }
+
+        .L5Fo6c-bF1uUb:focus {
+            border: none;
+            outline: none
+        }
+
+        sentinel {}
+    </style>
+    <script type="text/javascript" async=""
+        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/16598187415/?random=1784445523442&amp;cv=11&amp;fst=1784445523442&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;en=gtag.config&amp;gtm=45je67f0h1v879754718z871598775za20gzb71598775zd71598775xec&amp;gcd=13l3l3l3l1l1&amp;dma=0&amp;tag_exp=115616985~115938466~115938468~118012009~118131809~118395335~118897920~118897930~119527019&amp;u_w=1536&amp;u_h=960&amp;url=https%3A%2F%2Fwww.codechef.com%2Flearn%2Fcourse%2Fkare-cse3301-daa-2026%2FKCJNO05%2Fproblems%2FMDDYQ36&amp;ref=https%3A%2F%2Fwww.codechef.com%2Flearn%2Fcourse%2Fkare-cse3301-daa-2026%2FKCJNO04%2Fproblems%2FRATINGINPRAC&amp;rcb=1&amp;frm=0&amp;tiba=Introduction%20to%20the%20module%20on%20Strings%20in%20Design%20and%20Analysis%20of%20Algorithms&amp;userId=6551727&amp;ga_uid=G-C8RQQ7NY18.6551727&amp;hn=www.googleadservices.com&amp;npa=0&amp;pscdl=noapi&amp;auid=412053982.1784179890&amp;uaa=x86&amp;uab=64&amp;uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&amp;uamb=0&amp;uam=&amp;uap=Windows&amp;uapv=19.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;ept=9&amp;rfmt=3&amp;fmt=4"></script>
+    <style data-emotion="css" data-s=""></style>
+    <style type="text/css">
+        .alert-box p {
+            font-size: 16px;
+        }
+    </style>
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/LearningContest-DPIwZ22w.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Constant-ChAz5tWE.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/vendor-ace-CwHVNqeR.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/LearningContest-j7hYIqEq.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/ModuleTransition-ZL608481.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/index-BnYAzZ1s.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/SaleRibbon-C-H0UiUQ.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/SaleRibbon-D2VOfMTF.css">
+    <link rel="modulepreload" as="script" crossorigin=""
+        href="/build/react2/assets/MobileVerificationPopUp-BO5rpHHT.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/MobileVerification-Dum6Q5V_.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/MobileVerification-hsgrxWaq.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/ModuleTransition-ByJVeEu2.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/LearningContestSidebar-Crp6aJ1q.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Sidebar-Bca7Ewg4.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/Sidebar-B_YdhVaK.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/LearningContestSidebar-sa8LMmy_.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/FeatureToolTip-2FCEdq2J.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/FeatureToolTip-VveDvckU.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Bookmark-Cqv-2cs6.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/InputFields-CqIP1Hc2.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/CheckBox-vJqPHD_u.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/CheckBox-sUUsLIgT.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/InputFields-pCVQAfih.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/Bookmark-CG3kOXzE.css">
+    <style data-jss="" data-meta="makeStyles">
+        .jss12 {
+            display: revert;
+            padding: 0px;
+            border-radius: 8px;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss7 {
+            background: none;
+            box-shadow: none;
+            transition: min-height 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            ;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss8 {
+            gap: 12px;
+            padding: 12px 0;
+            min-height: fit-content;
+            transition: min-height 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            ;
+            flex-direction: row-reverse;
+        }
+
+        .jss8.jss11 {
+            min-height: fit-content;
+        }
+
+        .jss8:hover {
+            background: #22242E;
+        }
+
+        .jss9 {
+            gap: 25px;
+            margin: 0;
+        }
+
+        .jss9.jss11 {
+            margin: 0;
+        }
+
+        .jss10 {
+            padding: 0;
+            transform: rotate(270deg);
+            margin-right: 0;
+        }
+
+        .jss10.jss11 {
+            transform: rotate(360deg);
+        }
+    </style>
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/HorizontalTabPanel-BXnxhpY-.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/HorizontalTabPanel-D4piIELt.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/ProblemStatementTab-BWiF4DaO.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/FeedbackComponent-C1_Gmx3S.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/FeedbackComponent-ClgYIttc.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Hints-Bvnur_N9.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/server.browser-D5eypmcn.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/MarkdownPreviewLite-B-rDaSrV.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/index-QslV1xX0.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/vendor-react-markdown-Bk3ka440.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/vendor-katex-CfUp33UP.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/vendor-prismjs-D0H7Xg_B.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/MarkdownPreviewLite-BN6Z5l65.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/katex-DSyo5k8n.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/prism-vs-dark-B-GUGs9_.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/CodeVisualizer-0zeVuzX3.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/CodeVisualizer-7Anurih9.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/index.es-bpfQcFYD.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Badges-hlyGjTpe.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/Badges-BtA0P8JH.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Constants-B9RSyKda.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/BreadCrumbs-CtMfbTtF.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/BreadCrumbs-9soXbGl9.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/SubmitResult-BxN9oIPc.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Constants-CsOP_ErY.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/SubmitResult-Bq1dwiFl.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/UserStar-C_G9MdcE.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/UserStar-DVebVVJp.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/SelectDropdown-CwxURZQV.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/SelectDropdown-DO-u6-Ti.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/index-Xn02dZn3.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/vendor-mui-datatables-Dwb0WgoA.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/MobileHorizontalTab-C_dgWoch.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/MySubmissions-BWBwbRrs.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/TablePagination-D60syNBM.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/TablePagination-CLYgiw_w.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/PremiumBanners-QmU2v-43.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/PremiumBanners-BbLQiGaF.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/DataGrid-oGryTX0-.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/index.es-CLmToPHp.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/MySubmissions-DN-wAxrh.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/TopBanner.module--qQpYJq9.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/TopBanner-CKeyNyjs.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/ProblemSolution-tq_QXQOB.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/VideoPlayer-BUlSCNM2.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/ProblemSolution.module-B8G4Vgx3.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/ProblemSolution-Bxg2lSIZ.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/ProblemSolution-DNsXnEDg.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/Hints-Drr6uyaC.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/ProblemStatementTab-tyJnzkoB.css">
+</head>
+
+<body style="background: rgb(29, 30, 35); overflow: hidden;">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div id="root" class="no-print">
+        <div style="background: rgb(29, 30, 35);">
+            <div aria-hidden="true" class="MuiBackdrop-root _backdrop_pm713_1 undefined css-11m57ox"
+                style="opacity: 0; visibility: hidden;"><span
+                    class="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate _progress_pm713_7 css-1bkwg0l"
+                    role="progressbar"><span
+                        class="MuiLinearProgress-bar MuiLinearProgress-bar1 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-y6kna5"></span><span
+                        class="MuiLinearProgress-bar MuiLinearProgress-bar2 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-mddmmv"></span></span>
+            </div>
+            <div class="_pageContainer_1se0b_3 _dark_1se0b_9" style="max-width: 100%;">
+                <div style="display: block;">
+                    <div class="_sidebarContainer_6xw4t_2 _dark_6xw4t_29 ">
+                        <div class="_sidebarContainer_21zhj_2 _dark_21zhj_156 notranslate">
+                            <div class="_sidebarHeader_21zhj_5">
+                                <div class="_syllabusContainer_21zhj_26">
+                                    <div class="_syllabusInfo_21zhj_42"><img alt="learn-icon"
+                                            src="https://cdn.codechef.com/images/self-learning/icons/default-icon.svg"
+                                            loading="lazy">
+                                        <div class="_syllabusNameContainer_21zhj_46">
+                                            <div class="_syllabusName_21zhj_46">Design and Analysis of Algorithms</div>
+                                            <div class="_viewSyllabusLink_21zhj_57"><a
+                                                    class="_link_21zhj_57 _hoverClass_2pyv4_10"
+                                                    href="/learn/course/kare-cse3301-daa-2026" target="_blank"
+                                                    rel="noopener noreferrer">View full syllabus<span
+                                                        class="_icon__container_21zhj_68"><svg
+                                                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _icon_21zhj_68 css-q7mezt"
+                                                            focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                            data-testid="CallMadeIcon">
+                                                            <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5z">
+                                                            </path>
+                                                        </svg></span></a></div>
+                                        </div>
+                                    </div>
+                                    <div class="_sidebarCloseIconContainer_21zhj_31"><svg
+                                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _sidebarCloseIcon_21zhj_31 css-q7mezt"
+                                            focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                            data-testid="CloseIcon">
+                                            <path
+                                                d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                                            </path>
+                                        </svg></div>
+                                </div>
+                                <div class="_progress_21zhj_13">
+                                    <div class="_fill_21zhj_21" style="width: 6%;"></div>
+                                </div>
+                                <div class="_percentageCompleted_21zhj_5">6% Completed</div>
+                            </div>
+                            <div class="_sidebarContent_21zhj_92">
+                                <div class="_modules_21zhj_105">
+                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root jss7 MuiAccordion-rounded Mui-expanded MuiAccordion-gutters css-1pug5wj"
+                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                        <h3 class="MuiAccordion-heading css-wnfue5"><button
+                                                class="MuiButtonBase-root MuiAccordionSummary-root jss8 Mui-expanded jss11 MuiAccordionSummary-gutters css-3pzm2w"
+                                                tabindex="0" type="button" aria-expanded="true"
+                                                aria-controls="panel1a-content" id="panel1a-header"><span
+                                                    class="MuiAccordionSummary-content jss9 Mui-expanded jss11 MuiAccordionSummary-contentGutters css-1b8uc0m">
+                                                    <div class="_moduleTitle_21zhj_105"><span>Pre-requisites</span>
+                                                    </div>
+                                                </span><span
+                                                    class="MuiAccordionSummary-expandIconWrapper Mui-expanded jss11 css-f8wb7g"><svg
+                                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _expandIcon_21zhj_129 css-q7mezt"
+                                                        focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                        data-testid="ExpandMoreIcon">
+                                                        <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                                                    </svg></span></button></h3>
+                                        <div class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-entered css-1cbf1l2"
+                                            style="min-height: 0px;">
+                                            <div class="MuiCollapse-wrapper MuiCollapse-vertical css-15830to">
+                                                <div class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9vd5ud">
+                                                    <div aria-labelledby="panel1a-header" id="panel1a-content"
+                                                        role="region" class="MuiAccordion-region">
+                                                        <div class="MuiAccordionDetails-root jss12 css-l9xe8y">
+                                                            <div class="_submoduleSummary_21zhj_161"><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO01/problems/MDDYQ01">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Getting
+                                                                                started with CodeChef: Input,
+                                                                                output</span><span
+                                                                                class="_lessonStatusIconDone_21zhj_132"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO02/problems/MDDYQ13">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Logic
+                                                                                building - how do you approach
+                                                                                problems?</span><span
+                                                                                class="_lessonStatusIconDone_21zhj_132"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO03/problems/KITCHENCOST">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Arrays
+                                                                                Part-1</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO04/problems/MDDYQ31">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Arrays
+                                                                                Part-2</span></div>
+                                                                    </div>
+                                                                </a>
+                                                                <div class="_modules_21zhj_105"
+                                                                    style="padding-left: 30px;">
+                                                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root jss7 MuiAccordion-rounded Mui-expanded MuiAccordion-gutters css-1pug5wj"
+                                                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                                                        <h3 class="MuiAccordion-heading css-wnfue5">
+                                                                            <button
+                                                                                class="MuiButtonBase-root MuiAccordionSummary-root jss8 Mui-expanded jss11 MuiAccordionSummary-gutters css-3pzm2w"
+                                                                                tabindex="0" type="button"
+                                                                                aria-expanded="true"
+                                                                                aria-controls="panel1a-content"
+                                                                                id="panel1a-header"><span
+                                                                                    class="MuiAccordionSummary-content jss9 Mui-expanded jss11 MuiAccordionSummary-contentGutters css-1b8uc0m">
+                                                                                    <div class="_moduleTitle_21zhj_105">
+                                                                                        <span
+                                                                                            class="_moduleName_21zhj_182">Strings
+                                                                                            Part-1</span><span></span>
+                                                                                    </div>
+                                                                                </span></button></h3>
+                                                                        <div class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-entered css-1cbf1l2"
+                                                                            style="min-height: 0px;">
+                                                                            <div
+                                                                                class="MuiCollapse-wrapper MuiCollapse-vertical css-15830to">
+                                                                                <div
+                                                                                    class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9vd5ud">
+                                                                                    <div aria-labelledby="panel1a-header"
+                                                                                        id="panel1a-content"
+                                                                                        role="region"
+                                                                                        class="MuiAccordion-region">
+                                                                                        <div
+                                                                                            class="MuiAccordionDetails-root jss12 css-l9xe8y">
+                                                                                            <div
+                                                                                                class="_submoduleSummary_21zhj_161">
+                                                                                                <a
+                                                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO05/problems/MDDYQ36">
+                                                                                                    <div class="_innerRow_21zhj_168"
+                                                                                                        style="background: rgb(46, 52, 70);">
+                                                                                                        <div
+                                                                                                            class="_lessonType_21zhj_175">
+                                                                                                            <span
+                                                                                                                class="_moduleName_21zhj_182"
+                                                                                                                title="Introduction to the module on Strings">Introduction
+                                                                                                                to the
+                                                                                                                module
+                                                                                                                on
+                                                                                                                Strings</span>
+                                                                                                            <div
+                                                                                                                class="_textChipConcept_21zhj_226">
+                                                                                                                Concept
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </a><a
+                                                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO05/problems/MDDYQ37">
+                                                                                                    <div
+                                                                                                        class="_innerRow_21zhj_168">
+                                                                                                        <div
+                                                                                                            class="_lessonType_21zhj_175">
+                                                                                                            <span
+                                                                                                                class="_moduleName_21zhj_182"
+                                                                                                                title="Create a replica string">Create
+                                                                                                                a
+                                                                                                                replica
+                                                                                                                string</span>
+                                                                                                            <div
+                                                                                                                class="_textChipCoding_21zhj_226">
+                                                                                                                Coding
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </a><a
+                                                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO05/problems/MDDYQ38">
+                                                                                                    <div
+                                                                                                        class="_innerRow_21zhj_168">
+                                                                                                        <div
+                                                                                                            class="_lessonType_21zhj_175">
+                                                                                                            <span
+                                                                                                                class="_moduleName_21zhj_182"
+                                                                                                                title="Binary strings">Binary
+                                                                                                                strings</span>
+                                                                                                            <div
+                                                                                                                class="_textChipCoding_21zhj_226">
+                                                                                                                Coding
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </a><a
+                                                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO05/problems/MDDYQ39">
+                                                                                                    <div
+                                                                                                        class="_innerRow_21zhj_168">
+                                                                                                        <div
+                                                                                                            class="_lessonType_21zhj_175">
+                                                                                                            <span
+                                                                                                                class="_moduleName_21zhj_182"
+                                                                                                                title="Numerical characters in strings">Numerical
+                                                                                                                characters
+                                                                                                                in
+                                                                                                                strings</span>
+                                                                                                            <div
+                                                                                                                class="_textChipCoding_21zhj_226">
+                                                                                                                Coding
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </a><a
+                                                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO05/problems/MDDYQ40">
+                                                                                                    <div
+                                                                                                        class="_innerRow_21zhj_168">
+                                                                                                        <div
+                                                                                                            class="_lessonType_21zhj_175">
+                                                                                                            <span
+                                                                                                                class="_moduleName_21zhj_182"
+                                                                                                                title="Practice problem - Different Consecutive Chars ">Practice
+                                                                                                                problem
+                                                                                                                -
+                                                                                                                Different
+                                                                                                                Consecutive
+                                                                                                                Chars
+                                                                                                            </span>
+                                                                                                            <div
+                                                                                                                class="_textChipCoding_21zhj_226">
+                                                                                                                Coding
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </a></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO06/problems/MDDYQ41">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Strings
+                                                                                Part-2</span></div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="_modules_21zhj_105">
+                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root jss7 MuiAccordion-rounded MuiAccordion-gutters css-1pug5wj"
+                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                        <h3 class="MuiAccordion-heading css-wnfue5"><button
+                                                class="MuiButtonBase-root MuiAccordionSummary-root jss8 MuiAccordionSummary-gutters css-3pzm2w"
+                                                tabindex="0" type="button" aria-expanded="false"
+                                                aria-controls="panel1a-content" id="panel1a-header"><span
+                                                    class="MuiAccordionSummary-content jss9 MuiAccordionSummary-contentGutters css-1b8uc0m">
+                                                    <div class="_moduleTitle_21zhj_105"><span>Basic programs &amp; Time
+                                                            complexity</span></div>
+                                                </span><span
+                                                    class="MuiAccordionSummary-expandIconWrapper css-f8wb7g"><svg
+                                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _expandIcon_21zhj_129 css-q7mezt"
+                                                        focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                        data-testid="ExpandMoreIcon">
+                                                        <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                                                    </svg></span></button></h3>
+                                        <div class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-abqyn"
+                                            style="min-height: 0px;">
+                                            <div class="MuiCollapse-wrapper MuiCollapse-vertical css-15830to">
+                                                <div class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9vd5ud">
+                                                    <div aria-labelledby="panel1a-header" id="panel1a-content"
+                                                        role="region" class="MuiAccordion-region">
+                                                        <div class="MuiAccordionDetails-root jss12 css-l9xe8y">
+                                                            <div class="_submoduleSummary_21zhj_161"><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO07/problems/MDDYQ46">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Fundamentals
+                                                                                of time complexity</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO08/problems/MDDYQ52">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Applying
+                                                                                time complexity</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO09/problems/MDDYQ60">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Log and
+                                                                                square root time complexity</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO10/problems/SPACEC01">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Space
+                                                                                Complexity</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO11/problems/MDDYQ71">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Practice:
+                                                                                Time complexity</span></div>
+                                                                    </div>
+                                                                </a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="_modules_21zhj_105">
+                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root jss7 MuiAccordion-rounded MuiAccordion-gutters css-1pug5wj"
+                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                        <h3 class="MuiAccordion-heading css-wnfue5"><button
+                                                class="MuiButtonBase-root MuiAccordionSummary-root jss8 MuiAccordionSummary-gutters css-3pzm2w"
+                                                tabindex="0" type="button" aria-expanded="false"
+                                                aria-controls="panel1a-content" id="panel1a-header"><span
+                                                    class="MuiAccordionSummary-content jss9 MuiAccordionSummary-contentGutters css-1b8uc0m">
+                                                    <div class="_moduleTitle_21zhj_105"><span>Recursion</span></div>
+                                                </span><span
+                                                    class="MuiAccordionSummary-expandIconWrapper css-f8wb7g"><svg
+                                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _expandIcon_21zhj_129 css-q7mezt"
+                                                        focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                        data-testid="ExpandMoreIcon">
+                                                        <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                                                    </svg></span></button></h3>
+                                        <div class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-abqyn"
+                                            style="min-height: 0px;">
+                                            <div class="MuiCollapse-wrapper MuiCollapse-vertical css-15830to">
+                                                <div class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9vd5ud">
+                                                    <div aria-labelledby="panel1a-header" id="panel1a-content"
+                                                        role="region" class="MuiAccordion-region">
+                                                        <div class="MuiAccordionDetails-root jss12 css-l9xe8y">
+                                                            <div class="_submoduleSummary_21zhj_161"><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO12/problems/MDDYQ86">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Fundamentals
+                                                                                of recursion</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO13/problems/MDDYQ92">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Practice
+                                                                                recursion</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO14/problems/MDDYQ107">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Practice
+                                                                                Recursion: Advanced</span></div>
+                                                                    </div>
+                                                                </a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="_modules_21zhj_105">
+                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root jss7 MuiAccordion-rounded MuiAccordion-gutters css-1pug5wj"
+                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                        <h3 class="MuiAccordion-heading css-wnfue5"><button
+                                                class="MuiButtonBase-root MuiAccordionSummary-root jss8 MuiAccordionSummary-gutters css-3pzm2w"
+                                                tabindex="0" type="button" aria-expanded="false"
+                                                aria-controls="panel1a-content" id="panel1a-header"><span
+                                                    class="MuiAccordionSummary-content jss9 MuiAccordionSummary-contentGutters css-1b8uc0m">
+                                                    <div class="_moduleTitle_21zhj_105"><span>Brute Force and Elementary
+                                                            sorting</span></div>
+                                                </span><span
+                                                    class="MuiAccordionSummary-expandIconWrapper css-f8wb7g"><svg
+                                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _expandIcon_21zhj_129 css-q7mezt"
+                                                        focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                        data-testid="ExpandMoreIcon">
+                                                        <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                                                    </svg></span></button></h3>
+                                        <div class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-abqyn"
+                                            style="min-height: 0px;">
+                                            <div class="MuiCollapse-wrapper MuiCollapse-vertical css-15830to">
+                                                <div class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9vd5ud">
+                                                    <div aria-labelledby="panel1a-header" id="panel1a-content"
+                                                        role="region" class="MuiAccordion-region">
+                                                        <div class="MuiAccordionDetails-root jss12 css-l9xe8y">
+                                                            <div class="_submoduleSummary_21zhj_161"><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO15/problems/DAA004">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Selection
+                                                                                and Bubble Sort</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO16/problems/DAA029">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Decrease
+                                                                                &amp; Conquer - Insertion sort</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO17/problems/DAA033">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Decrease
+                                                                                &amp; Conquer - Computing a Median and
+                                                                                the Selection Problem</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO18/problems/DAA040">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Decrease
+                                                                                &amp; Conquer - Fake coin problem</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO19/problems/SORTARRAYS">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Practice
+                                                                                questions</span></div>
+                                                                    </div>
+                                                                </a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="_modules_21zhj_105">
+                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root jss7 MuiAccordion-rounded MuiAccordion-gutters css-1pug5wj"
+                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                        <h3 class="MuiAccordion-heading css-wnfue5"><button
+                                                class="MuiButtonBase-root MuiAccordionSummary-root jss8 MuiAccordionSummary-gutters css-3pzm2w"
+                                                tabindex="0" type="button" aria-expanded="false"
+                                                aria-controls="panel1a-content" id="panel1a-header"><span
+                                                    class="MuiAccordionSummary-content jss9 MuiAccordionSummary-contentGutters css-1b8uc0m">
+                                                    <div class="_moduleTitle_21zhj_105"><span>Divide and Conquer</span>
+                                                    </div>
+                                                </span><span
+                                                    class="MuiAccordionSummary-expandIconWrapper css-f8wb7g"><svg
+                                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _expandIcon_21zhj_129 css-q7mezt"
+                                                        focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                        data-testid="ExpandMoreIcon">
+                                                        <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                                                    </svg></span></button></h3>
+                                        <div class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-abqyn"
+                                            style="min-height: 0px;">
+                                            <div class="MuiCollapse-wrapper MuiCollapse-vertical css-15830to">
+                                                <div class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9vd5ud">
+                                                    <div aria-labelledby="panel1a-header" id="panel1a-content"
+                                                        role="region" class="MuiAccordion-region">
+                                                        <div class="MuiAccordionDetails-root jss12 css-l9xe8y">
+                                                            <div class="_submoduleSummary_21zhj_161"><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO20/problems/DAA010">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Merge
+                                                                                sort</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO21/problems/DAA015">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Quick
+                                                                                sort</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO22/problems/MDDYQ235">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Randomized
+                                                                                quick sort problem</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO23/problems/DAA020">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Binary
+                                                                                Search</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO24/problems/DAA024">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Multiplication
+                                                                                of large integers</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO25/problems/CLGSTRSP01">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Strassen's
+                                                                                Matrix Multiplication</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO26/problems/MAXSUBSUM1">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Maximum
+                                                                                Subarray sum</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO27/problems/PEAKELEMENTP">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Peak
+                                                                                Elements</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO28/problems/MINROTSORTED">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Practice
+                                                                                questions</span></div>
+                                                                    </div>
+                                                                </a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="_modules_21zhj_105">
+                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root jss7 MuiAccordion-rounded MuiAccordion-gutters css-1pug5wj"
+                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                        <h3 class="MuiAccordion-heading css-wnfue5"><button
+                                                class="MuiButtonBase-root MuiAccordionSummary-root jss8 MuiAccordionSummary-gutters css-3pzm2w"
+                                                tabindex="0" type="button" aria-expanded="false"
+                                                aria-controls="panel1a-content" id="panel1a-header"><span
+                                                    class="MuiAccordionSummary-content jss9 MuiAccordionSummary-contentGutters css-1b8uc0m">
+                                                    <div class="_moduleTitle_21zhj_105"><span>Graph Fundamentals &amp;
+                                                            Traversal</span></div>
+                                                </span><span
+                                                    class="MuiAccordionSummary-expandIconWrapper css-f8wb7g"><svg
+                                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _expandIcon_21zhj_129 css-q7mezt"
+                                                        focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                        data-testid="ExpandMoreIcon">
+                                                        <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                                                    </svg></span></button></h3>
+                                        <div class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-abqyn"
+                                            style="min-height: 0px;">
+                                            <div class="MuiCollapse-wrapper MuiCollapse-vertical css-15830to">
+                                                <div class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9vd5ud">
+                                                    <div aria-labelledby="panel1a-header" id="panel1a-content"
+                                                        role="region" class="MuiAccordion-region">
+                                                        <div class="MuiAccordionDetails-root jss12 css-l9xe8y">
+                                                            <div class="_submoduleSummary_21zhj_161"><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO29/problems/GRAPHBASICS">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Terminologies</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO30/problems/GRAPHTYPE1">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Types of
+                                                                                Graphs</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO31/problems/GRAPHDS">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Graph
+                                                                                Representation</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO32/problems/GRAPHTOUR">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Graph
+                                                                                Traversals</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO33/problems/CCDEF">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Connected
+                                                                                Components</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO34/problems/CYCLEDEF">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Cycles in
+                                                                                Graphs</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO35/problems/DAA104">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">DFS</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO36/problems/DAA110">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">BFS</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO37/problems/TOPOSORTDEF">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Topological
+                                                                                sorting</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO38/problems/FLOWNETMIN">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Flow
+                                                                                Network (Min cut)</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO39/problems/PLNTPATH">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Practice
+                                                                                questions</span></div>
+                                                                    </div>
+                                                                </a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="_modules_21zhj_105">
+                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root jss7 MuiAccordion-rounded MuiAccordion-gutters css-1pug5wj"
+                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                        <h3 class="MuiAccordion-heading css-wnfue5"><button
+                                                class="MuiButtonBase-root MuiAccordionSummary-root jss8 MuiAccordionSummary-gutters css-3pzm2w"
+                                                tabindex="0" type="button" aria-expanded="false"
+                                                aria-controls="panel1a-content" id="panel1a-header"><span
+                                                    class="MuiAccordionSummary-content jss9 MuiAccordionSummary-contentGutters css-1b8uc0m">
+                                                    <div class="_moduleTitle_21zhj_105"><span>Greedy techniques</span>
+                                                    </div>
+                                                </span><span
+                                                    class="MuiAccordionSummary-expandIconWrapper css-f8wb7g"><svg
+                                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _expandIcon_21zhj_129 css-q7mezt"
+                                                        focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                        data-testid="ExpandMoreIcon">
+                                                        <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                                                    </svg></span></button></h3>
+                                        <div class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-abqyn"
+                                            style="min-height: 0px;">
+                                            <div class="MuiCollapse-wrapper MuiCollapse-vertical css-15830to">
+                                                <div class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9vd5ud">
+                                                    <div aria-labelledby="panel1a-header" id="panel1a-content"
+                                                        role="region" class="MuiAccordion-region">
+                                                        <div class="MuiAccordionDetails-root jss12 css-l9xe8y">
+                                                            <div class="_submoduleSummary_21zhj_161"><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO40/problems/MDDYQ132">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Basics of
+                                                                                Greedy, and proofs</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO41/problems/KNAPSACKPR1">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Fractional
+                                                                                Knapsacks</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO42/problems/ACTIVITYSEL1">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Activity
+                                                                                Selection</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO43/problems/MDDYQ139">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Job
+                                                                                scheduling problem</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO44/problems/MDDYQ144">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Huffman
+                                                                                Trees and codes</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO45/problems/MDDYQ150">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Dijkstra</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO46/problems/MINPLATFORM1">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Minimum
+                                                                                Platforms</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO47/problems/DAA141">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Kruskal's
+                                                                                Algorithm</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO48/problems/DAA134">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Prim's
+                                                                                algorithm</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO49/problems/LBJ206">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Practice
+                                                                                questions</span></div>
+                                                                    </div>
+                                                                </a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="_modules_21zhj_105">
+                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root jss7 MuiAccordion-rounded MuiAccordion-gutters css-1pug5wj"
+                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                        <h3 class="MuiAccordion-heading css-wnfue5"><button
+                                                class="MuiButtonBase-root MuiAccordionSummary-root jss8 MuiAccordionSummary-gutters css-3pzm2w"
+                                                tabindex="0" type="button" aria-expanded="false"
+                                                aria-controls="panel1a-content" id="panel1a-header"><span
+                                                    class="MuiAccordionSummary-content jss9 MuiAccordionSummary-contentGutters css-1b8uc0m">
+                                                    <div class="_moduleTitle_21zhj_105"><span>Dynamic Programming</span>
+                                                    </div>
+                                                </span><span
+                                                    class="MuiAccordionSummary-expandIconWrapper css-f8wb7g"><svg
+                                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _expandIcon_21zhj_129 css-q7mezt"
+                                                        focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                        data-testid="ExpandMoreIcon">
+                                                        <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                                                    </svg></span></button></h3>
+                                        <div class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-abqyn"
+                                            style="min-height: 0px;">
+                                            <div class="MuiCollapse-wrapper MuiCollapse-vertical css-15830to">
+                                                <div class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9vd5ud">
+                                                    <div aria-labelledby="panel1a-header" id="panel1a-content"
+                                                        role="region" class="MuiAccordion-region">
+                                                        <div class="MuiAccordionDetails-root jss12 css-l9xe8y">
+                                                            <div class="_submoduleSummary_21zhj_161"><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO50/problems/MDDYQ159">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Knapsack
+                                                                                problem</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO51/problems/MDDYQ168">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Longest
+                                                                                common subsequence</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO52/problems/MDDYQ175">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Warshall
+                                                                                and Floyd Algorithm</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO53/problems/MDDYQ181">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Optimal
+                                                                                Binary Search Trees</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO54/problems/DAA122">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Bellman-Ford</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO55/problems/MDDYQ249">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Minimum
+                                                                                Cost Matrix Chain Multiplication</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO56/problems/MDDYQ256">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Maximum
+                                                                                Independent Set in a Tree</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO57/problems/PAL_STRING">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Practice
+                                                                                questions</span></div>
+                                                                    </div>
+                                                                </a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="_modules_21zhj_105">
+                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root jss7 MuiAccordion-rounded MuiAccordion-gutters css-1pug5wj"
+                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                        <h3 class="MuiAccordion-heading css-wnfue5"><button
+                                                class="MuiButtonBase-root MuiAccordionSummary-root jss8 MuiAccordionSummary-gutters css-3pzm2w"
+                                                tabindex="0" type="button" aria-expanded="false"
+                                                aria-controls="panel1a-content" id="panel1a-header"><span
+                                                    class="MuiAccordionSummary-content jss9 MuiAccordionSummary-contentGutters css-1b8uc0m">
+                                                    <div class="_moduleTitle_21zhj_105"><span>Backtracking</span></div>
+                                                </span><span
+                                                    class="MuiAccordionSummary-expandIconWrapper css-f8wb7g"><svg
+                                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _expandIcon_21zhj_129 css-q7mezt"
+                                                        focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                        data-testid="ExpandMoreIcon">
+                                                        <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                                                    </svg></span></button></h3>
+                                        <div class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-abqyn"
+                                            style="min-height: 0px;">
+                                            <div class="MuiCollapse-wrapper MuiCollapse-vertical css-15830to">
+                                                <div class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9vd5ud">
+                                                    <div aria-labelledby="panel1a-header" id="panel1a-content"
+                                                        role="region" class="MuiAccordion-region">
+                                                        <div class="MuiAccordionDetails-root jss12 css-l9xe8y">
+                                                            <div class="_submoduleSummary_21zhj_161"><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO58/problems/MDDYQ189">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">n-Queens
+                                                                                problem</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO59/problems/MDDYQ195">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Hamiltonian
+                                                                                Circuit Problem</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO60/problems/MDDYQ200">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Subset Sum
+                                                                                Problem</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO61/problems/GRAPHCOLOR1">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Graph
+                                                                                Colouring Using Backtracking</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO62/problems/RIVERCROSS0">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Farmer,
+                                                                                wolf, goat and cabbage</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO63/problems/MATHCROSS1">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Math
+                                                                                Crossing puzzle</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO64/problems/REVSTACKREC">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Practice
+                                                                                questions</span></div>
+                                                                    </div>
+                                                                </a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="_modules_21zhj_105">
+                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root jss7 MuiAccordion-rounded MuiAccordion-gutters css-1pug5wj"
+                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                        <h3 class="MuiAccordion-heading css-wnfue5"><button
+                                                class="MuiButtonBase-root MuiAccordionSummary-root jss8 MuiAccordionSummary-gutters css-3pzm2w"
+                                                tabindex="0" type="button" aria-expanded="false"
+                                                aria-controls="panel1a-content" id="panel1a-header"><span
+                                                    class="MuiAccordionSummary-content jss9 MuiAccordionSummary-contentGutters css-1b8uc0m">
+                                                    <div class="_moduleTitle_21zhj_105"><span>Branch and Bound</span>
+                                                    </div>
+                                                </span><span
+                                                    class="MuiAccordionSummary-expandIconWrapper css-f8wb7g"><svg
+                                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _expandIcon_21zhj_129 css-q7mezt"
+                                                        focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                        data-testid="ExpandMoreIcon">
+                                                        <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                                                    </svg></span></button></h3>
+                                        <div class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-abqyn"
+                                            style="min-height: 0px;">
+                                            <div class="MuiCollapse-wrapper MuiCollapse-vertical css-15830to">
+                                                <div class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9vd5ud">
+                                                    <div aria-labelledby="panel1a-header" id="panel1a-content"
+                                                        role="region" class="MuiAccordion-region">
+                                                        <div class="MuiAccordionDetails-root jss12 css-l9xe8y">
+                                                            <div class="_submoduleSummary_21zhj_161"><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO65/problems/MDDYQ208">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Knapsack
+                                                                                Problem</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO66/problems/MDDYQ215">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Traveling
+                                                                                Salesman Problem</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO67/problems/MDDYQ222">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Assignment
+                                                                                problem</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO68/problems/CHRL1">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Practice
+                                                                                questions</span></div>
+                                                                    </div>
+                                                                </a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="_modules_21zhj_105">
+                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root jss7 MuiAccordion-rounded MuiAccordion-gutters css-1pug5wj"
+                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                        <h3 class="MuiAccordion-heading css-wnfue5"><button
+                                                class="MuiButtonBase-root MuiAccordionSummary-root jss8 MuiAccordionSummary-gutters css-3pzm2w"
+                                                tabindex="0" type="button" aria-expanded="false"
+                                                aria-controls="panel1a-content" id="panel1a-header"><span
+                                                    class="MuiAccordionSummary-content jss9 MuiAccordionSummary-contentGutters css-1b8uc0m">
+                                                    <div class="_moduleTitle_21zhj_105"><span>String Matching
+                                                            Algorithms</span></div>
+                                                </span><span
+                                                    class="MuiAccordionSummary-expandIconWrapper css-f8wb7g"><svg
+                                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _expandIcon_21zhj_129 css-q7mezt"
+                                                        focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                        data-testid="ExpandMoreIcon">
+                                                        <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                                                    </svg></span></button></h3>
+                                        <div class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-abqyn"
+                                            style="min-height: 0px;">
+                                            <div class="MuiCollapse-wrapper MuiCollapse-vertical css-15830to">
+                                                <div class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9vd5ud">
+                                                    <div aria-labelledby="panel1a-header" id="panel1a-content"
+                                                        role="region" class="MuiAccordion-region">
+                                                        <div class="MuiAccordionDetails-root jss12 css-l9xe8y">
+                                                            <div class="_submoduleSummary_21zhj_161"><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO69/problems/PATMAT01C">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Boyer-Moore
+                                                                                Algorithm</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO70/problems/RABINKARP1">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Rabin
+                                                                                Karp</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO71/problems/CLGKMP01">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Knuth
+                                                                                Morris Pratt algorithm</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO72/problems/SUFFIXARR1">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Suffix
+                                                                                Array Algorithm</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO73/problems/PATSEARCH">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Practice
+                                                                                questions</span></div>
+                                                                    </div>
+                                                                </a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="_modules_21zhj_105">
+                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root jss7 MuiAccordion-rounded MuiAccordion-gutters css-1pug5wj"
+                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                        <h3 class="MuiAccordion-heading css-wnfue5"><button
+                                                class="MuiButtonBase-root MuiAccordionSummary-root jss8 MuiAccordionSummary-gutters css-3pzm2w"
+                                                tabindex="0" type="button" aria-expanded="false"
+                                                aria-controls="panel1a-content" id="panel1a-header"><span
+                                                    class="MuiAccordionSummary-content jss9 MuiAccordionSummary-contentGutters css-1b8uc0m">
+                                                    <div class="_moduleTitle_21zhj_105"><span>Complexity Theory &amp;
+                                                            Approximation</span></div>
+                                                </span><span
+                                                    class="MuiAccordionSummary-expandIconWrapper css-f8wb7g"><svg
+                                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _expandIcon_21zhj_129 css-q7mezt"
+                                                        focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                        data-testid="ExpandMoreIcon">
+                                                        <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                                                    </svg></span></button></h3>
+                                        <div class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-abqyn"
+                                            style="min-height: 0px;">
+                                            <div class="MuiCollapse-wrapper MuiCollapse-vertical css-15830to">
+                                                <div class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9vd5ud">
+                                                    <div aria-labelledby="panel1a-header" id="panel1a-content"
+                                                        role="region" class="MuiAccordion-region">
+                                                        <div class="MuiAccordionDetails-root jss12 css-l9xe8y">
+                                                            <div class="_submoduleSummary_21zhj_161"><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO74/problems/MDDYQ228">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Overview
+                                                                                of P, NP and NP-Complete Problems</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO75/problems/MDDYQ242">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Bin
+                                                                                packing problem</span></div>
+                                                                    </div>
+                                                                </a><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO76/problems/VOTING">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Practice
+                                                                                questions</span></div>
+                                                                    </div>
+                                                                </a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="_modules_21zhj_105">
+                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root jss7 MuiAccordion-rounded MuiAccordion-gutters css-1pug5wj"
+                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                        <h3 class="MuiAccordion-heading css-wnfue5"><button
+                                                class="MuiButtonBase-root MuiAccordionSummary-root jss8 MuiAccordionSummary-gutters css-3pzm2w"
+                                                tabindex="0" type="button" aria-expanded="false"
+                                                aria-controls="panel1a-content" id="panel1a-header"><span
+                                                    class="MuiAccordionSummary-content jss9 MuiAccordionSummary-contentGutters css-1b8uc0m">
+                                                    <div class="_moduleTitle_21zhj_105"><span>Lab Problems</span></div>
+                                                </span><span
+                                                    class="MuiAccordionSummary-expandIconWrapper css-f8wb7g"><svg
+                                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _expandIcon_21zhj_129 css-q7mezt"
+                                                        focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                        data-testid="ExpandMoreIcon">
+                                                        <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                                                    </svg></span></button></h3>
+                                        <div class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-abqyn"
+                                            style="min-height: 0px;">
+                                            <div class="MuiCollapse-wrapper MuiCollapse-vertical css-15830to">
+                                                <div class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9vd5ud">
+                                                    <div aria-labelledby="panel1a-header" id="panel1a-content"
+                                                        role="region" class="MuiAccordion-region">
+                                                        <div class="MuiAccordionDetails-root jss12 css-l9xe8y">
+                                                            <div class="_submoduleSummary_21zhj_161"><a
+                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KAREPROB/problems/ASM120">
+                                                                    <div class="_innerRow_21zhj_168">
+                                                                        <div class="_lessonType_21zhj_175"><span
+                                                                                class="_moduleName_21zhj_182">Lab
+                                                                                Problems</span></div>
+                                                                    </div>
+                                                                </a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="_learningContest__container_6an6e_24 _dark_6an6e_17">
+                        <div class="_featureToolTip_ov6b9_2 _dark_ov6b9_59  notranslate"
+                            style="position: absolute; z-index: 11; display: none;"><svg
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _crossButton_ov6b9_29 css-q7mezt"
+                                focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CloseIcon">
+                                <path
+                                    d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                                </path>
+                            </svg>
+                            <p class="_toolTipHeading_ov6b9_39">Stuck? Use our all-new Help<span role="img"
+                                    aria-label="sparkles">✨</span></p>
+                            <p class="_toolTipPara_ov6b9_49">Our interactive AI powered tool can boost your learning
+                                speed by 3x</p>
+                        </div>
+                        <div class="_navigate-button__container_6an6e_30 notranslate _banner__container_6an6e_167">
+                            <div class="_navigation-left-wrapper_6an6e_37">
+                                <div class="_sideNavigationContainer_6an6e_171"><a
+                                        href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026"
+                                        aria-label="Back to practice">
+                                        <div class="_icon__container_6an6e_126"><svg
+                                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _icon_6an6e_81 css-q7mezt"
+                                                focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                data-testid="ArrowBackIcon">
+                                                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20z">
+                                                </path>
+                                            </svg></div>
+                                    </a><i class="_hamburgerIcon_6an6e_182 _dark_6an6e_17"></i></div>
+                                <div class="_darkModeContainer_2m751_2 _dark_2m751_2" title="Switch to Light Mode"
+                                    style="margin-left: 0px;"><svg
+                                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _sunIcon_2m751_22 _dark_2m751_2 css-q7mezt"
+                                        focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                        data-testid="WbSunnyIcon">
+                                        <path
+                                            d="m6.76 4.84-1.8-1.79-1.41 1.41 1.79 1.79zM4 10.5H1v2h3zm9-9.95h-2V3.5h2zm7.45 3.91-1.41-1.41-1.79 1.79 1.41 1.41zm-3.21 13.7 1.79 1.8 1.41-1.41-1.8-1.79zM20 10.5v2h3v-2zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6m-1 16.95h2V19.5h-2zm-7.45-3.91 1.41 1.41 1.79-1.8-1.41-1.41z">
+                                        </path>
+                                    </svg></div>
+                                <div class="_bookmark_pwmwe_2">
+                                    <div class="MuiDivider-root MuiDivider-fullWidth MuiDivider-vertical MuiDivider-flexItem _divider_pwmwe_73 _dark_pwmwe_25 css-fy02gk"
+                                        role="separator" aria-orientation="vertical"></div>
+                                    <div class="_bookmarkIcon_pwmwe_15" aria-label="Add to bookmark"><i
+                                            class="_bookmarkOutlined_pwmwe_29 _dark_pwmwe_25"></i></div>
+                                </div>
+                            </div>
+                            <div class="_navigation-button__box_6an6e_110"><a class="_previous__container_6an6e_113 "
+                                    href="/learn/course/kare-cse3301-daa-2026/KCJNO04/problems/MDDYQ31"
+                                    data-discover="true">
+                                    <div class="_icon__container_6an6e_126"><svg
+                                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _icon_6an6e_81 css-q7mezt"
+                                            focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                            data-testid="ChevronLeftIcon">
+                                            <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+                                        </svg></div><span class="notranslate">Prev module</span>
+                                </a>
+                                <div class="_contest__progress_6an6e_228 "><a
+                                        class="css-1eiukdk _progress__bar_6an6e_219 _filled_6an6e_247"
+                                        href="/learn/course/kare-cse3301-daa-2026/KCJNO05/problems/MDDYQ36"
+                                        data-discover="true">
+                                        <div></div>
+                                    </a><a class="css-1eiukdk _progress__bar_6an6e_219 " aria-label=""
+                                        href="/learn/course/kare-cse3301-daa-2026/KCJNO05/problems/MDDYQ37"
+                                        data-discover="true">
+                                        <div></div>
+                                    </a><a class="css-1eiukdk _progress__bar_6an6e_219 " aria-label=""
+                                        href="/learn/course/kare-cse3301-daa-2026/KCJNO05/problems/MDDYQ38"
+                                        data-discover="true">
+                                        <div></div>
+                                    </a><a class="css-1eiukdk _progress__bar_6an6e_219 " aria-label=""
+                                        href="/learn/course/kare-cse3301-daa-2026/KCJNO05/problems/MDDYQ39"
+                                        data-discover="true">
+                                        <div></div>
+                                    </a><a class="css-1eiukdk _progress__bar_6an6e_219 " aria-label=""
+                                        href="/learn/course/kare-cse3301-daa-2026/KCJNO05/problems/MDDYQ40"
+                                        data-discover="true">
+                                        <div></div>
+                                    </a></div><a class="_next__container_6an6e_133"
+                                    href="/learn/course/kare-cse3301-daa-2026/KCJNO05/problems/MDDYQ37"
+                                    data-discover="true"><span class="notranslate">Next</span>
+                                    <div class="_icon__container_6an6e_126"><svg
+                                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _icon_6an6e_81 css-q7mezt"
+                                            focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                            data-testid="ChevronRightIcon">
+                                            <path d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+                                        </svg></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="_submit__container_6an6e_390">
+                            <div class="_tabs-wrapper__panel_6an6e_398" style="min-width: 280px;">
+                                <div class="_tabPanel_15j3k_2 _dark_15j3k_30 MuiBox-root css-0">
+                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 notranslate css-vwhgwc"
+                                        style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                        <div class="MuiTabs-root _tab__container_6an6e_422 css-1fa633z">
+                                            <div class="MuiTabs-scroller MuiTabs-fixed css-2xu61f"
+                                                style="overflow: hidden; margin-bottom: 0px;">
+                                                <div role="tablist"
+                                                    class="MuiTabs-list MuiTabs-flexContainer css-17do188"><button
+                                                        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected _tab__title_6an6e_409 _dark_6an6e_17 css-vtlkhn"
+                                                        tabindex="0" type="button" role="tab" aria-selected="true"
+                                                        id="vertical-tab-panel-0"
+                                                        aria-controls="vertical-tab-panel-0"><span
+                                                            class="MuiTab-wrapper">Statement</span></button><button
+                                                        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary _tab__title_6an6e_409 _dark_6an6e_17 css-vtlkhn"
+                                                        tabindex="-1" type="button" role="tab" aria-selected="false"
+                                                        id="vertical-tab-panel-1"
+                                                        aria-controls="vertical-tab-panel-1"><span
+                                                            class="MuiTab-wrapper">Help</span></button></div><span
+                                                    class="MuiTabs-indicator css-1bv7ie6"
+                                                    style="left: 0px; width: 160px; background: rgb(90, 134, 220);"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="vertical-tab-panel-0" aria-labelledby="vertical-tab-panel-0"
+                                        class="_tab__content_6an6e_426" style="height: calc(-164px + 100vh);">
+                                        <div class="MuiBox-root css-0">
+                                            <div class="_problem-statement__container_rv6cj_2">
+                                                <div class="_problem-statement__inner__container_rv6cj_109"
+                                                    style="display: flex; padding: 0px 40px 20px; width: 60%;">
+                                                    <div id="problem-statement"
+                                                        class="_problemBody_bh3c4_71 _dark_bh3c4_66 print ">
+                                                        <div class="_problemStatementWrapper_bh3c4_33">
+                                                            <div class="_problemBodyContent_bh3c4_71">
+                                                                <h3 class="notranslate">Introduction to the module on
+                                                                    Strings</h3>
+                                                                <p>So far, we have focused on logic, integers, math.
+                                                                    <br>
+                                                                    The module on logic building and problem solving
+                                                                    primarily covered number operations.</p>
+                                                                <p>It is time to add 'Strings' to our arsenal for
+                                                                    solving programming problems.</p>
+                                                                <p>Lets revise some basic syntax of strings.</p>
+                                                                <ul>
+                                                                    <li>Strings are a <strong>datatype</strong>.
+                                                                        <ul>
+                                                                            <li>We can check the datatype of any
+                                                                                variable using the type() function</li>
+                                                                            <li>A string can be composed of both
+                                                                                characters and numbers</li>
+                                                                            <li>A <strong>binary string</strong> is one
+                                                                                which has only '0' and '1' as component
+                                                                                characters</li>
+                                                                        </ul>
+                                                                    </li>
+                                                                    <li>Strings operations on any string stored in the
+                                                                        variable <span class="math math-inline"><span
+                                                                                class="katex"><span
+                                                                                    class="katex-mathml"><math
+                                                                                        xmlns="http://www.w3.org/1998/Math/MathML">
+                                                                                        <semantics>
+                                                                                            <mrow>
+                                                                                                <mi>S</mi>
+                                                                                            </mrow>
+                                                                                            <annotation
+                                                                                                encoding="application/x-tex">
+                                                                                                S</annotation>
+                                                                                        </semantics>
+                                                                                    </math></span><span
+                                                                                    class="katex-html"
+                                                                                    aria-hidden="true"><span
+                                                                                        class="base"><span class="strut"
+                                                                                            style="height: 0.6833em;"></span><span
+                                                                                            class="mord mathnormal"
+                                                                                            style="margin-right: 0.05764em;">S</span></span></span></span></span>
+                                                                        <ul>
+                                                                            <li>The character in the <span
+                                                                                    class="math math-inline"><span
+                                                                                        class="katex"><span
+                                                                                            class="katex-mathml"><math
+                                                                                                xmlns="http://www.w3.org/1998/Math/MathML">
+                                                                                                <semantics>
+                                                                                                    <mrow>
+                                                                                                        <msup>
+                                                                                                            <mi>i</mi>
+                                                                                                            <mrow>
+                                                                                                                <mi>t
+                                                                                                                </mi>
+                                                                                                                <mi>h
+                                                                                                                </mi>
+                                                                                                            </mrow>
+                                                                                                        </msup>
+                                                                                                    </mrow>
+                                                                                                    <annotation
+                                                                                                        encoding="application/x-tex">
+                                                                                                        i^{th}
+                                                                                                    </annotation>
+                                                                                                </semantics>
+                                                                                            </math></span><span
+                                                                                            class="katex-html"
+                                                                                            aria-hidden="true"><span
+                                                                                                class="base"><span
+                                                                                                    class="strut"
+                                                                                                    style="height: 0.8491em;"></span><span
+                                                                                                    class="mord"><span
+                                                                                                        class="mord mathnormal">i</span><span
+                                                                                                        class="msupsub"><span
+                                                                                                            class="vlist-t"><span
+                                                                                                                class="vlist-r"><span
+                                                                                                                    class="vlist"
+                                                                                                                    style="height: 0.8491em;"><span
+                                                                                                                        style="top: -3.063em; margin-right: 0.05em;"><span
+                                                                                                                            class="pstrut"
+                                                                                                                            style="height: 2.7em;"></span><span
+                                                                                                                            class="sizing reset-size6 size3 mtight"><span
+                                                                                                                                class="mord mtight"><span
+                                                                                                                                    class="mord mathnormal mtight">t</span><span
+                                                                                                                                    class="mord mathnormal mtight">h</span></span></span></span></span></span></span></span></span></span></span></span></span>
+                                                                                index of a string is represented as
+                                                                                <strong>S[i]</strong></li>
+                                                                            <li>Strings can be concatenated by addition
+                                                                            </li>
+                                                                            <li>A substring of <span
+                                                                                    class="math math-inline"><span
+                                                                                        class="katex"><span
+                                                                                            class="katex-mathml"><math
+                                                                                                xmlns="http://www.w3.org/1998/Math/MathML">
+                                                                                                <semantics>
+                                                                                                    <mrow>
+                                                                                                        <mi>S</mi>
+                                                                                                    </mrow>
+                                                                                                    <annotation
+                                                                                                        encoding="application/x-tex">
+                                                                                                        S</annotation>
+                                                                                                </semantics>
+                                                                                            </math></span><span
+                                                                                            class="katex-html"
+                                                                                            aria-hidden="true"><span
+                                                                                                class="base"><span
+                                                                                                    class="strut"
+                                                                                                    style="height: 0.6833em;"></span><span
+                                                                                                    class="mord mathnormal"
+                                                                                                    style="margin-right: 0.05764em;">S</span></span></span></span></span>
+                                                                                between the <span
+                                                                                    class="math math-inline"><span
+                                                                                        class="katex"><span
+                                                                                            class="katex-mathml"><math
+                                                                                                xmlns="http://www.w3.org/1998/Math/MathML">
+                                                                                                <semantics>
+                                                                                                    <mrow>
+                                                                                                        <msup>
+                                                                                                            <mi>i</mi>
+                                                                                                            <mrow>
+                                                                                                                <mi>t
+                                                                                                                </mi>
+                                                                                                                <mi>h
+                                                                                                                </mi>
+                                                                                                            </mrow>
+                                                                                                        </msup>
+                                                                                                    </mrow>
+                                                                                                    <annotation
+                                                                                                        encoding="application/x-tex">
+                                                                                                        i^{th}
+                                                                                                    </annotation>
+                                                                                                </semantics>
+                                                                                            </math></span><span
+                                                                                            class="katex-html"
+                                                                                            aria-hidden="true"><span
+                                                                                                class="base"><span
+                                                                                                    class="strut"
+                                                                                                    style="height: 0.8491em;"></span><span
+                                                                                                    class="mord"><span
+                                                                                                        class="mord mathnormal">i</span><span
+                                                                                                        class="msupsub"><span
+                                                                                                            class="vlist-t"><span
+                                                                                                                class="vlist-r"><span
+                                                                                                                    class="vlist"
+                                                                                                                    style="height: 0.8491em;"><span
+                                                                                                                        style="top: -3.063em; margin-right: 0.05em;"><span
+                                                                                                                            class="pstrut"
+                                                                                                                            style="height: 2.7em;"></span><span
+                                                                                                                            class="sizing reset-size6 size3 mtight"><span
+                                                                                                                                class="mord mtight"><span
+                                                                                                                                    class="mord mathnormal mtight">t</span><span
+                                                                                                                                    class="mord mathnormal mtight">h</span></span></span></span></span></span></span></span></span></span></span></span></span>
+                                                                                and the <span
+                                                                                    class="math math-inline"><span
+                                                                                        class="katex"><span
+                                                                                            class="katex-mathml"><math
+                                                                                                xmlns="http://www.w3.org/1998/Math/MathML">
+                                                                                                <semantics>
+                                                                                                    <mrow>
+                                                                                                        <msup>
+                                                                                                            <mi>j</mi>
+                                                                                                            <mrow>
+                                                                                                                <mi>t
+                                                                                                                </mi>
+                                                                                                                <mi>h
+                                                                                                                </mi>
+                                                                                                            </mrow>
+                                                                                                        </msup>
+                                                                                                    </mrow>
+                                                                                                    <annotation
+                                                                                                        encoding="application/x-tex">
+                                                                                                        j^{th}
+                                                                                                    </annotation>
+                                                                                                </semantics>
+                                                                                            </math></span><span
+                                                                                            class="katex-html"
+                                                                                            aria-hidden="true"><span
+                                                                                                class="base"><span
+                                                                                                    class="strut"
+                                                                                                    style="height: 1.0435em; vertical-align: -0.1944em;"></span><span
+                                                                                                    class="mord"><span
+                                                                                                        class="mord mathnormal"
+                                                                                                        style="margin-right: 0.05724em;">j</span><span
+                                                                                                        class="msupsub"><span
+                                                                                                            class="vlist-t"><span
+                                                                                                                class="vlist-r"><span
+                                                                                                                    class="vlist"
+                                                                                                                    style="height: 0.8491em;"><span
+                                                                                                                        style="top: -3.063em; margin-right: 0.05em;"><span
+                                                                                                                            class="pstrut"
+                                                                                                                            style="height: 2.7em;"></span><span
+                                                                                                                            class="sizing reset-size6 size3 mtight"><span
+                                                                                                                                class="mord mtight"><span
+                                                                                                                                    class="mord mathnormal mtight">t</span><span
+                                                                                                                                    class="mord mathnormal mtight">h</span></span></span></span></span></span></span></span></span></span></span></span></span>
+                                                                                indices is fetched by using the 'slice'
+                                                                                syntax <strong>S[i:j]</strong>, but
+                                                                                without including <strong>S[j]</strong>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                                <p>Click in <strong>Next</strong> to proceed.</p>
+                                                                <div></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="_feedback__container_rv6cj_127 notranslate">
+                                                        <div
+                                                            class="_upvoteAnnotationContainer_16rju_1234 _dark_16rju_1146 ">
+                                                            <div class="_upvoteMainContainer_16rju_1250">
+                                                                <div
+                                                                    class="_upvoteAnnotationHeading_16rju_1261 _dark_16rju_1146">
+                                                                    Did you like the problem?</div>
+                                                                <div class="_upvoteAnnotationPara_16rju_1293">9 users
+                                                                    found this helpful</div>
+                                                            </div>
+                                                            <div class="_reportIcons_16rju_1256"><svg
+                                                                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _thumbsUpIcon_16rju_1269 _dark_16rju_1146 css-q7mezt"
+                                                                    focusable="false" aria-hidden="true"
+                                                                    viewBox="0 0 24 24"
+                                                                    data-testid="ThumbUpOutlinedIcon">
+                                                                    <path
+                                                                        d="M9 21h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.58 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2M9 9l4.34-4.34L12 10h9v2l-3 7H9zM1 9h4v12H1z">
+                                                                    </path>
+                                                                </svg><svg
+                                                                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _thumbsDownIcon_16rju_1277 _dark_16rju_1146 css-q7mezt"
+                                                                    focusable="false" aria-hidden="true"
+                                                                    viewBox="0 0 24 24"
+                                                                    data-testid="ThumbDownOutlinedIcon">
+                                                                    <path
+                                                                        d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2m0 12-4.34 4.34L12 14H3v-2l3-7h9zm4-12h4v12h-4z">
+                                                                    </path>
+                                                                </svg><svg
+                                                                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _commentIcon_16rju_1285 _dark_16rju_1146 css-q7mezt"
+                                                                    focusable="false" aria-hidden="true"
+                                                                    viewBox="0 0 24 24" data-testid="CommentIcon">
+                                                                    <path
+                                                                        d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4zM18 14H6v-2h12zm0-3H6V9h12zm0-3H6V6h12z">
+                                                                    </path>
+                                                                </svg></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div hidden="" id="vertical-tab-panel-1" aria-labelledby="vertical-tab-panel-1"
+                                        class="_tab__content_6an6e_426" style="height: calc(-164px + 100vh);"></div>
+                                </div>
+                                <div class="_runContainer_6an6e_594 _dark_6an6e_17">
+                                    <div class="_buttonContainer_6an6e_619"><button type="button"
+                                            class="_next__problem-link_6an6e_626 _dark_6an6e_17">
+                                            <p class="_btn__text_6an6e_647 _dark_6an6e_17">Next</p>
+                                        </button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Payment Scripts
+        if (['pro', 'getting-started', 'dashboard', 'roadmap'].includes(window.location.pathname.split('/')[1])) {
+            const razorPay = document.createElement('script');
+            razorPay.setAttribute('src', 'https://checkout.razorpay.com/v1/checkout.js');
+            document.head.appendChild(razorPay);
+
+            // const instamojo = document.createElement('script');
+            // instamojo.setAttribute('src', 'https://js.instamojo.com/v1/checkout.js');
+            // document.head.appendChild(instamojo);
+
+        }
+        const scriptElement = document.createElement('script');
+        scriptElement.setAttribute('src',
+            "/sites/all/modules/codechef_alerts/codechef_alerts.js?v=649c43b6894169b33b5557aa0374459d"
+        );
+        scriptElement.setAttribute('async', '');
+        document.body.appendChild(scriptElement);
+    </script>
+    <script src="/sites/all/modules/codechef_alerts/codechef_alerts.js?v=649c43b6894169b33b5557aa0374459d"
+        async=""></script>
+    <script type="text/javascript" async=""
+        src="/sites/all/themes/mallow/src/js/cookies.js?v=c0c952b5f5af42bd78098f00c77cfa63"></script>
+    <script>
+        const loadingMessages = [
+            'Transform every day with the habit of learning',
+            'Explored our courses yet? Enroll now! Over 500k learners have already enrolled.',
+            'Pro tip: Facing a challenge while solving problem? Tap into AI Help',
+            'Set the pace, set the goal, Maintain your streak by solving problem everyday',
+            'Set your own goal to finish each modules',
+            'Pro tip: Pseudo code first, then code with ease.',
+            'Coding is not difficult, you need to try hard enough',
+            '1% better everyday can lead to big results.',
+            'Hard work and consistency is the only way to success',
+            'Don\'t stop until you are in the top 1%',
+            'Becoming the best coder is easy! Just keep doing CodeChef.',
+            'Compete in the XP Weekly Leaderboard and see where you rank!',
+        ];
+        const randomIndex = Math.floor(Math.random() * loadingMessages.length);
+        document.getElementById('initialLoadingMessage').innerText = loadingMessages[randomIndex];
+    </script>
+
+
+
+    <script>
+        window.CDN_URL = 'https://cdn.codechef.com';
+        window.csrfToken = "590d8fad5c7cf371dafa32977b3fdd3f7ef683e2150d06890cc6176a48ec8ba0";
+        window.APPS_URL = 'https://www.codechef-apps.com';
+        window.DISCUSS_URL = 'https://discuss.codechef.com';
+        window.tawkPropertyId = '668d037a7a36f5aaec9634a5';
+        window.widgetId = '1i2bdb6dt';
+        try {
+            window.codeChefUserData = { "status": "success", "user": { "username": "klu99240040465", "uid": "6551727", "email": "99240040465@klu.ac.in", "profileImage": null, "profileImagePath": "https:\/\/cdn.codechef.com\/sites\/all\/themes\/abessive\/images\/user_default_thumb.jpg", "oauth_buttons": null, "oauthData": null, "html_handle": "klu99240040465", "userRatingStar": 0, "userRatingStarColor": "black", "isAdmin": false, "isCollegeOfferingAdmin": false, "isHYCAdmin": false, "canLockProblems": false, "hasAnySpecialPermission": false, "isPremiumUser": false, "isVerifiedUser": true, "user_consented_privacy_policy_version": null, "user_consented_privacy_policy_on": null, "current_privacy_policy_version": null, "visitedContests": ["KCJNO04", "KCJNO02", "KCJNO01"], "rating": 0, "userStarHtml": "", "proDiscount": null, "theme": "dark", "fullName": "ESAMBADI GOUTHAM REDDY", "pro_plan": null, "sale": { "saleEndDateIST": "2026-07-19 05:59:59", "saleTitle": "FLASH SALE", "saleDescription": "CODECHEF FLASH SALE IS ACTIVE", "isSaleOngoing": false, "saleDaysLeft": -0, "saleEndDateUTC": "2026-07-19T00:29:59" }, "isUserPartOfAnyUserGroup": true, "userSelectedProgrammingLanguage": "SQL", "country": "India", "isNumberVerified": false, "isJobProfileComplete": false, "league": 1, "credits": 0, "aiChatLanguage": "English" }, "time": 1784445520, "ip": "103.238.230.130", "adStrip": null };
+        } catch (e) {
+            window.codeChefUserData = {};
+        }
+        try {
+            window.userMessages = { "status": "success", "messages": null };
+        } catch (e) {
+            window.userMessages = {};
+        }
+    </script>
+    <div
+        style="top: 0px; left: 0px; position: fixed; display: none; place-items: center; height: 100vh; width: 100vw; z-index: 10000; line-height: 1.5; font-size: 16px; backdrop-filter: blur(2px); background: rgba(0, 0, 0, 0.1); box-sizing: border-box;">
+    </div>
+</body>
+
+</html>

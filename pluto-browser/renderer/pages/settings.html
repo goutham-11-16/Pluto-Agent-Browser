@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings — Pluto</title>
+  <link rel="stylesheet" href="../styles/core.css">
+  <link rel="stylesheet" href="../styles/settings.css">
+</head>
+<body>
+<div class="settings-page">
+
+  <!-- ═══ Navigation Sidebar ═══ -->
+  <nav class="settings-nav">
+    <div class="settings-search-wrapper">
+      <input type="text" id="settings-search-input" class="settings-search-input" placeholder="Search Pluto settings..." spellcheck="false" autocomplete="off">
+    </div>
+    <div class="settings-nav-title">Settings</div>
+    
+    <button class="settings-nav-item active" data-section="get-started">
+      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      Get Started
+    </button>
+    <button class="settings-nav-item" data-section="appearance">
+      <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-1 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+      Appearance
+    </button>
+    <button class="settings-nav-item" data-section="shields">
+      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+      Shields
+    </button>
+    <button class="settings-nav-item" data-section="rewards">
+      <svg viewBox="0 0 24 24"><polygon points="12,2 22,20 2,20" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      Pluto Rewards
+    </button>
+    <button class="settings-nav-item" data-section="wallet">
+      <svg viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9z"/></svg>
+      Web3 Wallet
+    </button>
+    <button class="settings-nav-item" data-section="leo">
+      <svg viewBox="0 0 24 24"><path d="M12 2L14.7 9.3L22 12L14.7 14.7L12 22L9.3 14.7L2 12L9.3 9.3Z"/></svg>
+      Pluto AI
+    </button>
+    <button class="settings-nav-item" data-section="privacy">
+      <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
+      Privacy & Security
+    </button>
+    <button class="settings-nav-item" data-section="search">
+      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      Search Engine
+    </button>
+    <button class="settings-nav-item" data-section="passwords">
+      <svg viewBox="0 0 24 24"><path d="M2 17h20v2H2zm1.15-4.05L4 11.45l2.45 2.45L11 9.35l1.45 1.45-6.05 6.05zM12 4h9v2h-9zm0 4h9v2h-9z"/></svg>
+      Autofill & Passwords
+    </button>
+    <button class="settings-nav-item" data-section="downloads">
+      <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+      Downloads
+    </button>
+    <button class="settings-nav-item" data-section="system">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/></svg>
+      System & GPU
+    </button>
+    <button class="settings-nav-item" data-section="about">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      About Pluto
+    </button>
+  </nav>
+
+  <!-- ═══ Settings Content Panel ═══ -->
+  <div class="settings-content">
+
+    <!-- 1. Get Started -->
+    <section class="settings-section active" id="sec-get-started">
+      <h2 class="settings-section-title">Get Started</h2>
+      <p class="settings-section-desc">Default browser, profile settings, and startup behavior.</p>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Default Browser</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Make Pluto default browser</span>
+            <span class="setting-label-desc">Pluto is currently your default web browser</span>
+          </div>
+          <button class="settings-btn secondary" id="btn-make-default">Make Default</button>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-group-title">On Startup</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Open New Tab Page</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-startup-newtab"></div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Continue where you left off</span>
+            <span class="setting-label-desc">Restore tabs from previous browsing session</span>
+          </div>
+          <div class="toggle-switch" id="toggle-restore-session"></div>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Import Data</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Import bookmarks and settings</span>
+            <span class="setting-label-desc">Import from Chrome, Firefox, or HTML file</span>
+          </div>
+          <button class="settings-btn secondary" id="btn-import-browser-data">Import...</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Appearance -->
+    <section class="settings-section" id="sec-appearance">
+      <h2 class="settings-section-title">Appearance</h2>
+      <p class="settings-section-desc">Customize Pluto design tokens, colors, vertical tabs, and toolbar icons.</p>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Theme & Color Science</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Pluto Colors & Theme</span>
+          </div>
+          <select class="setting-select" id="theme-select">
+            <option value="dark" selected>Dark Mode (Default)</option>
+            <option value="light">Light Mode</option>
+            <option value="system">Same as Windows / OS</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Theme Preset Palette</span>
+            <span class="setting-label-desc">Curated color systems (Apricot, Alyssa, Lion Orange)</span>
+          </div>
+          <select class="setting-select" id="theme-preset">
+            <option value="pluto-orange" selected>Pluto Apricot & Orange</option>
+            <option value="blurple">Alyssa & Blurple</option>
+            <option value="highcontrast">High Contrast Dark</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Tabs Layout</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Use Vertical Tabs</span>
+            <span class="setting-label-desc">Move tab strip into expandable left sidebar to save top space</span>
+          </div>
+          <div class="toggle-switch" id="toggle-vertical-tabs"></div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Horizontal Tab Scrolling</span>
+            <span class="setting-label-desc">Maintain minimum tab width when overcrowded</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-tab-scrolling"></div>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Toolbar Buttons</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Show Home Button</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-show-home"></div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Show Shields Button in Omnibox</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-show-shields-icon"></div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Show Rewards Button</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-show-rewards"></div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Show Web3 Wallet Icon</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-show-wallet"></div>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Typography (Poppins Baseline)</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Font Size</span>
+            <span class="setting-label-desc">Standard text baseline: 14px / 20px line-height</span>
+          </div>
+          <select class="setting-select" id="font-size-select">
+            <option value="small">Small (12px)</option>
+            <option value="medium" selected>Medium (14px - Recommended)</option>
+            <option value="large">Large (16px)</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Shields -->
+    <section class="settings-section" id="sec-shields">
+      <h2 class="settings-section-title">Pluto Shields</h2>
+      <p class="settings-section-desc">Block trackers, ads, third-party cookies, and fingerprinting automatically.</p>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Global Protection Level</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Trackers & Ads Blocking</span>
+          </div>
+          <select class="setting-select" id="shields-trackers-mode">
+            <option value="standard" selected>Standard (Recommended)</option>
+            <option value="aggressive">Aggressive (Block all trackers)</option>
+            <option value="disabled">Disabled</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Upgrade Connections to HTTPS</span>
+            <span class="setting-label-desc">Automatically upgrade HTTP requests to secure HTTPS</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-https-only"></div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Block Cookie Consent Notices</span>
+            <span class="setting-label-desc">Automatically hide annoying GDPR cookie banners</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-block-cookie-notices"></div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Fingerprinting Protection</span>
+          </div>
+          <select class="setting-select" id="shields-fingerprint-mode">
+            <option value="standard" selected>Standard (Farbling)</option>
+            <option value="strict">Strict</option>
+          </select>
+        </div>
+        <div style="margin-top:16px; padding:12px; background:rgba(255, 85, 0, 0.06); border:1px solid rgba(255, 85, 0, 0.2); border-radius:8px; font-size:11px; color:var(--pluto-text-secondary); line-height:1.5;">
+          <strong>Open Source Engine Credit:</strong> Adblocking matching engine & pattern rules derived from 
+          <a href="https://github.com/brave/adblock-rust" target="_blank" style="color:var(--pluto-color-orange); text-decoration:none;">brave/adblock-rust</a> & 
+          <a href="https://github.com/brave/brave-core" target="_blank" style="color:var(--pluto-color-orange); text-decoration:none;">brave-core</a> under MPL 2.0.
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Rewards -->
+    <section class="settings-section" id="sec-rewards">
+      <h2 class="settings-section-title">Pluto Rewards</h2>
+      <p class="settings-section-desc">Earn tokens for viewing privacy-respecting ads.</p>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Rewards Status</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Pluto Rewards</span>
+            <span class="setting-label-desc">Earn tokens by viewing privacy-preserving ads</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-rewards-enabled"></div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Auto-Contribute</span>
+            <span class="setting-label-desc">Support your favorite publishers automatically</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-autocontribute"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Web3 Wallet -->
+    <section class="settings-section" id="sec-wallet">
+      <h2 class="settings-section-title">Pluto Web3 Wallet</h2>
+      <p class="settings-section-desc">Multi-chain native Web3 wallet for Ethereum, Solana, and EVM networks.</p>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Default Web3 Wallet</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Default Wallet Provider</span>
+          </div>
+          <select class="setting-select" id="wallet-provider">
+            <option value="pluto" selected>Pluto Wallet (Prefer extensions)</option>
+            <option value="metamask">MetaMask</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Pluto AI -->
+    <section class="settings-section" id="sec-leo">
+      <h2 class="settings-section-title">Pluto AI Assistant</h2>
+      <p class="settings-section-desc">Configure LLM engines, budget guardrails, local models, and API credentials.</p>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Agent Control & Execution Guardrails</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Max Steps Per Autonomous Task</span>
+            <span class="setting-label-desc">Limits loop iterations to prevent excessive token usage</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <input type="range" id="agent-max-steps" class="setting-range" min="5" max="100" step="5" value="25" style="width:150px;">
+            <span id="max-steps-value" style="font-weight:600; width:30px; font-size:13px; color:var(--pluto-color-orange);">25</span>
+          </div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Confirmation Policy</span>
+          </div>
+          <select class="setting-select" id="agent-confirmation-policy" style="min-width: 250px;">
+            <option value="financial" selected>Ask only on financial/payment pages</option>
+            <option value="always">Always ask before submitting forms</option>
+            <option value="autonomous">Fully autonomous (Run without asking)</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Agent Fast Mode (Flash Mode)</span>
+            <span class="setting-label-desc">Skips thinking and vision checks for ultra-fast execution</span>
+          </div>
+          <div class="toggle-switch" id="toggle-agent-fast-mode"></div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Working Glow Indicator</span>
+            <span class="setting-label-desc">Show a breathing blue gradient glow when the agent is taking control</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-agent-glow"></div>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Local Model Engines</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Auto-scan local models on startup</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-autoscan"></div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Ollama Host URL</span>
+          </div>
+          <input class="setting-input" type="text" id="key-ollamahost" placeholder="http://localhost:11434" style="width: 240px;">
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Antigravity LS Address</span>
+          </div>
+          <input class="setting-input" type="text" id="key-antigravityaddress" placeholder="localhost:22004" style="width: 240px;">
+        </div>
+        <div class="setting-row" style="flex-direction: column; align-items: stretch; gap: 10px;">
+          <span class="setting-label-text">Detected Local Models</span>
+          <div id="detected-models" style="font-size: 12px; color: var(--pluto-text-secondary); font-family: var(--font-mono);">
+            Click "Scan Now" to query local servers.
+          </div>
+          <button class="settings-btn primary" id="btn-settings-scan" style="align-self: flex-start;">Scan Now</button>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-group-title">API Key Credentials</div>
+        <div class="api-key-row">
+          <span class="api-key-provider">Browser Use</span>
+          <input class="api-key-input" type="password" id="key-browseruse" placeholder="BROWSER_USE_API_KEY">
+        </div>
+        <div class="api-key-row">
+          <span class="api-key-provider">OpenAI</span>
+          <input class="api-key-input" type="password" id="key-openai" placeholder="OPENAI_API_KEY">
+        </div>
+        <div class="api-key-row">
+          <span class="api-key-provider">Anthropic</span>
+          <input class="api-key-input" type="password" id="key-anthropic" placeholder="ANTHROPIC_API_KEY">
+        </div>
+        <div class="api-key-row">
+          <span class="api-key-provider">Google AI</span>
+          <input class="api-key-input" type="password" id="key-google" placeholder="GOOGLE_API_KEY">
+        </div>
+        <div style="padding-top: 12px;">
+          <button class="settings-btn primary" id="btn-save-keys">Save API Keys & Config</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Privacy & Security -->
+    <section class="settings-section" id="sec-privacy">
+      <h2 class="settings-section-title">Privacy & Security</h2>
+      <p class="settings-section-desc">Manage browsing data, Do Not Track, and Site Permissions Matrix.</p>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Security & Tracking</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Send "Do Not Track" request</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-dnt"></div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Block third-party cookies</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-block-cookies"></div>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Site Permissions Matrix</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Location Access</span>
+          </div>
+          <select class="setting-select" id="perm-location">
+            <option value="ask" selected>Ask before accessing</option>
+            <option value="block">Block</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Camera & Microphone</span>
+          </div>
+          <select class="setting-select" id="perm-media">
+            <option value="ask" selected>Ask before accessing</option>
+            <option value="block">Block</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Web Push Notifications</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-block-notifications"></div>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Clear Browsing Data</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Clear history, cache, and cookies</span>
+          </div>
+          <button class="settings-btn danger" id="btn-clear-data">Clear Data...</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Search Engine -->
+    <section class="settings-section" id="sec-search">
+      <h2 class="settings-section-title">Search Engine</h2>
+      <p class="settings-section-desc">Set default search provider and address bar search shortcuts.</p>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Default Provider</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Search Engine used in Address Bar</span>
+          </div>
+          <select class="setting-select" id="search-engine">
+            <option value="google" selected>Google</option>
+            <option value="duckduckgo">DuckDuckGo</option>
+            <option value="bing">Bing</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Autofill & Passwords -->
+    <section class="settings-section" id="sec-passwords">
+      <h2 class="settings-section-title">Autofill & Passwords</h2>
+      <p class="settings-section-desc">Manage saved passwords securely using your OS credential vault.</p>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Saved Passwords</div>
+        <div class="passwords-table-wrapper">
+          <table class="passwords-table">
+            <thead>
+              <tr>
+                <th>Site</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>google.com</td>
+                <td>goutham.reddy@gmail.com</td>
+                <td>••••••••••••</td>
+                <td>
+                  <button class="icon-btn-view" title="Reveal Password">👁️</button>
+                  <button class="icon-btn-delete" title="Delete">🗑️</button>
+                </td>
+              </tr>
+              <tr>
+                <td>github.com</td>
+                <td>goutham-reddy</td>
+                <td>••••••••••••</td>
+                <td>
+                  <button class="icon-btn-view" title="Reveal Password">👁️</button>
+                  <button class="icon-btn-delete" title="Delete">🗑️</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Downloads -->
+    <section class="settings-section" id="sec-downloads">
+      <h2 class="settings-section-title">Downloads</h2>
+      <p class="settings-section-desc">Default download directory and save behavior.</p>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Download Location</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Default Download Location</span>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <input class="setting-input" type="text" id="download-path" value="C:\Users\esamb\Downloads" style="width:240px;">
+            <button class="settings-btn secondary" id="btn-browse-downloads">Change</button>
+          </div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Ask where to save each file</span>
+          </div>
+          <div class="toggle-switch" id="toggle-ask-download-save"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. System & GPU -->
+    <section class="settings-section" id="sec-system">
+      <h2 class="settings-section-title">System & Performance</h2>
+      <p class="settings-section-desc">Hardware acceleration, memory saver, and network proxies.</p>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Performance Options</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Memory Saver</span>
+            <span class="setting-label-desc">Automatically sleep inactive tabs to free RAM</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-memory-saver"></div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            <span class="setting-label-text">Use Graphics Acceleration</span>
+            <span class="setting-label-desc">Use GPU hardware acceleration when available</span>
+          </div>
+          <div class="toggle-switch active" id="toggle-gpu-acceleration"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. About Pluto -->
+    <section class="settings-section" id="sec-about">
+      <h2 class="settings-section-title">About Pluto</h2>
+
+      <div class="settings-group" style="text-align: center; padding: 40px;">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="#FF5500" style="margin-bottom: 16px;">
+          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.11v4.71c0 4.54-3.08 8.78-7 9.87-3.92-1.09-7-5.33-7-9.87V6.29l7-3.11z"/>
+        </svg>
+        <div style="font-size:24px; font-weight:700; margin-bottom:4px;">Pluto Agent Browser</div>
+        <div style="font-size:13px; color:var(--pluto-text-secondary); margin-bottom:16px;">Version 1.0.0</div>
+        <div style="font-size:12px; color:var(--pluto-text-tertiary); line-height:1.8; max-width:480px; margin:0 auto;">
+          An AI-native browser with deep agent integration.<br>
+          Powered by Chromium + Electron + browser-use.<br>
+          Includes Shields, Rewards, Wallet, and Nala design tokens.
+        </div>
+
+        <div style="margin-top:24px; padding:16px; background:var(--pluto-bg-input); border:1px solid var(--pluto-border-subtle); border-radius:8px; font-size:11.5px; color:var(--pluto-text-secondary); line-height:1.6; max-width:540px; margin-left:auto; margin-right:auto; text-align:left;">
+          <strong style="color:var(--pluto-text-primary);">Open Source & Technology Attribution:</strong><br>
+          Pluto Shields Engine incorporates adblocking filter-matching algorithms, network request cancellation rules, and UI component concepts derived from open-source projects including 
+          <a href="https://github.com/brave/brave-core" target="_blank" style="color:var(--pluto-color-orange); text-decoration:none;">Brave Core (github.com/brave/brave-core)</a> and 
+          <a href="https://github.com/brave/adblock-rust" target="_blank" style="color:var(--pluto-color-orange); text-decoration:none;">adblock-rust (github.com/brave/adblock-rust)</a> licensed under the Mozilla Public License v2.0 / Apache License 2.0.
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  const BACKEND = 'http://localhost:18420';
+
+  const navItems = document.querySelectorAll('.settings-nav-item');
+  const sections = document.querySelectorAll('.settings-section');
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      navItems.forEach(n => n.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+      item.classList.add('active');
+      const sec = document.getElementById('sec-' + item.dataset.section);
+      if (sec) sec.classList.add('active');
+    });
+  });
+
+  const searchInput = document.getElementById('settings-search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim();
+      const allRows = document.querySelectorAll('.setting-row, .api-key-row');
+      const allGroups = document.querySelectorAll('.settings-group');
+      
+      if (!query) {
+        allRows.forEach(r => r.style.display = '');
+        allGroups.forEach(g => g.style.display = '');
+        return;
+      }
+
+      allGroups.forEach(group => {
+        let visibleRows = 0;
+        const rows = group.querySelectorAll('.setting-row, .api-key-row');
+        rows.forEach(row => {
+          if (row.textContent.toLowerCase().includes(query)) {
+            row.style.display = '';
+            visibleRows++;
+          } else {
+            row.style.display = 'none';
+          }
+        });
+        group.style.display = visibleRows > 0 ? '' : 'none';
+      });
+    });
+  }
+
+  const controls = {
+    'search-engine': document.getElementById('search-engine'),
+    'toggle-startup-newtab': document.getElementById('toggle-startup-newtab'),
+    'toggle-restore-session': document.getElementById('toggle-restore-session'),
+    'download-path': document.getElementById('download-path'),
+    'toggle-ask-download-save': document.getElementById('toggle-ask-download-save'),
+    'toggle-memory-saver': document.getElementById('toggle-memory-saver'),
+    'toggle-gpu-acceleration': document.getElementById('toggle-gpu-acceleration'),
+    'agent-max-steps': document.getElementById('agent-max-steps'),
+    'agent-confirmation-policy': document.getElementById('agent-confirmation-policy'),
+    'toggle-agent-fast-mode': document.getElementById('toggle-agent-fast-mode'),
+    'toggle-agent-glow': document.getElementById('toggle-agent-glow'),
+    'toggle-autoscan': document.getElementById('toggle-autoscan'),
+    'toggle-block-cookies': document.getElementById('toggle-block-cookies'),
+    'toggle-dnt': document.getElementById('toggle-dnt'),
+    'perm-location': document.getElementById('perm-location'),
+    'perm-media': document.getElementById('perm-media'),
+    'toggle-block-notifications': document.getElementById('toggle-block-notifications'),
+    'toggle-https-only': document.getElementById('toggle-https-only'),
+    'theme-preset': document.getElementById('theme-preset'),
+    'theme-select': document.getElementById('theme-select'),
+    'toggle-vertical-tabs': document.getElementById('toggle-vertical-tabs'),
+    'toggle-show-home': document.getElementById('toggle-show-home'),
+    'toggle-show-shields-icon': document.getElementById('toggle-show-shields-icon'),
+    'toggle-show-rewards': document.getElementById('toggle-show-rewards'),
+    'toggle-show-wallet': document.getElementById('toggle-show-wallet'),
+    'font-size-select': document.getElementById('font-size-select'),
+  };
+
+  const stepsSlider = document.getElementById('agent-max-steps');
+  const stepsValueText = document.getElementById('max-steps-value');
+  if (stepsSlider && stepsValueText) {
+    stepsSlider.addEventListener('input', () => {
+      stepsValueText.textContent = stepsSlider.value;
+      savePreferences();
+    });
+  }
+
+  async function loadSettings() {
+    try {
+      const resp = await fetch(`${BACKEND}/api/settings`);
+      if (!resp.ok) return;
+      const data = await resp.json();
+      const prefs = data.preferences || {};
+
+      Object.entries(controls).forEach(([id, el]) => {
+        if (!el) return;
+        if (id.startsWith('toggle-')) {
+          const val = prefs[id] !== undefined ? prefs[id] : el.classList.contains('active');
+          el.classList.toggle('active', val);
+        } else {
+          if (prefs[id] !== undefined) {
+            el.value = prefs[id];
+            if (id === 'agent-max-steps' && stepsValueText) {
+              stepsValueText.textContent = prefs[id];
+            }
+          }
+        }
+      });
+
+      const keys = data.api_keys || {};
+      if (keys.BROWSER_USE_API_KEY) document.getElementById('key-browseruse').placeholder = '••••••••';
+      if (keys.OPENAI_API_KEY) document.getElementById('key-openai').placeholder = '••••••••';
+      if (keys.ANTHROPIC_API_KEY) document.getElementById('key-anthropic').placeholder = '••••••••';
+      if (keys.GOOGLE_API_KEY) document.getElementById('key-google').placeholder = '••••••••';
+    } catch (e) {
+      console.error('Failed to load settings', e);
+    }
+  }
+
+  async function savePreferences() {
+    const prefs = {};
+    Object.entries(controls).forEach(([id, el]) => {
+      if (!el) return;
+      if (id.startsWith('toggle-')) {
+        prefs[id] = el.classList.contains('active');
+      } else {
+        prefs[id] = el.value;
+      }
+    });
+
+    try {
+      await fetch(`${BACKEND}/api/settings`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ preferences: prefs })
+      });
+    } catch (e) {}
+  }
+
+  Object.entries(controls).forEach(([id, el]) => {
+    if (!el) return;
+    if (id.startsWith('toggle-')) {
+      el.addEventListener('click', () => {
+        el.classList.toggle('active');
+        savePreferences();
+      });
+    } else {
+      if (id !== 'agent-max-steps') {
+        el.addEventListener('change', savePreferences);
+      }
+    }
+  });
+
+  const btnScan = document.getElementById('btn-settings-scan');
+  const detectedModels = document.getElementById('detected-models');
+
+  async function scanModels() {
+    if (!detectedModels) return;
+    detectedModels.textContent = 'Scanning...';
+    try {
+      const resp = await fetch(`${BACKEND}/api/models/scan`);
+      const data = await resp.json();
+      if (data.models && data.models.length > 0) {
+        detectedModels.innerHTML = data.models.map((m) =>
+          `<div style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display:flex; justify-content:space-between;">` +
+          `<span>${m.name} (${m.provider || ''})</span><span style="color:#B6D871;">🟢 Online</span></div>`
+        ).join('');
+      } else {
+        detectedModels.textContent = 'No models detected.';
+      }
+    } catch {
+      detectedModels.textContent = 'Backend offline.';
+    }
+  }
+  if (btnScan) btnScan.addEventListener('click', scanModels);
+
+  const btnSaveKeys = document.getElementById('btn-save-keys');
+  if (btnSaveKeys) {
+    btnSaveKeys.addEventListener('click', async () => {
+      const keys = {};
+      const bu = document.getElementById('key-browseruse').value.trim();
+      const oa = document.getElementById('key-openai').value.trim();
+      const an = document.getElementById('key-anthropic').value.trim();
+      const go = document.getElementById('key-google').value.trim();
+      if (bu) keys.BROWSER_USE_API_KEY = bu;
+      if (oa) keys.OPENAI_API_KEY = oa;
+      if (an) keys.ANTHROPIC_API_KEY = an;
+      if (go) keys.GOOGLE_API_KEY = go;
+
+      btnSaveKeys.textContent = 'Saving...';
+      try {
+        await fetch(`${BACKEND}/api/settings`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ api_keys: keys }),
+        });
+        btnSaveKeys.textContent = '✓ Saved!';
+      } catch {
+        btnSaveKeys.textContent = '✗ Error';
+      }
+      setTimeout(() => { btnSaveKeys.textContent = 'Save API Keys & Config'; }, 2000);
+    });
+  }
+
+  /* ── Live Settings Search Filter ───────────────────────────── */
+  const searchInputFilter = document.getElementById('settings-search-input');
+  if (searchInputFilter) {
+    searchInputFilter.addEventListener('input', () => {
+      const query = searchInputFilter.value.trim().toLowerCase();
+      const sections = document.querySelectorAll('.settings-section');
+      
+      if (!query) {
+        const activeNav = document.querySelector('.settings-nav-item.active');
+        const targetSection = activeNav ? activeNav.dataset.section : 'get-started';
+        sections.forEach(sec => {
+          sec.classList.toggle('active', sec.id === `sec-${targetSection}`);
+          sec.querySelectorAll('.setting-row, .settings-group').forEach(el => el.style.display = '');
+        });
+        return;
+      }
+
+      sections.forEach(sec => {
+        let sectionHasMatch = false;
+        sec.querySelectorAll('.settings-group').forEach(group => {
+          let groupHasMatch = false;
+          group.querySelectorAll('.setting-row').forEach(row => {
+            const text = row.textContent.toLowerCase();
+            const isMatch = text.includes(query);
+            row.style.display = isMatch ? '' : 'none';
+            if (isMatch) groupHasMatch = true;
+          });
+          const groupTitle = group.querySelector('.settings-group-title');
+          const groupTitleMatch = groupTitle && groupTitle.textContent.toLowerCase().includes(query);
+          if (groupTitleMatch) {
+            groupHasMatch = true;
+            group.querySelectorAll('.setting-row').forEach(r => r.style.display = '');
+          }
+          group.style.display = groupHasMatch ? '' : 'none';
+          if (groupHasMatch) sectionHasMatch = true;
+        });
+
+        const title = sec.querySelector('.settings-section-title');
+        const titleMatch = title && title.textContent.toLowerCase().includes(query);
+        if (titleMatch) {
+          sectionHasMatch = true;
+          sec.querySelectorAll('.settings-group, .setting-row').forEach(el => el.style.display = '');
+        }
+
+        sec.classList.toggle('active', sectionHasMatch);
+      });
+    });
+  }
+
+  loadSettings();
+})();
+</script>
+</body>
+</html>

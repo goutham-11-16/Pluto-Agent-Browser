@@ -1,6 +1,7 @@
 MIT License
 
-Copyright (c) 2024 Gregor Zunic
+Copyright (c) 2026 Pluto Agent Browser Contributors
+Copyright (c) 2024 Gregor Zunic & Browser-Use Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +20,25 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+### Third-Party Licenses & Open Source Attribution
+
+Pluto Agent Browser builds upon and integrates several open-source technologies:
+
+1. **Browser-Use** (MIT License) — Core browser automation engine and agent framework.
+   - Copyright (c) 2024 Gregor Zunic
+   - License: MIT
+
+2. **Electron** (MIT License) — Desktop application framework.
+   - Copyright (c) Electron contributors & OpenJS Foundation
+   - License: MIT
+
+3. **uBlock Origin / Ghostery Adblocker Engine** (MPL-2.0 / MIT License) — Fast content filtering & stealth shield.
+   - Copyright (c) Ghostery & uBlock Origin contributors
+   - License: MPL-2.0 / MIT
+
+4. **FastAPI & Pydantic** (MIT License) — High-performance backend API and data validation framework.
+   - Copyright (c) Sebastián Ramírez & Pydantic contributors
+   - License: MIT

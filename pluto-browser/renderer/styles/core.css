@@ -1,0 +1,193 @@
+/* ═══════════════════════════════════════════════════════════════
+   PLUTO — Design Tokens & Foundation
+   Exact Nala / Leo Color Specification & Typography
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* ── Color Primitives ────────────────────────────────────── */
+  --pluto-color-apricot:        #E79364; /* rgb(231, 147, 100) */
+  --pluto-color-nutmeg:         #874827; /* rgb(135, 72, 39) */
+  --pluto-color-white:          #FFFFFF;
+  --pluto-color-alyssa:         #785BAF; /* rgb(120, 91, 175) */
+  --pluto-color-chinapink:      #DF73AA; /* rgb(223, 115, 170) */
+  --pluto-color-lime:           #B6D871; /* rgb(182, 216, 113) */
+  --pluto-color-skyblue:        #77B2CC; /* rgb(119, 178, 204) */
+  --pluto-color-orange:         #FF5500; /* Signature Lion Orange */
+  --pluto-color-orange-light:   #FF7654;
+  --pluto-color-blurple:        #4C54D2; /* Action Blue-Purple */
+  --pluto-color-blurple-hover:  #3b42be;
+
+  /* ── Background & Surfaces (Dark Theme Default) ───────────── */
+  --pluto-bg-deep:        #18191E;
+  --pluto-bg-primary:     #1E2026;
+  --pluto-bg-secondary:   #23252E;
+  --pluto-bg-tertiary:    #282A33;
+  --pluto-bg-elevated:    #2B2D38;
+  --pluto-bg-hover:       rgba(255, 255, 255, 0.08);
+  --pluto-bg-active:      rgba(255, 255, 255, 0.14);
+  --pluto-bg-input:       #121316;
+
+  --pluto-surface:        #23252E;
+  --pluto-surface-glass:  rgba(35, 37, 46, 0.92);
+
+  /* ── Text Tokens ─────────────────────────────────────────── */
+  --pluto-text-primary:   #ECEFF2;
+  --pluto-text-secondary: #9E9EA7;
+  --pluto-text-tertiary:  #6D6E77;
+  --pluto-text-muted:     #52535B;
+
+  /* ── Accent Colors ───────────────────────────────────────── */
+  --pluto-accent:         var(--pluto-color-orange);
+  --pluto-accent-light:   #FF8A65;
+  --pluto-accent-glow:    rgba(255, 85, 0, 0.25);
+  --pluto-accent-subtle:  rgba(255, 85, 0, 0.1);
+
+  /* ── Semantic Colors ─────────────────────────────────────── */
+  --pluto-success:        var(--pluto-color-lime);
+  --pluto-success-bg:     rgba(182, 216, 113, 0.12);
+  --pluto-warning:        #FFA73B;
+  --pluto-warning-bg:     rgba(255, 167, 59, 0.12);
+  --pluto-danger:         #F7241C;
+  --pluto-danger-bg:      rgba(247, 36, 28, 0.12);
+  --pluto-info:           var(--pluto-color-skyblue);
+  --pluto-info-bg:        rgba(119, 178, 204, 0.12);
+
+  /* ── Borders ─────────────────────────────────────────────── */
+  --pluto-border:         rgba(255, 255, 255, 0.12);
+  --pluto-border-subtle:  rgba(255, 255, 255, 0.06);
+  --pluto-border-strong:  rgba(255, 255, 255, 0.22);
+  --pluto-border-accent:  rgba(255, 85, 0, 0.4);
+
+  /* ── Shadows ─────────────────────────────────────────────── */
+  --pluto-shadow-sm:      0 1px 3px rgba(0, 0, 0, 0.4);
+  --pluto-shadow-md:      0 4px 16px rgba(0, 0, 0, 0.5);
+  --pluto-shadow-lg:      0 12px 36px rgba(0, 0, 0, 0.65);
+  --pluto-shadow-glow:    0 0 20px var(--pluto-accent-glow);
+  --pluto-shadow-inset:   inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  /* ── Radii ───────────────────────────────────────────────── */
+  --radius-xs:  4px;
+  --radius-sm:  6px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+  --radius-full: 9999px;
+
+  /* ── Spacing ─────────────────────────────────────────────── */
+  --sp-1: 4px;   --sp-2: 8px;   --sp-3: 12px;  --sp-4: 16px;
+  --sp-5: 20px;  --sp-6: 24px;  --sp-8: 32px;  --sp-10: 40px;
+
+  /* ── Typography (Poppins Baseline) ───────────────────────── */
+  --font-sans:  'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:  'Roboto Mono', 'JetBrains Mono', monospace;
+
+  /* ── Transitions ─────────────────────────────────────────── */
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:   cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 350ms;
+
+  /* ── Layout Dimensions ───────────────────────────────────── */
+  --titlebar-height: 38px;
+  --tabstrip-height: 40px;
+  --statusbar-height: 26px;
+  --sidebar-width: 380px;
+
+  /* ── Dynamic Variables ────────────────────────────────────── */
+  --omnibox-accent: var(--pluto-color-orange);
+}
+
+/* ── Light Theme Overrides ──────────────────────────────────── */
+[data-theme="light"] {
+  --pluto-bg-deep:        #EAEBED;
+  --pluto-bg-primary:     #F3F4F6;
+  --pluto-bg-secondary:   #FFFFFF;
+  --pluto-bg-tertiary:    #E2E4E8;
+  --pluto-bg-elevated:    #FFFFFF;
+  --pluto-bg-hover:       rgba(0, 0, 0, 0.06);
+  --pluto-bg-active:      rgba(0, 0, 0, 0.12);
+  --pluto-bg-input:       #F7F8FA;
+
+  --pluto-surface:        #FFFFFF;
+  --pluto-surface-glass:  rgba(255, 255, 255, 0.95);
+
+  --pluto-text-primary:   #1D1F25;
+  --pluto-text-secondary: #5E616E;
+  --pluto-text-tertiary:  #8C8F9E;
+  --pluto-text-muted:     #A5A8B5;
+
+  --pluto-border:         rgba(0, 0, 0, 0.12);
+  --pluto-border-subtle:  rgba(0, 0, 0, 0.06);
+  --pluto-border-strong:  rgba(0, 0, 0, 0.22);
+}
+
+/* ── Global Reset ──────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--pluto-text-primary);
+  background: var(--pluto-bg-deep);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+/* ── Vector Graphics Reset (Strips 3px ghost padding) ────────── */
+svg {
+  display: block;
+  vertical-align: middle;
+}
+
+/* ── Scrollbars ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.28); }
+
+/* ── Utility Classes ───────────────────────────────────────── */
+.hidden { display: none !important; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-1 { gap: var(--sp-1); }
+.gap-2 { gap: var(--sp-2); }
+.gap-3 { gap: var(--sp-3); }
+.gap-4 { gap: var(--sp-4); }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ── Focus & Inputs ────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--pluto-color-orange);
+  outline-offset: 1px;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}

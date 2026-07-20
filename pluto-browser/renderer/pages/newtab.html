@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New Tab — Pluto</title>
+  <link rel="stylesheet" href="../styles/core.css">
+  <link rel="stylesheet" href="newtab.css">
+</head>
+<body>
+<div class="newtab" id="newtab-app">
+
+  <!-- Dynamic Background Layer -->
+  <div class="newtab-bg" id="newtab-bg">
+    <div class="star star-1">✦</div>
+    <div class="star star-2">✦</div>
+    <div class="star star-3">✦</div>
+    <div class="star star-4">✦</div>
+    <div class="star star-5">✦</div>
+    <div class="star star-6">✦</div>
+  </div>
+
+  <!-- Top Navigation Bar for NTP Widgets -->
+  <div class="ntp-top-row">
+    <!-- Top-Left Shields Stats Widget -->
+    <div class="ntp-stats-widget" id="ntp-stats-widget">
+      <div class="stat-item">
+        <span class="stat-number" id="ntp-stat-trackers">147</span>
+        <span class="stat-label">Trackers & ads blocked</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number" id="ntp-stat-bandwidth">12.4 MB</span>
+        <span class="stat-label">Bandwidth saved</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number" id="ntp-stat-time">6.2 s</span>
+        <span class="stat-label">Time saved</span>
+      </div>
+    </div>
+
+    <!-- Top-Right Clock & Date Widget (12-hour AM/PM) -->
+    <div class="ntp-clock-widget" id="ntp-clock-widget">
+      <div class="ntp-clock" id="ntp-clock">09:10 PM</div>
+      <div class="ntp-date" id="ntp-date">Sunday, July 19</div>
+    </div>
+  </div>
+
+  <!-- Central Content Area -->
+  <div class="newtab-content">
+    
+    <!-- Pluto Branding -->
+    <div class="pluto-ntp-brand">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="#FF5500">
+        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.11v4.71c0 4.54-3.08 8.78-7 9.87-3.92-1.09-7-5.33-7-9.87V6.29l7-3.11z"/>
+      </svg>
+      <h1 class="pluto-ntp-title">Pluto Search</h1>
+    </div>
+
+    <!-- Integrated Search Bar Widget -->
+    <div class="newtab-search">
+      <svg class="newtab-search-icon" viewBox="0 0 24 24">
+        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+      </svg>
+      <input type="text" class="newtab-search-input" id="newtab-search"
+             placeholder="Search Google or enter web address..." spellcheck="false" autofocus>
+      <button class="newtab-search-btn" id="btn-ntp-search">Search</button>
+    </div>
+
+    <!-- Top Site Tiles Grid (7 Default Tiles) -->
+    <div class="quick-access" id="quick-access">
+      <a class="quick-item" href="https://www.google.com">
+        <div class="quick-icon" style="background: linear-gradient(135deg, #4285f4, #34a853)">G</div>
+        <span class="quick-label">Google</span>
+      </a>
+      <a class="quick-item" href="https://www.youtube.com">
+        <div class="quick-icon" style="background: linear-gradient(135deg, #ff0000, #cc0000)">Y</div>
+        <span class="quick-label">YouTube</span>
+      </a>
+      <a class="quick-item" href="https://www.github.com">
+        <div class="quick-icon" style="background: linear-gradient(135deg, #333, #6e5494)">G</div>
+        <span class="quick-label">GitHub</span>
+      </a>
+      <a class="quick-item" href="https://www.reddit.com">
+        <div class="quick-icon" style="background: linear-gradient(135deg, #ff4500, #ff8717)">R</div>
+        <span class="quick-label">Reddit</span>
+      </a>
+      <a class="quick-item" href="https://news.ycombinator.com">
+        <div class="quick-icon" style="background: linear-gradient(135deg, #ff6600, #cc5500)">HN</div>
+        <span class="quick-label">Hacker News</span>
+      </a>
+      <a class="quick-item" href="https://twitter.com">
+        <div class="quick-icon" style="background: linear-gradient(135deg, #1da1f2, #0d8ecf)">X</div>
+        <span class="quick-label">X / Twitter</span>
+      </a>
+      <a class="quick-item" href="https://www.codechef.com">
+        <div class="quick-icon" style="background: linear-gradient(135deg, #5B4534, #8B6544)">CC</div>
+        <span class="quick-label">CodeChef</span>
+      </a>
+      <button class="quick-item add-tile-btn" id="btn-add-shortcut">
+        <div class="quick-icon" style="background: rgba(255, 255, 255, 0.08); color: var(--pluto-text-secondary);">+</div>
+        <span class="quick-label">Add site</span>
+      </button>
+    </div>
+
+    <!-- Pluto News Feed Preview -->
+    <div class="pluto-news-section" id="pluto-news-section">
+      <div class="news-header">
+        <span class="news-title">📰 Pluto News</span>
+        <div class="news-categories">
+          <span class="news-cat active">Top Stories</span>
+          <span class="news-cat">Technology</span>
+          <span class="news-cat">Crypto & AI</span>
+        </div>
+      </div>
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="news-source">TechCrunch • 2h ago</div>
+          <div class="news-headline">Autonomous Agentic Browsing Reaches 100% Performance Milestone in 2026</div>
+        </div>
+        <div class="news-card">
+          <div class="news-source">Pluto Blog • 4h ago</div>
+          <div class="news-headline">Pluto AI expands custom LLM endpoints with privacy-preserving analytics</div>
+        </div>
+        <div class="news-card">
+          <div class="news-source">CoinDesk • 5h ago</div>
+          <div class="news-headline">Basic Attention Token (BAT) Rewards ecosystem surpasses 50 Million active monthly users</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom-Right Customize Button -->
+  <button class="customize-dashboard-btn" id="btn-customize-dashboard" title="Customize Dashboard">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+      <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 0 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/>
+    </svg>
+    <span>Customize</span>
+  </button>
+
+  <!-- Customize Dashboard Modal Drawer -->
+  <div class="customize-modal hidden" id="customize-modal">
+    <div class="customize-modal-content">
+      <div class="customize-header">
+        <h3>Customize Dashboard</h3>
+        <button class="close-modal-btn" id="btn-close-customize">✕</button>
+      </div>
+      <div class="customize-section">
+        <h4>Background Images</h4>
+        <div class="bg-options">
+          <div class="bg-option-chip active" data-bg="dark">Dark Cosmos</div>
+          <div class="bg-option-chip" data-bg="gradient">Pluto Gradient</div>
+          <div class="bg-option-chip" data-bg="apricot">Apricot Sunrise</div>
+        </div>
+        <div class="cust-row">
+          <span>Show Sponsored Images</span>
+          <div class="toggle-switch active" id="toggle-sponsored-img"></div>
+        </div>
+        <button class="rewards-onboarding-btn" id="btn-rewards-onboard">Start using Rewards</button>
+      </div>
+      <div class="customize-section">
+        <h4>Widgets</h4>
+        <div class="cust-row">
+          <span>Show Pluto Shields Stats</span>
+          <div class="toggle-switch active" id="toggle-show-stats"></div>
+        </div>
+        <div class="cust-row">
+          <span>Show Clock & Date</span>
+          <div class="toggle-switch active" id="toggle-show-clock"></div>
+        </div>
+        <div class="cust-row">
+          <span>Show Top Sites</span>
+          <div class="toggle-switch active" id="toggle-show-tiles"></div>
+        </div>
+      </div>
+      <div class="customize-section">
+        <h4>Pluto News</h4>
+        <div class="cust-row">
+          <span>Show Pluto News Feed</span>
+          <div class="toggle-switch active" id="toggle-show-news"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  function updateClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    const hoursStr = String(hours).padStart(2, '0');
+
+    const clockEl = document.getElementById('ntp-clock');
+    const dateEl = document.getElementById('ntp-date');
+    if (clockEl) clockEl.textContent = `${hoursStr}:${minutes} ${ampm}`;
+    if (dateEl) dateEl.textContent = now.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' });
+  }
+
+  updateClock();
+  setInterval(updateClock, 10000);
+
+  function updateStats() {
+    if (window.plutoAPI && window.plutoAPI.getShieldsStats) {
+      window.plutoAPI.getShieldsStats().then(stats => {
+        const trackers = stats.trackers || 0;
+        const bytes = stats.bandwidth || 0;
+        const mb = (bytes / (1024 * 1024)).toFixed(1);
+        const sec = (trackers * 0.04).toFixed(1);
+
+        const trackersEl = document.getElementById('ntp-stat-trackers');
+        const bandwidthEl = document.getElementById('ntp-stat-bandwidth');
+        const timeEl = document.getElementById('ntp-stat-time');
+
+        if (trackersEl) trackersEl.textContent = trackers;
+        if (bandwidthEl) bandwidthEl.textContent = `${mb} MB`;
+        if (timeEl) timeEl.textContent = `${sec} s`;
+      });
+    }
+  }
+
+  updateStats();
+  setInterval(updateStats, 3000);
+
+  function handleSearch() {
+    const input = document.getElementById('newtab-search');
+    if (!input) return;
+    const val = input.value.trim();
+    if (val) {
+      if (/^[a-z][a-z0-9+.-]*:\/\//i.test(val) || (/^[\w-]+(\.[\w-]+)+/.test(val) && !val.includes(' '))) {
+        window.location.href = val.includes('://') ? val : 'https://' + val;
+      } else {
+        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(val)}`;
+      }
+    }
+  }
+
+  document.getElementById('newtab-search').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleSearch();
+  });
+  document.getElementById('btn-ntp-search').addEventListener('click', handleSearch);
+
+  const btnCust = document.getElementById('btn-customize-dashboard');
+  const modalCust = document.getElementById('customize-modal');
+  const btnCloseCust = document.getElementById('btn-close-customize');
+
+  if (btnCust && modalCust) {
+    btnCust.addEventListener('click', () => modalCust.classList.remove('hidden'));
+    if (btnCloseCust) btnCloseCust.addEventListener('click', () => modalCust.classList.add('hidden'));
+  }
+
+  const bgChips = document.querySelectorAll('.bg-option-chip');
+  bgChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      bgChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const bgType = chip.dataset.bg;
+      const body = document.body;
+      if (bgType === 'gradient') {
+        body.style.background = 'linear-gradient(135deg, #1E2026, #4C54D2, #874827)';
+      } else if (bgType === 'apricot') {
+        body.style.background = 'linear-gradient(135deg, #18191E, #E79364, #785BAF)';
+      } else {
+        body.style.background = 'var(--pluto-bg-deep)';
+      }
+    });
+  });
+
+  document.querySelectorAll('#customize-modal .toggle-switch').forEach(sw => {
+    sw.addEventListener('click', () => sw.classList.toggle('active'));
+  });
+
+  const btnOnboard = document.getElementById('btn-rewards-onboard');
+  if (btnOnboard) {
+    btnOnboard.addEventListener('click', () => {
+      alert('Welcome to Pluto Rewards! You are now set up to earn tokens for viewing privacy-respecting sponsored background wallpapers.');
+    });
+  }
+
+  const btnAdd = document.getElementById('btn-add-shortcut');
+  if (btnAdd) {
+    btnAdd.addEventListener('click', () => {
+      const title = prompt('Enter site title:');
+      const url = prompt('Enter site URL (e.g. https://example.com):');
+      if (title && url) {
+        const grid = document.getElementById('quick-access');
+        const item = document.createElement('a');
+        item.className = 'quick-item';
+        item.href = url;
+        item.innerHTML = `
+          <div class="quick-icon" style="background: linear-gradient(135deg, #FF5500, #4C54D2);">${title.substring(0,2).toUpperCase()}</div>
+          <span class="quick-label">${title}</span>
+        `;
+        grid.insertBefore(item, btnAdd);
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

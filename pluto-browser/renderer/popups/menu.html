@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pluto Menu</title>
+  <link rel="stylesheet" href="../styles/core.css">
+  <style>
+    body {
+      background: var(--pluto-bg-elevated);
+      color: var(--pluto-text-primary);
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 6px 0;
+      overflow-y: auto;
+      border-radius: 12px;
+      border: 1px solid var(--pluto-border-strong);
+      box-shadow: var(--pluto-shadow-lg);
+    }
+    .menu-group { padding: 4px 0; border-bottom: 1px solid var(--pluto-border-subtle); }
+    .menu-group:last-child { border-bottom: none; }
+    .menu-item {
+      display: flex; align-items: center; padding: 7px 14px; font-size: 12.5px;
+      color: var(--pluto-text-primary); cursor: pointer; transition: background 0.15s;
+    }
+    .menu-item:hover { background: var(--pluto-bg-hover); }
+    .menu-icon { width: 18px; margin-right: 8px; font-size: 13px; text-align: center; }
+    .menu-text { flex-grow: 1; }
+    .menu-shortcut { font-size: 11px; color: var(--pluto-text-secondary); margin-left: 8px; }
+    .profile-card { display: flex; align-items: center; padding: 8px 14px; background: rgba(255, 255, 255, 0.02); }
+    .avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--pluto-color-orange), var(--pluto-color-alyssa));
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 12px; margin-right: 10px;
+    }
+    .profile-name { font-size: 12.5px; font-weight: 600; }
+    .profile-sync { font-size: 10.5px; color: var(--pluto-color-lime); }
+  </style>
+</head>
+<body>
+<div>
+  <div class="menu-group">
+    <div class="menu-item" data-action="new-tab">
+      <span class="menu-icon">📄</span>
+      <span class="menu-text">New tab</span>
+      <span class="menu-shortcut">Ctrl+T</span>
+    </div>
+    <div class="menu-item" data-action="new-window">
+      <span class="menu-icon">🗔</span>
+      <span class="menu-text">New window</span>
+      <span class="menu-shortcut">Ctrl+N</span>
+    </div>
+    <div class="menu-item" data-action="new-incognito">
+      <span class="menu-icon">🕶️</span>
+      <span class="menu-text">New Private window</span>
+      <span class="menu-shortcut">Ctrl+Shift+N</span>
+    </div>
+    <div class="menu-item" data-action="vtabs">
+      <span class="menu-icon">📑</span>
+      <span class="menu-text">Toggle Vertical Tabs</span>
+    </div>
+  </div>
+
+  <div class="menu-group profile-card">
+    <div class="avatar">GR</div>
+    <div>
+      <div class="profile-name">GOUTHAM REDDY</div>
+      <div class="profile-sync">Pluto Sync is Active</div>
+    </div>
+  </div>
+
+  <div class="menu-group">
+    <div class="menu-item" data-action="history">
+      <span class="menu-icon">🕒</span>
+      <span class="menu-text">History</span>
+      <span class="menu-shortcut">Ctrl+H</span>
+    </div>
+    <div class="menu-item" data-action="downloads">
+      <span class="menu-icon">📥</span>
+      <span class="menu-text">Downloads</span>
+      <span class="menu-shortcut">Ctrl+J</span>
+    </div>
+    <div class="menu-item" data-action="bookmarks">
+      <span class="menu-icon">⭐</span>
+      <span class="menu-text">Bookmarks</span>
+    </div>
+    <div class="menu-item" data-action="settings">
+      <span class="menu-icon">⚙️</span>
+      <span class="menu-text">Settings</span>
+    </div>
+  </div>
+
+  <div class="menu-group">
+    <div class="menu-item" data-action="exit">
+      <span class="menu-icon">🚪</span>
+      <span class="menu-text">Exit Pluto</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const act = item.dataset.action;
+      if (window.plutoAPI) {
+        if (act === 'new-tab') window.plutoAPI.createTab();
+        if (act === 'history') window.plutoAPI.navigateTo('pluto://history');
+        if (act === 'settings') window.plutoAPI.navigateTo('pluto://settings');
+        if (act === 'exit') window.plutoAPI.close();
+      }
+      window.close();
+    });
+  });
+})();
+</script>
+</body>
+</html>

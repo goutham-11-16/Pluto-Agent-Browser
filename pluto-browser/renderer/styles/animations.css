@@ -1,0 +1,98 @@
+/* ═══════════════════════════════════════════════════════════════
+   PLUTO — Animations & Keyframes (Nala System)
+   Includes exact Shields 2ms Looping Linear-Gradient Keyframes
+   ═══════════════════════════════════════════════════════════════ */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes msg-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 8px var(--pluto-accent-glow);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--pluto-accent-glow);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Skeleton loader shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, var(--pluto-bg-tertiary) 25%, var(--pluto-bg-elevated) 50%, var(--pluto-bg-tertiary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Progress bar fill transition */
+.progress-bar-fill {
+  transition: width var(--duration-normal) var(--ease-out);
+  background: linear-gradient(90deg, var(--pluto-color-orange), var(--pluto-color-blurple));
+  border-radius: var(--radius-full);
+}
+
+/* ── Shields Active Toggle Looping Gradient Animation ── */
+.pluto-shields-toggle-active {
+  background: linear-gradient(120deg, #FFA73B 0%, #FF7654 20%, #FB542B 40%, #F7241C 60%, #FC4F82 80%, #FFA73B 100%) !important;
+  background-size: 200% 200% !important;
+  animation: plutoShieldsLoop 2s linear infinite;
+}
+
+@keyframes plutoShieldsLoop {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

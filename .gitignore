@@ -1,5 +1,4 @@
-# Cache files
-.DS_Store
+# Python & Environment Caches
 __pycache__/
 *.py[cod]
 *$py.class
@@ -7,80 +6,62 @@ __pycache__/
 .ruff_cache/
 .pytest_cache/
 .ipynb_checkpoints
-~/
-
-# Virtual Environments
-.venv*
+.venv/
+.venv*/
 venv/
 
-# IDEs
+# Operating System & IDE
+.DS_Store
+Thumbs.db
 .vscode/
 .idea/
 
-# Build files
+# Build & Dependency Artifacts
 dist/
+build/
+node_modules/
+pluto-browser/node_modules/
+*.tsbuildinfo
 
-# Data files
-*.gif
-*.txt
-*.pdf
-*.csv
-*.json
-*.jsonl
+# Debug & Temporary Logs
 *.log
-*.bak
+debug.log
+info.log
+scratch/
+pluto-browser/scratch/
 
-# Secrets and sensitive files
-secrets.env
-.env
+# Runtime Profiles & Data
+chrome-debug-profile/
+temp-profile-*
+pluto_settings.json
+pluto-browser/backend/pluto_settings.json
 browser_cookies.json
 cookies.json
-gcp-login.json
 saved_trajectories/
-old_tests/
 AgentHistory.json
 AgentHistoryList.json
-private_example.py
-private_example
-CLAUDE.local.md
 
-uv.lock
-temp
-tmp
-
-# Google API credentials
+# Secrets & Environment Keys
+.env
+secrets.env
+gcp-login.json
 credentials.json
 token.json
+private_example.py
 
-!docs/docs.json
-
-
-temp-profile-*
-
-screenshot.png
-
-# *.md
-
+# Miscellaneous Temporary Files
+tmp/
+temp/
 all_github_issues_progress.md
 all_github_issues.md
-
 todo-input-token.md
-
 TOOL_CHANGES_SUMMARY.md
-
-
 claude-code-todo
 result_judge.md
 result.md
 result2.md
 result3.md
 Brainstorm.md
-example.ipynb
-*SUMMARY.md
 todo.md
-product_extraction.ipynb
-product_extraction.py
 *report.md
-plot.py
-
 .claude/

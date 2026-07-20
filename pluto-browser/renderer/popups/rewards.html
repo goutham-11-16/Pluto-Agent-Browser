@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pluto Rewards</title>
+  <link rel="stylesheet" href="../styles/core.css">
+  <style>
+    body {
+      background: var(--pluto-bg-elevated);
+      color: var(--pluto-text-primary);
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 16px;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid var(--pluto-border-strong);
+      box-shadow: var(--pluto-shadow-lg);
+    }
+    .popup-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .popup-title { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
+    .rewards-badge { background: rgba(182, 216, 113, 0.2); color: var(--pluto-color-lime); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 9999px; }
+    .rewards-card {
+      background: linear-gradient(135deg, rgba(255, 85, 0, 0.15), rgba(120, 91, 175, 0.15));
+      border: 1px solid var(--pluto-border-accent); border-radius: 8px; padding: 14px; margin-bottom: 12px;
+    }
+    .balance-title { font-size: 11px; color: var(--pluto-text-secondary); }
+    .balance-amount { font-size: 22px; font-weight: 700; color: var(--pluto-text-primary); margin: 2px 0; }
+    .balance-usd { font-size: 12px; color: var(--pluto-color-lime); font-weight: 500; }
+    .rewards-row { display: flex; align-items: center; justify-content: space-between; font-size: 12px; margin-bottom: 8px; }
+    .btn-group { display: flex; gap: 8px; margin-top: 12px; }
+    .btn-item { flex: 1; padding: 8px; border-radius: 6px; font-size: 11.5px; font-weight: 600; cursor: pointer; text-align: center; border: none; }
+    .btn-primary { background: var(--pluto-color-orange); color: #FFF; }
+    .btn-secondary { background: var(--pluto-bg-tertiary); color: var(--pluto-text-primary); border: 1px solid var(--pluto-border); }
+  </style>
+</head>
+<body>
+<div>
+  <div class="popup-header">
+    <div class="popup-title">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#FF5500"><polygon points="12,2 22,20 2,20"/></svg>
+      Pluto Rewards
+    </div>
+    <span class="rewards-badge">Active</span>
+  </div>
+
+  <div class="rewards-card">
+    <div class="balance-title">Estimated Earnings</div>
+    <div class="balance-amount">4.250 BAT</div>
+    <div class="balance-usd">≈ $1.18 USD</div>
+  </div>
+
+  <div class="rewards-row">
+    <span>Auto-Contribute</span>
+    <input type="checkbox" checked style="accent-color: var(--pluto-color-orange);">
+  </div>
+  <div class="rewards-row">
+    <span>Private Ads</span>
+    <span style="color:var(--pluto-text-secondary);">5 ads / hour</span>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn-item btn-primary">Tip Creator</button>
+    <button class="btn-item btn-secondary">Statement</button>
+  </div>
+</div>
+</body>
+</html>

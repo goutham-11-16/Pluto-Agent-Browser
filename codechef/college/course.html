@@ -1,0 +1,2489 @@
+<html lang="en">
+
+<head>
+    <meta name="emotion-insertion-point" content="">
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" async=""
+        src="https://www.googletagmanager.com/gtag/js?id=G-C8RQQ7NY18&amp;cx=c&amp;gtm=4e67f0"></script>
+    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-TV5X2M"></script>
+    <script>
+        const xhr = new XMLHttpRequest();
+        window.syllabusDataRequestPending = true;
+        xhr.open('GET', '/api/learn/syllabus/kare-cse3301-daa-2026?roadmapSlug=', true);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                window.syllabusData = JSON.parse(xhr.responseText);
+            } else {
+                window.syllabusData = {};
+            }
+            window.syllabusDataRequestPending = false;
+        };
+        xhr.send();
+    </script>
+
+
+
+
+    <link rel="icon" href="https://www.codechef.com/favicon.ico" type="image/x-icon">
+    <title>Learn Design and Analysis of Algorithms</title>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="Practical course on Design &amp; Analysis of Algorithms based on the syllabus followed at Engineering colleges in India. Solutions and approaches explained using C++, Java &amp; Python">
+    <meta name="og:image" content="https://cdn.codechef.com/sites/all/themes/abessive/cc-logo.png">
+    <meta name="og:type" content="website">
+    <meta name="theme-color" content="#000000">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026">
+    <script src="https://accounts.google.com/gsi/client" async=""></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="prefetch" href="https://cdn.codechef.com/images/cc-logo.svg" as="image" type="image/svg+xml">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;family=Roboto+Mono:wght@100;300;400;500;700&amp;family=Fustat:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- Initial loader classes -->
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loadingIcon {
+            border: 0.4em solid rgba(0, 0, 0, 0.0);
+            border-top: 0.4em solid #2A67B1;
+            border-radius: 50%;
+            width: 4em;
+            height: 4em;
+            animation: spin 1s linear infinite;
+            color: #2A67B1;
+        }
+
+        .loading {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: rgb(108, 116, 134);
+            background: inherit;
+            z-index: 100;
+            position: absolute;
+        }
+
+        .message {
+            padding: 16px;
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        /* Dark Mode styles */
+        .loader-icon-dark {
+            border-top: 0.4em solid #5780b0;
+        }
+
+        .dark {
+            background: #1d1e23;
+            color: rgb(255 255 255 / 60%);
+        }
+    </style>
+    <script>
+
+        const languageIdeRoutes = [
+            'python', 'java', 'cpp', 'c', 'pypy', 'csharp', 'javascript', 'go', 'php', 'kotlin', 'rust', 'r', 'sql', 'html',
+            'oracledb', 'react'
+        ];
+
+        if (
+            (['faq', 'pro', 'contests'].includes(window.location.pathname.split('/').filter(Boolean).pop())) ||
+            (['learn', 'games', 'viewsolution',
+                'submit', 'practice', 'dashboard', 'getting-started', 'college-program', 'practice-old',
+                'roadmap', 'blogs', 'roadmaps', 'blogs', 'skill-tests', 'ide', 'mobile'
+            ].includes(window.location.pathname.split('/').filter(Boolean)[0])) ||
+            (['submit'].includes(window.location.pathname.split('/').filter(Boolean)[1])) ||
+            (['status'].includes(window.location.pathname.split('/').filter(Boolean).slice(-2, -1).pop())) || [
+                // Regex to match the practice and contest submit routes
+                /^\/(submit\/([A-Z]+[A-Z0-9_]*)+|problems\/([A-Z]+[A-Z0-9_]*)+|([A-Z]+[A-Z0-9_]*)+\/submit\/([A-Z]+[A-Z0-9_]*)+|([A-Z]+[A-Z0-9_]*)+\/problems\/([A-Z]+[A-Z0-9_]*)+)$/
+            ].some((regexp) => (regexp.test(window.location.pathname))) ||
+            (languageIdeRoutes.some(lang => window.location.pathname.includes(`${lang}-online-compiler`)))
+        ) {
+            const metaElement = document.createElement('meta');
+            metaElement.setAttribute('name', 'viewport');
+            metaElement.setAttribute('content', 'width=device-width, initial-scale=1');
+            document.head.appendChild(metaElement);
+        }
+
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TV5X2M');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="module" crossorigin="" src="/build/react2/assets/index-BnYAzZ1s.js"></script>
+    <link rel="modulepreload" crossorigin="" href="/build/react2/assets/__commonjsHelpers__-BosuxZz1.js">
+    <link rel="modulepreload" crossorigin="" href="/build/react2/assets/vendor-mui-D95mtM6a.js">
+    <link rel="modulepreload" crossorigin="" href="/build/react2/assets/vendor-sweetalert2-CokzRhbv.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/index-8JvKpkpw.css">
+    <style id="googleidentityservice_button_styles">
+        .qJTHM {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            color: #202124;
+            direction: ltr;
+            -webkit-touch-callout: none;
+            font-family: Roboto-Regular, arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 400;
+            margin: 0;
+            overflow: hidden;
+            -webkit-text-size-adjust: 100%
+        }
+
+        .ynRLnc {
+            left: -9999px;
+            position: absolute;
+            top: -9999px
+        }
+
+        .L6cTce {
+            display: none
+        }
+
+        .bltWBb {
+            overflow-wrap: break-word;
+            word-break: break-word
+        }
+
+        .hSRGPd {
+            color: #1a73e8;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none
+        }
+
+        .Bz112c-W3lGp {
+            height: 16px;
+            width: 16px
+        }
+
+        .Bz112c-E3DyYd {
+            height: 20px;
+            width: 20px
+        }
+
+        .Bz112c-r9oPif {
+            height: 24px;
+            width: 24px
+        }
+
+        .Bz112c-u2z5K {
+            height: 36px;
+            width: 36px
+        }
+
+        .Bz112c-uaxL4e {
+            border-radius: 10px
+        }
+
+        .LgbsSe-Bz112c {
+            display: block
+        }
+
+        .S9gUrf-YoZ4jf {
+            border: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .S9gUrf-YoZ4jf * {
+            border: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .fFW7wc-ibnC6b>.aZ2wEe>div {
+            border-color: #4285f4
+        }
+
+        .P1ekSe-ZMv3u {
+            -webkit-transition: height .2s linear;
+            transition: height .2s linear
+        }
+
+        .P1ekSe-ZMv3u>div:first-child {
+            background-color: #1a73e8 !important;
+            -webkit-transition: width .3s linear;
+            transition: width .3s linear
+        }
+
+        .P1ekSe-ZMv3u>div:nth-child(2) {
+            background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, .7)), to(rgba(255, 255, 255, .7))), -webkit-gradient(linear, left top, right top, from(#1a73e8), to(#1a73e8)) !important;
+            background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), -webkit-linear-gradient(left, #1a73e8, #1a73e8) !important;
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), linear-gradient(90deg, #1a73e8, #1a73e8) !important
+        }
+
+        .P1ekSe-ZMv3u>div:nth-child(3) {
+            background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, .7)), to(rgba(255, 255, 255, .7))), -webkit-gradient(linear, left top, right top, from(#1a73e8), to(#1a73e8)) !important;
+            background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), -webkit-linear-gradient(left, #1a73e8, #1a73e8) !important;
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), linear-gradient(90deg, #1a73e8, #1a73e8) !important
+        }
+
+        .haAclf {
+            display: inline-block
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe {
+            border-radius: 4px;
+            box-sizing: border-box;
+            -webkit-transition: background-color .218s, border-color .218s;
+            transition: background-color .218s, border-color .218s;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -webkit-appearance: none;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #dadce0;
+            color: #3c4043;
+            cursor: pointer;
+            font-family: Google Sans, arial, sans-serif;
+            font-size: .875rem;
+            height: 40px;
+            letter-spacing: .25px;
+            outline: none;
+            overflow: hidden;
+            padding: 0 12px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+            width: auto
+        }
+
+        @media screen and (-ms-high-contrast:active) {
+            .nsm7Bb-HzV7m-LgbsSe {
+                border: 2px solid windowText;
+                color: windowText
+            }
+        }
+
+        @media screen and (preferes-contrast:more) {
+            .nsm7Bb-HzV7m-LgbsSe {
+                color: #000
+            }
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe {
+            font-size: .875rem;
+            height: 32px;
+            letter-spacing: .25px;
+            padding: 0 10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe {
+            font-size: .6875rem;
+            height: 20px;
+            letter-spacing: .3px;
+            padding: 0 8px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe {
+            padding: 0;
+            width: 40px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.pSzOP-SxQuSe {
+            width: 32px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.purZT-SxQuSe {
+            width: 20px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK {
+            border-radius: 20px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK.pSzOP-SxQuSe {
+            border-radius: 16px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK.purZT-SxQuSe {
+            border-radius: 10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.i5vt6e-to915-Ia7Qfc {
+            border: 1px solid #8e918f;
+            background-color: #131314;
+            color: #e3e3e3
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc {
+            border: none;
+            color: #fff
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-v3pZbf-Ia7Qfc {
+            background-color: #1a73e8
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-JaPV2b-Ia7Qfc {
+            background-color: #202124;
+            color: #e8eaed
+        }
+
+        @media screen and (prefers-contrast:more) {
+            .nsm7Bb-HzV7m-LgbsSe.MFS4be-JaPV2b-Ia7Qfc {
+                color: #fff
+            }
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            height: 18px;
+            margin-right: 8px;
+            min-width: 18px;
+            width: 18px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            height: 14px;
+            min-width: 14px;
+            width: 14px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            height: 10px;
+            min-width: 10px;
+            width: 10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            margin-left: 8px;
+            margin-right: -4px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            margin: 0;
+            padding: 10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            padding: 8px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            padding: 4px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            background-color: #fff;
+            height: 36px;
+            margin-left: -10px;
+            margin-right: 12px;
+            min-width: 36px;
+            width: 36px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf .nsm7Bb-HzV7m-LgbsSe-Bz112c,
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            margin: 0;
+            padding: 0
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            height: 28px;
+            margin-left: -8px;
+            margin-right: 10px;
+            min-width: 28px;
+            width: 28px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            height: 16px;
+            margin-left: -6px;
+            margin-right: 8px;
+            min-width: 16px;
+            width: 16px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 3px;
+            margin-left: 2px;
+            margin-right: 0;
+            padding: 0
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 18px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 14px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 8px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-bN97Pc-sM5MNb {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-flex-direction: row;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            flex-direction: row;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            height: 100%;
+            position: relative;
+            width: 100%
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .oXtfBe-l4eHX {
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-BPrWId {
+            -webkit-flex-grow: 1;
+            -webkit-box-flex: 1;
+            flex-grow: 1;
+            font-family: Google Sans, arial, sans-serif;
+            font-weight: 500;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: top
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-BPrWId {
+            font-weight: 300
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .oXtfBe-l4eHX .nsm7Bb-HzV7m-LgbsSe-BPrWId {
+            -webkit-flex-grow: 0;
+            -webkit-box-flex: 0;
+            flex-grow: 0
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            -webkit-transition: background-color .218s;
+            transition: background-color .218s;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe:focus,
+        .nsm7Bb-HzV7m-LgbsSe:hover {
+            box-shadow: none;
+            border-color: rgb(210, 227, 252);
+            outline: none
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe:focus-within {
+            outline: 2px solid #00639b;
+            border-color: transparent
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe:hover .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(66, 133, 244, .08)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe:active .nsm7Bb-HzV7m-LgbsSe-MJoBVe,
+        .nsm7Bb-HzV7m-LgbsSe:focus .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(66, 133, 244, .1)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.i5vt6e-to915-Ia7Qfc:hover .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(255, 255, 255, .08)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.i5vt6e-to915-Ia7Qfc:active .nsm7Bb-HzV7m-LgbsSe-MJoBVe,
+        .nsm7Bb-HzV7m-LgbsSe.i5vt6e-to915-Ia7Qfc:focus .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(255, 255, 255, .12)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:hover .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(255, 255, 255, .24)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:active .nsm7Bb-HzV7m-LgbsSe-MJoBVe,
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:focus .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(255, 255, 255, .32)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .n1UuX-DkfjY {
+            border-radius: 50%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            height: 20px;
+            margin-left: -4px;
+            margin-right: 8px;
+            min-width: 20px;
+            width: 20px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId {
+            font-family: Roboto;
+            font-size: 12px;
+            text-align: left
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff .fmcmS,
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .ssJRIf {
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            -webkit-box-align: center;
+            align-items: center;
+            color: #5f6368;
+            fill: #5f6368;
+            font-size: 11px;
+            font-weight: 400
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe.i5vt6e-to915-Ia7Qfc .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff {
+            color: #c4c7c5;
+            fill: #c4c7c5
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe.MFS4be-Ia7Qfc .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff {
+            color: #e8eaed;
+            fill: #e8eaed
+        }
+
+        @media screen and (prefers-contrast:more) {
+
+            .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff,
+            .nsm7Bb-HzV7m-LgbsSe.jVeSEe.MFS4be-Ia7Qfc .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff {
+                color: #000;
+                fill: #000
+            }
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff .Bz112c {
+            height: 18px;
+            margin: -3px -3px -3px 2px;
+            min-width: 18px;
+            width: 18px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            margin-left: 12px;
+            margin-right: -10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 18px
+        }
+
+        .L5Fo6c-sM5MNb {
+            border: 0;
+            display: block;
+            left: 0;
+            position: relative;
+            top: 0
+        }
+
+        .L5Fo6c-bF1uUb {
+            border-radius: 4px;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0
+        }
+
+        .L5Fo6c-bF1uUb:focus {
+            border: none;
+            outline: none
+        }
+
+        sentinel {}
+    </style>
+    <style data-emotion="css" data-s=""></style>
+    <style type="text/css">
+        .alert-box p {
+            font-size: 16px;
+        }
+    </style>
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/SyllabusPage-1NEAN5xa.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Constant-ChAz5tWE.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/index-DIGImfWh.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/useScrollNudge-ByLBSTwI.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/useScrollNudge-DpZh-N52.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/TestimonialCard-Cj_HvEcy.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/TestimonialCard-NRlffCDU.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/SyllabusPage-DMAHC5Wi.css">
+    <script type="text/javascript" async=""
+        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/16598187415/?random=1784445309809&amp;cv=11&amp;fst=1784445309809&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;en=gtag.config&amp;gtm=45je67f0v879754718z871598775za20gzb71598775zd71598775xec&amp;gcd=13l3l3l3l1l1&amp;dma=0&amp;tag_exp=115938466~115938469~118131809~118897920~118897930&amp;u_w=1536&amp;u_h=960&amp;url=https%3A%2F%2Fwww.codechef.com%2Flearn%2Fcourse%2Fkare-cse3301-daa-2026&amp;ref=https%3A%2F%2Fwww.codechef.com%2Fcollege%2Fdashboard&amp;rcb=14&amp;frm=0&amp;tiba=Learn%20Design%20and%20Analysis%20of%20Algorithms&amp;userId=6551727&amp;ga_uid=G-C8RQQ7NY18.6551727&amp;hn=www.googleadservices.com&amp;npa=0&amp;pscdl=noapi&amp;auid=412053982.1784179890&amp;uaa=x86&amp;uab=64&amp;uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&amp;uamb=0&amp;uam=&amp;uap=Windows&amp;uapv=19.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;ept=9&amp;rfmt=3&amp;fmt=4"></script>
+</head>
+
+<body style="">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div id="root">
+        <div style="background: rgb(29, 30, 35);">
+            <div aria-hidden="true" class="MuiBackdrop-root _backdrop_pm713_1 undefined css-11m57ox"
+                style="opacity: 0; visibility: hidden;"><span
+                    class="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate _progress_pm713_7 css-1bkwg0l"
+                    role="progressbar"><span
+                        class="MuiLinearProgress-bar MuiLinearProgress-bar1 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-y6kna5"></span><span
+                        class="MuiLinearProgress-bar MuiLinearProgress-bar2 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-mddmmv"></span></span>
+            </div>
+            <header class="_m-header-one_phs6a_640 _dark_phs6a_60">
+                <div class="_l-header_phs6a_653">
+                    <div class="_l-header__logo_phs6a_692">
+                        <div id="headerLogo" class="_l-header__image-2_phs6a_697"><a
+                                href="https://www.codechef.com"><img
+                                    class="_m-header__image_phs6a_707 _m-header__image--pc_phs6a_711"
+                                    src="https://cdn.codechef.com/images/cc-logo.svg" alt="CodeChef Logo" width="150"
+                                    height="50"><img
+                                    class="_m-header__image_phs6a_707 _m-header__image--mobile_phs6a_719"
+                                    src="https://cdn.codechef.com/images/cc-logo-mobile.svg" alt="CodeChef Logo"
+                                    width="52" height="52"></a></div>
+                        <div class="_user__fullname_phs6a_1161 _dark_phs6a_60">Hello, ESAMBADI GOUTHAM REDDY</div>
+                        <div class="_desktopNavigation_14jtp_30 _dark_14jtp_59">
+                            <div class="_headerNavigation_14jtp_30">
+                                <div class="_navigationRow_14jtp_34">
+                                    <div class="_dropdownNavigationItem_14jtp_39" role="button" tabindex="0"><span
+                                            class="_navigationLink_14jtp_53 _dark_14jtp_59">Courses</span>
+                                        <div class="_usernameDropdownContainer_14jtp_3"><i
+                                                class="_i-dropdown-down_14jtp_620 _dark_14jtp_59"></i></div>
+                                        <div class="_courseDropdown_14jtp_200 _dark_14jtp_59 _is-closed_14jtp_608">
+                                            <div class="_topLayout_14jtp_230 _dark_14jtp_59">
+                                                <div class="_leftColumn_14jtp_246">
+                                                    <div
+                                                        class="_categoryItem_14jtp_264  _dark_14jtp_59 _activeCategory_14jtp_275">
+                                                        <h3 class="_categoryTitle_14jtp_286 _dark_14jtp_59">Programming
+                                                            and DSA</h3>
+                                                        <p class="_categoryDescription_14jtp_297 _dark_14jtp_59">Learn
+                                                            to think like a programmer. Develop your problem-solving
+                                                            skills with essential data structures and algorithms.</p>
+                                                    </div>
+                                                    <div class="_categoryItem_14jtp_264  _dark_14jtp_59 ">
+                                                        <h3 class="_categoryTitle_14jtp_286 _dark_14jtp_59">Career Paths
+                                                        </h3>
+                                                        <p class="_categoryDescription_14jtp_297 _dark_14jtp_59">From
+                                                            beginner to job-ready. Explore our curated career paths
+                                                            designed to help you succeed in the tech industry.</p>
+                                                    </div>
+                                                    <div class="_categoryItem_14jtp_264  _dark_14jtp_59 ">
+                                                        <h3 class="_categoryTitle_14jtp_286 _dark_14jtp_59">Other
+                                                            Courses</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="_rightColumn_14jtp_421">
+                                                    <h2 class="_categoryHeader_14jtp_431 _dark_14jtp_59">Programming and
+                                                        DSA</h2><a class="_courseListContainer_14jtp_453 _dark_14jtp_59"
+                                                        href="https://www.codechef.com/roadmap/python-dsa">
+                                                        <div class="_courseList_14jtp_453 _dark_14jtp_59"><span
+                                                                class="_topics_14jtp_480 _dark_14jtp_59">Learn
+                                                                Python</span><span
+                                                                class="_coursesCount_14jtp_488 _dark_14jtp_59">460k
+                                                                learners</span></div>
+                                                    </a><a class="_courseListContainer_14jtp_453 _dark_14jtp_59"
+                                                        href="https://www.codechef.com/roadmap/cpp-dsa">
+                                                        <div class="_courseList_14jtp_453 _dark_14jtp_59"><span
+                                                                class="_topics_14jtp_480 _dark_14jtp_59">Learn
+                                                                C++</span><span
+                                                                class="_coursesCount_14jtp_488 _dark_14jtp_59">285k
+                                                                learners</span></div>
+                                                    </a><a class="_courseListContainer_14jtp_453 _dark_14jtp_59"
+                                                        href="https://www.codechef.com/roadmap/c-dsa">
+                                                        <div class="_courseList_14jtp_453 _dark_14jtp_59"><span
+                                                                class="_topics_14jtp_480 _dark_14jtp_59">Learn
+                                                                C</span><span
+                                                                class="_coursesCount_14jtp_488 _dark_14jtp_59">306k
+                                                                learners</span></div>
+                                                    </a><a class="_courseListContainer_14jtp_453 _dark_14jtp_59"
+                                                        href="https://www.codechef.com/roadmap/java-dsa">
+                                                        <div class="_courseList_14jtp_453 _dark_14jtp_59"><span
+                                                                class="_topics_14jtp_480 _dark_14jtp_59">Learn
+                                                                Java</span><span
+                                                                class="_coursesCount_14jtp_488 _dark_14jtp_59">365.6k
+                                                                learners</span></div>
+                                                    </a><a class="_courseListContainer_14jtp_453 _dark_14jtp_59"
+                                                        href="https://www.codechef.com/roadmap/javascript-dsa">
+                                                        <div class="_courseList_14jtp_453 _dark_14jtp_59"><span
+                                                                class="_topics_14jtp_480 _dark_14jtp_59">Learn
+                                                                JavaScript</span><span
+                                                                class="_coursesCount_14jtp_488 _dark_14jtp_59">196k
+                                                                learners</span></div>
+                                                    </a><a class="_courseListContainer_14jtp_453 _dark_14jtp_59"
+                                                        href="https://www.codechef.com/roadmap/data-structures-and-algorithms">
+                                                        <div class="_courseList_14jtp_453 _dark_14jtp_59"><span
+                                                                class="_topics_14jtp_480 _dark_14jtp_59">Data Structures
+                                                                &amp; Algorithms</span><span
+                                                                class="_coursesCount_14jtp_488 _dark_14jtp_59">80k
+                                                                learners</span></div>
+                                                    </a><a class="_courseListContainer_14jtp_453 _dark_14jtp_59"
+                                                        href="https://www.codechef.com/roadmap/become-5-star">
+                                                        <div class="_courseList_14jtp_453 _dark_14jtp_59"><span
+                                                                class="_topics_14jtp_480 _dark_14jtp_59">Competitive
+                                                                Programming</span><span
+                                                                class="_coursesCount_14jtp_488 _dark_14jtp_59">100.8k
+                                                                learners</span></div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="_bottomLayout_14jtp_372"><a
+                                                    class="_completeCourseCta_14jtp_331 _dark_14jtp_59"
+                                                    href="/learn#header">Explore courses<span
+                                                        class="_externalLink__iconContainer_14jtp_344"><i
+                                                            class="_externalLink__rightIcon_14jtp_363"></i></span></a>
+                                            </div>
+                                        </div>
+                                    </div><a class="_navigationItem_14jtp_74" href="/practice"><span
+                                            class="_navigationLink_14jtp_53 _dark_14jtp_59 ">Practice</span></a><a
+                                        class="_navigationItem_14jtp_74" href="/contests"><span
+                                            class="_navigationLink_14jtp_53 _dark_14jtp_59 ">Compete</span></a><a
+                                        class="_navigationItem_14jtp_74" href="/ide"><span
+                                            class="_navigationLink_14jtp_53 _dark_14jtp_59 ">Compiler</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="_headerRightContainer_phs6a_734">
+                        <div style="display: flex; justify-content: center; align-items: center; margin-right: 6px;">
+                            <div class="_darkModeContainer_2m751_2 _dark_2m751_2" title="Switch to Light Mode"
+                                style="margin-left: 0px;"><svg
+                                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium _sunIcon_2m751_22 _dark_2m751_2 css-q7mezt"
+                                    focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="WbSunnyIcon">
+                                    <path
+                                        d="m6.76 4.84-1.8-1.79-1.41 1.41 1.79 1.79zM4 10.5H1v2h3zm9-9.95h-2V3.5h2zm7.45 3.91-1.41-1.41-1.79 1.79 1.41 1.41zm-3.21 13.7 1.79 1.8 1.41-1.41-1.8-1.79zM20 10.5v2h3v-2zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6m-1 16.95h2V19.5h-2zm-7.45-3.91 1.41 1.41 1.79-1.8-1.41-1.41z">
+                                    </path>
+                                </svg></div>
+                        </div>
+                        <div class="_l-header__user-block_phs6a_946">
+                            <div class="_l-header__user-block_phs6a_946">
+                                <div class="_m-logout-button-container_phs6a_1056"><a href="/pro#learn-header"
+                                        target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button
+                                            type="button" class="_m-premium-text-container_phs6a_951 _dark_phs6a_60"><i
+                                                class="_i-premium-icon_phs6a_1098"></i>
+                                            <div class="_m-premium-text_phs6a_951">Upgrade To Pro</div>
+                                        </button></a>
+                                    <hr class="_m-divider--vertical_phs6a_795">
+                                    <div class="_userDropdown_phs6a_737">
+                                        <div class="_m-logout-username_phs6a_740 _dark_phs6a_60">
+                                            <div class="_pendingTaskIndicator_phs6a_1067"><i
+                                                    class="_pendingTaskIcon_phs6a_1076"></i></div><img
+                                                alt="user profile"
+                                                src="https://cdn.codechef.com/sites/all/themes/abessive/images/user_default_thumb.jpg"
+                                                width="30px" height="30px" class="_profileImage_phs6a_1083">
+                                        </div>
+                                        <div class="_l-username_phs6a_19">
+                                            <div class="_l-dropdown-container--username_phs6a_636"><i
+                                                    class="_i-dropdown-down_phs6a_621 _dark_phs6a_60"></i></div>
+                                            <div
+                                                class="_l-username-dropdown_phs6a_66 _dark_phs6a_60 _is-closed_phs6a_609">
+                                                <div class="_usernameContainer_phs6a_746 _dark_phs6a_60"><span
+                                                        class="_on-link-hover--username_phs6a_69 undefined undefined _username_phs6a_4 ">klu99240040465</span>
+                                                </div><a class="_m-dropdown__item_phs6a_538 _dark_phs6a_60"
+                                                    href="https://www.codechef.com/users/klu99240040465">
+                                                    <p class="_m-dropdown__i-head_phs6a_563 _dark_phs6a_60">My Profile
+                                                    </p>
+                                                </a><a class="_m-dropdown__item_phs6a_538 _dark_phs6a_60"
+                                                    href="https://www.codechef.com/users/klu99240040465/edit">
+                                                    <p class="_m-dropdown__i-head_phs6a_563 _dark_phs6a_60">Edit Profile
+                                                    </p>
+                                                </a><a class="_m-dropdown__item_phs6a_538 _dark_phs6a_60"
+                                                    href="https://www.codechef.com/users/klu99240040465/edit#job_profile">
+                                                    <p class="_m-dropdown__i-head_phs6a_563 _dark_phs6a_60">Update Job
+                                                        Profile<span class="_redDot_phs6a_547"></span></p>
+                                                </a><a
+                                                    class="_m-dropdown__item_phs6a_538 _dark_phs6a_60 _hoverClass_2pyv4_10"
+                                                    href="https://discuss.codechef.com/session/sso?return_path=%2Fnew-topic%3Fcategory%3Dbug-reports"
+                                                    target="_blank" rel="noopener noreferrer">
+                                                    <p class="_m-dropdown__i-head_phs6a_563 _dark_phs6a_60">Report a bug
+                                                    </p>
+                                                </a><a
+                                                    class="_m-dropdown__item_phs6a_538 _dark_phs6a_60 _hoverClass_2pyv4_10"
+                                                    href="https://www.codechef.com/users/klu99240040465/certificates"
+                                                    target="_blank" rel="noopener noreferrer">
+                                                    <p class="_m-dropdown__i-head_phs6a_563 _dark_phs6a_60">My
+                                                        Certificates</p>
+                                                </a><a class="_m-dropdown__item_phs6a_538 _dark_phs6a_60"
+                                                    href="https://www.codechef.com/practice/bookmarks">
+                                                    <p class="_m-dropdown__i-head_phs6a_563 _dark_phs6a_60">My Bookmarks
+                                                    </p>
+                                                </a><a class="_m-dropdown__item_phs6a_538 _dark_phs6a_60"
+                                                    href="https://www.codechef.com/practice/explanations">
+                                                    <p class="_m-dropdown__i-head_phs6a_563 _dark_phs6a_60">My
+                                                        Explanations</p>
+                                                </a>
+                                                <div class="_logoutContainer_phs6a_892 _dark_phs6a_60">
+                                                    <hr class="_logoutDivider_phs6a_895">
+                                                    <div class="_logoutButtonContainer_phs6a_901"><button
+                                                            class="_logoutButton_phs6a_901"
+                                                            type="button">Logout</button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="_mobileNavigation_14jtp_30 _dark_14jtp_59">
+                <div class="_headerNavigation_14jtp_30">
+                    <div class="_navigationRow_14jtp_34">
+                        <div class="_dropdownNavigationItem_14jtp_39" role="button" tabindex="0"><span
+                                class="_navigationLink_14jtp_53 _dark_14jtp_59">Courses</span>
+                            <div class="_usernameDropdownContainer_14jtp_3"><i
+                                    class="_i-dropdown-down_14jtp_620 _dark_14jtp_59"></i></div>
+                            <div class="_courseDropdown_14jtp_200 _dark_14jtp_59 _is-closed_14jtp_608">
+                                <div class="_topLayout_14jtp_230 _dark_14jtp_59">
+                                    <div class="_leftColumn_14jtp_246">
+                                        <div class="_categoryItem_14jtp_264  _dark_14jtp_59 _activeCategory_14jtp_275">
+                                            <h3 class="_categoryTitle_14jtp_286 _dark_14jtp_59">Programming and DSA</h3>
+                                            <p class="_categoryDescription_14jtp_297 _dark_14jtp_59">Learn to think like
+                                                a programmer. Develop your problem-solving skills with essential data
+                                                structures and algorithms.</p>
+                                        </div>
+                                        <div class="_categoryItem_14jtp_264  _dark_14jtp_59 ">
+                                            <h3 class="_categoryTitle_14jtp_286 _dark_14jtp_59">Career Paths</h3>
+                                            <p class="_categoryDescription_14jtp_297 _dark_14jtp_59">From beginner to
+                                                job-ready. Explore our curated career paths designed to help you succeed
+                                                in the tech industry.</p>
+                                        </div>
+                                        <div class="_categoryItem_14jtp_264  _dark_14jtp_59 ">
+                                            <h3 class="_categoryTitle_14jtp_286 _dark_14jtp_59">Other Courses</h3>
+                                        </div>
+                                    </div>
+                                    <div class="_rightColumn_14jtp_421">
+                                        <h2 class="_categoryHeader_14jtp_431 _dark_14jtp_59">Programming and DSA</h2><a
+                                            class="_courseListContainer_14jtp_453 _dark_14jtp_59"
+                                            href="https://www.codechef.com/roadmap/python-dsa">
+                                            <div class="_courseList_14jtp_453 _dark_14jtp_59"><span
+                                                    class="_topics_14jtp_480 _dark_14jtp_59">Learn Python</span><span
+                                                    class="_coursesCount_14jtp_488 _dark_14jtp_59">460k learners</span>
+                                            </div>
+                                        </a><a class="_courseListContainer_14jtp_453 _dark_14jtp_59"
+                                            href="https://www.codechef.com/roadmap/cpp-dsa">
+                                            <div class="_courseList_14jtp_453 _dark_14jtp_59"><span
+                                                    class="_topics_14jtp_480 _dark_14jtp_59">Learn C++</span><span
+                                                    class="_coursesCount_14jtp_488 _dark_14jtp_59">285k learners</span>
+                                            </div>
+                                        </a><a class="_courseListContainer_14jtp_453 _dark_14jtp_59"
+                                            href="https://www.codechef.com/roadmap/c-dsa">
+                                            <div class="_courseList_14jtp_453 _dark_14jtp_59"><span
+                                                    class="_topics_14jtp_480 _dark_14jtp_59">Learn C</span><span
+                                                    class="_coursesCount_14jtp_488 _dark_14jtp_59">306k learners</span>
+                                            </div>
+                                        </a><a class="_courseListContainer_14jtp_453 _dark_14jtp_59"
+                                            href="https://www.codechef.com/roadmap/java-dsa">
+                                            <div class="_courseList_14jtp_453 _dark_14jtp_59"><span
+                                                    class="_topics_14jtp_480 _dark_14jtp_59">Learn Java</span><span
+                                                    class="_coursesCount_14jtp_488 _dark_14jtp_59">365.6k
+                                                    learners</span></div>
+                                        </a><a class="_courseListContainer_14jtp_453 _dark_14jtp_59"
+                                            href="https://www.codechef.com/roadmap/javascript-dsa">
+                                            <div class="_courseList_14jtp_453 _dark_14jtp_59"><span
+                                                    class="_topics_14jtp_480 _dark_14jtp_59">Learn
+                                                    JavaScript</span><span
+                                                    class="_coursesCount_14jtp_488 _dark_14jtp_59">196k learners</span>
+                                            </div>
+                                        </a><a class="_courseListContainer_14jtp_453 _dark_14jtp_59"
+                                            href="https://www.codechef.com/roadmap/data-structures-and-algorithms">
+                                            <div class="_courseList_14jtp_453 _dark_14jtp_59"><span
+                                                    class="_topics_14jtp_480 _dark_14jtp_59">Data Structures &amp;
+                                                    Algorithms</span><span
+                                                    class="_coursesCount_14jtp_488 _dark_14jtp_59">80k learners</span>
+                                            </div>
+                                        </a><a class="_courseListContainer_14jtp_453 _dark_14jtp_59"
+                                            href="https://www.codechef.com/roadmap/become-5-star">
+                                            <div class="_courseList_14jtp_453 _dark_14jtp_59"><span
+                                                    class="_topics_14jtp_480 _dark_14jtp_59">Competitive
+                                                    Programming</span><span
+                                                    class="_coursesCount_14jtp_488 _dark_14jtp_59">100.8k
+                                                    learners</span></div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="_bottomLayout_14jtp_372"><a
+                                        class="_completeCourseCta_14jtp_331 _dark_14jtp_59" href="/learn#header">Explore
+                                        courses<span class="_externalLink__iconContainer_14jtp_344"><i
+                                                class="_externalLink__rightIcon_14jtp_363"></i></span></a></div>
+                            </div>
+                        </div><a class="_navigationItem_14jtp_74" href="/practice"><span
+                                class="_navigationLink_14jtp_53 _dark_14jtp_59 ">Practice</span></a><a
+                            class="_navigationItem_14jtp_74" href="/contests"><span
+                                class="_navigationLink_14jtp_53 _dark_14jtp_59 ">Compete</span></a><a
+                            class="_navigationItem_14jtp_74" href="/ide"><span
+                                class="_navigationLink_14jtp_53 _dark_14jtp_59 ">Compiler</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="_pageContainer_1se0b_3 _dark_1se0b_9" style="max-width: 100%;">
+                <div style="display: block;">
+                    <section class="_syllabusPageContainer_y7rot_9 _dark_y7rot_18">
+                        <div class="_syllabusPageWrapper_y7rot_41">
+                            <div class="_lRow1200_y7rot_1956 _lRow_y7rot_1952 _mainContainer_y7rot_41">
+                                <div class="_leftContainer_y7rot_46">
+                                    <div class="_lMainCardContainer_y7rot_160">
+                                        <div class="_heroSectionContainer_y7rot_2981 _dark_y7rot_18">
+                                            <div class="_backgroundGrid_y7rot_3029">
+                                                <div class="_gridRow_y7rot_3042">
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                </div>
+                                                <div class="_gridRow_y7rot_3042">
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                </div>
+                                                <div class="_gridRow_y7rot_3042">
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 _highlighted_y7rot_3056"></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 _highlighted_y7rot_3056"></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                </div>
+                                                <div class="_gridRow_y7rot_3042">
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                </div>
+                                                <div class="_gridRow_y7rot_3042">
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 _highlighted_y7rot_3056"></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                </div>
+                                                <div class="_gridRow_y7rot_3042">
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 _highlighted_y7rot_3056"></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 _highlighted_y7rot_3056"></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                </div>
+                                                <div class="_gridRow_y7rot_3042">
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                </div>
+                                                <div class="_gridRow_y7rot_3042">
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 _highlighted_y7rot_3056"></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 _highlighted_y7rot_3056"></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                </div>
+                                                <div class="_gridRow_y7rot_3042">
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                </div>
+                                                <div class="_gridRow_y7rot_3042">
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                </div>
+                                                <div class="_gridRow_y7rot_3042">
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                </div>
+                                                <div class="_gridRow_y7rot_3042">
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                    <div class="_gridSquare_y7rot_3048 "></div>
+                                                </div>
+                                            </div>
+                                            <div class="_courseIconContainer_y7rot_3067">
+                                                <div class="_courseIcon_y7rot_3067"><img class="_languageLogo_y7rot_183"
+                                                        alt="language-logo"
+                                                        src="https://cdn.codechef.com/images/self-learning/icons/default-icon.svg">
+                                                </div>
+                                                <div class="_topRightBadges_y7rot_3443">
+                                                    <div class="_certificationBadge_y7rot_3463 _dark_y7rot_18"><svg
+                                                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1jrhn22"
+                                                            focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                            data-testid="WorkspacePremiumIcon">
+                                                            <path
+                                                                d="M9.68 13.69 12 11.93l2.31 1.76-.88-2.85L15.75 9h-2.84L12 6.19 11.09 9H8.25l2.31 1.84zM20 10c0-4.42-3.58-8-8-8s-8 3.58-8 8c0 2.03.76 3.87 2 5.28V23l6-2 6 2v-7.72c1.24-1.41 2-3.25 2-5.28m-8-6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6">
+                                                            </path>
+                                                        </svg><span>Certification Available</span></div>
+                                                    <div class="_ratingBadge_y7rot_3479 _dark_y7rot_18"><svg
+                                                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1mekmr2"
+                                                            focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                            data-testid="StarRateIcon">
+                                                            <path
+                                                                d="M14.43 10 12 2l-2.43 8H2l6.18 4.41L5.83 22 12 17.31 18.18 22l-2.35-7.59L22 10z">
+                                                            </path>
+                                                        </svg><span>4.6</span><span>(68)</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="_heroContent_y7rot_3124">
+                                                <h1 class="_courseTitle_y7rot_2658 _dark_y7rot_18">Design and Analysis
+                                                    of Algorithms</h1>
+                                                <p class="_courseDescription_y7rot_3169 _dark_y7rot_18">Practical course
+                                                    on Design &amp; Analysis of Algorithms based on the syllabus
+                                                    followed at Engineering colleges in India. Solutions and approaches
+                                                    explained using C++, Java &amp; Python</p>
+                                                <div class="_courseStats_y7rot_3199">
+                                                    <div class="_statItem_y7rot_3228">
+                                                        <div class="_statIcon_y7rot_3247"><svg
+                                                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1cqxict"
+                                                                focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                                data-testid="SchoolIcon">
+                                                                <path
+                                                                    d="M5 13.18v4L12 21l7-3.82v-4L12 17zM12 3 1 9l11 6 9-4.91V17h2V9z">
+                                                                </path>
+                                                            </svg></div><span>77 Lessons</span>
+                                                    </div>
+                                                    <div class="_statItem_y7rot_3228">
+                                                        <div class="_statIcon_y7rot_3247"><svg
+                                                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1cqxict"
+                                                                focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                                data-testid="WatchLaterIcon">
+                                                                <path
+                                                                    d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m4.2 14.2L11 13V7h1.5v5.2l4.5 2.7z">
+                                                                </path>
+                                                            </svg></div><span>10 Hours</span>
+                                                    </div>
+                                                    <div class="_statItem_y7rot_3228">
+                                                        <div class="_statIcon_y7rot_3247"><svg
+                                                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1cqxict"
+                                                                focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                                data-testid="LightbulbIcon">
+                                                                <path
+                                                                    d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7">
+                                                                </path>
+                                                            </svg></div><span>409 Problems</span>
+                                                    </div>
+                                                    <div class="_statItem_y7rot_3228">
+                                                        <div class="_statIcon_y7rot_3247"><svg
+                                                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1cqxict"
+                                                                focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                                data-testid="PeopleIcon">
+                                                                <path
+                                                                    d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3m-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3m0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5m8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5">
+                                                                </path>
+                                                            </svg></div><span>1.2k Learners</span>
+                                                    </div>
+                                                    <div class="_statItem_y7rot_3228">
+                                                        <div class="_statIcon_y7rot_3247"><svg
+                                                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1cqxict"
+                                                                focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                                data-testid="TrendingUpIcon">
+                                                                <path
+                                                                    d="m16 6 2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z">
+                                                                </path>
+                                                            </svg></div><span>College Level</span>
+                                                    </div>
+                                                </div>
+                                                <div class="_progressAndActionContainer_y7rot_3266">
+                                                    <div class="_progressSection_y7rot_3286">
+                                                        <div class="_progressInfo_y7rot_3292">
+                                                            <div class="_progressLabelContainer_y7rot_3297"><svg
+                                                                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-hib26s"
+                                                                    focusable="false" aria-hidden="true"
+                                                                    viewBox="0 0 24 24" data-testid="HomeIcon">
+                                                                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z">
+                                                                    </path>
+                                                                </svg><span
+                                                                    class="_progressLabel_y7rot_3297 _dark_y7rot_18">Your
+                                                                    Progress :</span><span
+                                                                    class="_progressValue_y7rot_3314 _dark_y7rot_18">5%
+                                                                    Completed</span></div>
+                                                        </div>
+                                                        <div class="_progressBarContainer_y7rot_3321">
+                                                            <div class="_progressBar_y7rot_2174">
+                                                                <div class="_progressFill_y7rot_3334"
+                                                                    style="width: 5%;"></div>
+                                                            </div>
+                                                            <div class="_flagContainer_y7rot_3340"><svg
+                                                                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8zzldj"
+                                                                    focusable="false" aria-hidden="true"
+                                                                    viewBox="0 0 24 24" data-testid="FlagIcon"
+                                                                    aria-label="Reach here to get Pro certificate">
+                                                                    <path d="M14.4 6 14 4H5v17h2v-7h5.6l.4 2h7V6z">
+                                                                    </path>
+                                                                </svg></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="_actionSection_y7rot_3351"><a
+                                                            class="_resumeButton_y7rot_3370"
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO01/problems/MDDYQ02">Resume</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="_lMarginTop__28_y7rot_2019">
+                                        <div class="_newModuleCard_y7rot_826 _dark_y7rot_18">
+                                            <div class="_topContainer_y7rot_840">
+                                                <div class="_moduleNumberBadge_y7rot_870 _dark_y7rot_18"><span
+                                                        class="_moduleNumber_y7rot_870 _dark_y7rot_18">1</span></div>
+                                                <div class="_moduleHeader_y7rot_893">
+                                                    <h3 class="_newModuleTitle_y7rot_899 _dark_y7rot_18">Pre-requisites
+                                                    </h3>
+                                                    <div class="_moduleInfo_y7rot_909">
+                                                        <p class="_newModuleDescription_y7rot_914 _dark_y7rot_18"></p>
+                                                        <div class="_moduleProgress_y7rot_924"><span
+                                                                class="_newProgressText_y7rot_928 _dark_y7rot_18">53%
+                                                                Solved</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="_lessonsContainer_y7rot_845">
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_completedStatusCircle_y7rot_949"><svg
+                                                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1w3lhrm"
+                                                                focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                                data-testid="CheckIcon">
+                                                                <path
+                                                                    d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z">
+                                                                </path>
+                                                            </svg></div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO01/problems/MDDYQ01"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Getting
+                                                            started with CodeChef: Input, output</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_completedStatusCircle_y7rot_949"><svg
+                                                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1w3lhrm"
+                                                                focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                                data-testid="CheckIcon">
+                                                                <path
+                                                                    d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z">
+                                                                </path>
+                                                            </svg></div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO02/problems/MDDYQ13"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Logic
+                                                            building - how do you approach problems?</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO03/problems/KITCHENCOST"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Arrays
+                                                            Part-1</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO04/problems/MDDYQ31"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Arrays
+                                                            Part-2</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO05/problems/MDDYQ36"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Strings
+                                                            Part-1</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO06/problems/MDDYQ41"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Strings
+                                                            Part-2</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="_newModuleCard_y7rot_826 _dark_y7rot_18">
+                                            <div class="_topContainer_y7rot_840">
+                                                <div class="_moduleNumberBadge_y7rot_870 _dark_y7rot_18"><span
+                                                        class="_moduleNumber_y7rot_870 _dark_y7rot_18">2</span></div>
+                                                <div class="_moduleHeader_y7rot_893">
+                                                    <h3 class="_newModuleTitle_y7rot_899 _dark_y7rot_18">Basic programs
+                                                        &amp; Time complexity</h3>
+                                                    <div class="_moduleInfo_y7rot_909">
+                                                        <p class="_newModuleDescription_y7rot_914 _dark_y7rot_18"></p>
+                                                        <div class="_moduleProgress_y7rot_924"><span
+                                                                class="_newProgressText_y7rot_928 _dark_y7rot_18">0%
+                                                                Solved</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="_lessonsContainer_y7rot_845">
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO07/problems/MDDYQ46"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Fundamentals
+                                                            of time complexity</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO08/problems/MDDYQ52"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Applying
+                                                            time complexity</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO09/problems/MDDYQ60"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Log and
+                                                            square root time complexity</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO10/problems/SPACEC01"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Space
+                                                            Complexity</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO11/problems/MDDYQ71"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Practice:
+                                                            Time complexity</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="_newModuleCard_y7rot_826 _dark_y7rot_18">
+                                            <div class="_topContainer_y7rot_840">
+                                                <div class="_moduleNumberBadge_y7rot_870 _dark_y7rot_18"><span
+                                                        class="_moduleNumber_y7rot_870 _dark_y7rot_18">3</span></div>
+                                                <div class="_moduleHeader_y7rot_893">
+                                                    <h3 class="_newModuleTitle_y7rot_899 _dark_y7rot_18">Recursion</h3>
+                                                    <div class="_moduleInfo_y7rot_909">
+                                                        <p class="_newModuleDescription_y7rot_914 _dark_y7rot_18"></p>
+                                                        <div class="_moduleProgress_y7rot_924"><span
+                                                                class="_newProgressText_y7rot_928 _dark_y7rot_18">0%
+                                                                Solved</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="_lessonsContainer_y7rot_845">
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO12/problems/MDDYQ86"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Fundamentals
+                                                            of recursion</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO13/problems/MDDYQ92"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Practice
+                                                            recursion</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO14/problems/MDDYQ107"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Practice
+                                                            Recursion: Advanced</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="_newModuleCard_y7rot_826 _dark_y7rot_18">
+                                            <div class="_topContainer_y7rot_840">
+                                                <div class="_moduleNumberBadge_y7rot_870 _dark_y7rot_18"><span
+                                                        class="_moduleNumber_y7rot_870 _dark_y7rot_18">4</span></div>
+                                                <div class="_moduleHeader_y7rot_893">
+                                                    <h3 class="_newModuleTitle_y7rot_899 _dark_y7rot_18">Brute Force and
+                                                        Elementary sorting</h3>
+                                                    <div class="_moduleInfo_y7rot_909">
+                                                        <p class="_newModuleDescription_y7rot_914 _dark_y7rot_18"></p>
+                                                        <div class="_moduleProgress_y7rot_924"><span
+                                                                class="_newProgressText_y7rot_928 _dark_y7rot_18">0%
+                                                                Solved</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="_lessonsContainer_y7rot_845">
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO15/problems/DAA004"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Selection
+                                                            and Bubble Sort</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO16/problems/DAA029"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Decrease
+                                                            &amp; Conquer - Insertion sort</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO17/problems/DAA033"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Decrease
+                                                            &amp; Conquer - Computing a Median and the Selection
+                                                            Problem</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO18/problems/DAA040"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Decrease
+                                                            &amp; Conquer - Fake coin problem</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO19/problems/SORTARRAYS"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Practice
+                                                            questions</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="_newModuleCard_y7rot_826 _dark_y7rot_18">
+                                            <div class="_topContainer_y7rot_840">
+                                                <div class="_moduleNumberBadge_y7rot_870 _dark_y7rot_18"><span
+                                                        class="_moduleNumber_y7rot_870 _dark_y7rot_18">5</span></div>
+                                                <div class="_moduleHeader_y7rot_893">
+                                                    <h3 class="_newModuleTitle_y7rot_899 _dark_y7rot_18">Divide and
+                                                        Conquer</h3>
+                                                    <div class="_moduleInfo_y7rot_909">
+                                                        <p class="_newModuleDescription_y7rot_914 _dark_y7rot_18"></p>
+                                                        <div class="_moduleProgress_y7rot_924"><span
+                                                                class="_newProgressText_y7rot_928 _dark_y7rot_18">0%
+                                                                Solved</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="_lessonsContainer_y7rot_845">
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO20/problems/DAA010"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Merge
+                                                            sort</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO21/problems/DAA015"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Quick
+                                                            sort</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO22/problems/MDDYQ235"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Randomized
+                                                            quick sort problem</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO23/problems/DAA020"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Binary
+                                                            Search</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO24/problems/DAA024"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Multiplication
+                                                            of large integers</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO25/problems/CLGSTRSP01"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Strassen's
+                                                            Matrix Multiplication</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO26/problems/MAXSUBSUM1"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Maximum
+                                                            Subarray sum</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO27/problems/PEAKELEMENTP"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Peak
+                                                            Elements</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO28/problems/MINROTSORTED"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Practice
+                                                            questions</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="_newModuleCard_y7rot_826 _dark_y7rot_18">
+                                            <div class="_topContainer_y7rot_840">
+                                                <div class="_moduleNumberBadge_y7rot_870 _dark_y7rot_18"><span
+                                                        class="_moduleNumber_y7rot_870 _dark_y7rot_18">6</span></div>
+                                                <div class="_moduleHeader_y7rot_893">
+                                                    <h3 class="_newModuleTitle_y7rot_899 _dark_y7rot_18">Graph
+                                                        Fundamentals &amp; Traversal</h3>
+                                                    <div class="_moduleInfo_y7rot_909">
+                                                        <p class="_newModuleDescription_y7rot_914 _dark_y7rot_18"></p>
+                                                        <div class="_moduleProgress_y7rot_924"><span
+                                                                class="_newProgressText_y7rot_928 _dark_y7rot_18">0%
+                                                                Solved</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="_lessonsContainer_y7rot_845">
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO29/problems/GRAPHBASICS"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Terminologies</a>
+                                                    </div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO30/problems/GRAPHTYPE1"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Types of
+                                                            Graphs</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO31/problems/GRAPHDS"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Graph
+                                                            Representation</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO32/problems/GRAPHTOUR"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Graph
+                                                            Traversals</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO33/problems/CCDEF"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Connected
+                                                            Components</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO34/problems/CYCLEDEF"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Cycles in
+                                                            Graphs</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO35/problems/DAA104"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">DFS</a>
+                                                    </div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO36/problems/DAA110"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">BFS</a>
+                                                    </div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO37/problems/TOPOSORTDEF"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Topological
+                                                            sorting</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO38/problems/FLOWNETMIN"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Flow
+                                                            Network (Min cut)</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO39/problems/PLNTPATH"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Practice
+                                                            questions</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="_newModuleCard_y7rot_826 _dark_y7rot_18">
+                                            <div class="_topContainer_y7rot_840">
+                                                <div class="_moduleNumberBadge_y7rot_870 _dark_y7rot_18"><span
+                                                        class="_moduleNumber_y7rot_870 _dark_y7rot_18">7</span></div>
+                                                <div class="_moduleHeader_y7rot_893">
+                                                    <h3 class="_newModuleTitle_y7rot_899 _dark_y7rot_18">Greedy
+                                                        techniques</h3>
+                                                    <div class="_moduleInfo_y7rot_909">
+                                                        <p class="_newModuleDescription_y7rot_914 _dark_y7rot_18"></p>
+                                                        <div class="_moduleProgress_y7rot_924"><span
+                                                                class="_newProgressText_y7rot_928 _dark_y7rot_18">0%
+                                                                Solved</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="_lessonsContainer_y7rot_845">
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO40/problems/MDDYQ132"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Basics of
+                                                            Greedy, and proofs</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO41/problems/KNAPSACKPR1"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Fractional
+                                                            Knapsacks</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO42/problems/ACTIVITYSEL1"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Activity
+                                                            Selection</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO43/problems/MDDYQ139"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Job
+                                                            scheduling problem</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO44/problems/MDDYQ144"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Huffman
+                                                            Trees and codes</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO45/problems/MDDYQ150"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Dijkstra</a>
+                                                    </div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO46/problems/MINPLATFORM1"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Minimum
+                                                            Platforms</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO47/problems/DAA141"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Kruskal's
+                                                            Algorithm</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO48/problems/DAA134"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Prim's
+                                                            algorithm</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO49/problems/LBJ206"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Practice
+                                                            questions</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="_newModuleCard_y7rot_826 _dark_y7rot_18">
+                                            <div class="_topContainer_y7rot_840">
+                                                <div class="_moduleNumberBadge_y7rot_870 _dark_y7rot_18"><span
+                                                        class="_moduleNumber_y7rot_870 _dark_y7rot_18">8</span></div>
+                                                <div class="_moduleHeader_y7rot_893">
+                                                    <h3 class="_newModuleTitle_y7rot_899 _dark_y7rot_18">Dynamic
+                                                        Programming</h3>
+                                                    <div class="_moduleInfo_y7rot_909">
+                                                        <p class="_newModuleDescription_y7rot_914 _dark_y7rot_18"></p>
+                                                        <div class="_moduleProgress_y7rot_924"><span
+                                                                class="_newProgressText_y7rot_928 _dark_y7rot_18">0%
+                                                                Solved</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="_lessonsContainer_y7rot_845">
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO50/problems/MDDYQ159"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Knapsack
+                                                            problem</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO51/problems/MDDYQ168"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Longest
+                                                            common subsequence</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO52/problems/MDDYQ175"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Warshall
+                                                            and Floyd Algorithm</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO53/problems/MDDYQ181"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Optimal
+                                                            Binary Search Trees</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO54/problems/DAA122"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Bellman-Ford</a>
+                                                    </div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO55/problems/MDDYQ249"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Minimum
+                                                            Cost Matrix Chain Multiplication</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO56/problems/MDDYQ256"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Maximum
+                                                            Independent Set in a Tree</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO57/problems/PAL_STRING"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Practice
+                                                            questions</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="_newModuleCard_y7rot_826 _dark_y7rot_18">
+                                            <div class="_topContainer_y7rot_840">
+                                                <div class="_moduleNumberBadge_y7rot_870 _dark_y7rot_18"><span
+                                                        class="_moduleNumber_y7rot_870 _dark_y7rot_18">9</span></div>
+                                                <div class="_moduleHeader_y7rot_893">
+                                                    <h3 class="_newModuleTitle_y7rot_899 _dark_y7rot_18">Backtracking
+                                                    </h3>
+                                                    <div class="_moduleInfo_y7rot_909">
+                                                        <p class="_newModuleDescription_y7rot_914 _dark_y7rot_18"></p>
+                                                        <div class="_moduleProgress_y7rot_924"><span
+                                                                class="_newProgressText_y7rot_928 _dark_y7rot_18">0%
+                                                                Solved</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="_lessonsContainer_y7rot_845">
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO58/problems/MDDYQ189"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">n-Queens
+                                                            problem</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO59/problems/MDDYQ195"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Hamiltonian
+                                                            Circuit Problem</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO60/problems/MDDYQ200"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Subset Sum
+                                                            Problem</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO61/problems/GRAPHCOLOR1"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Graph
+                                                            Colouring Using Backtracking</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO62/problems/RIVERCROSS0"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Farmer,
+                                                            wolf, goat and cabbage</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO63/problems/MATHCROSS1"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Math
+                                                            Crossing puzzle</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO64/problems/REVSTACKREC"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Practice
+                                                            questions</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="_newModuleCard_y7rot_826 _dark_y7rot_18">
+                                            <div class="_topContainer_y7rot_840">
+                                                <div class="_moduleNumberBadge_y7rot_870 _dark_y7rot_18"><span
+                                                        class="_moduleNumber_y7rot_870 _dark_y7rot_18">10</span></div>
+                                                <div class="_moduleHeader_y7rot_893">
+                                                    <h3 class="_newModuleTitle_y7rot_899 _dark_y7rot_18">Branch and
+                                                        Bound</h3>
+                                                    <div class="_moduleInfo_y7rot_909">
+                                                        <p class="_newModuleDescription_y7rot_914 _dark_y7rot_18"></p>
+                                                        <div class="_moduleProgress_y7rot_924"><span
+                                                                class="_newProgressText_y7rot_928 _dark_y7rot_18">0%
+                                                                Solved</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="_lessonsContainer_y7rot_845">
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO65/problems/MDDYQ208"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Knapsack
+                                                            Problem</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO66/problems/MDDYQ215"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Traveling
+                                                            Salesman Problem</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO67/problems/MDDYQ222"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Assignment
+                                                            problem</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO68/problems/CHRL1"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Practice
+                                                            questions</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="_newModuleCard_y7rot_826 _dark_y7rot_18">
+                                            <div class="_topContainer_y7rot_840">
+                                                <div class="_moduleNumberBadge_y7rot_870 _dark_y7rot_18"><span
+                                                        class="_moduleNumber_y7rot_870 _dark_y7rot_18">11</span></div>
+                                                <div class="_moduleHeader_y7rot_893">
+                                                    <h3 class="_newModuleTitle_y7rot_899 _dark_y7rot_18">String Matching
+                                                        Algorithms</h3>
+                                                    <div class="_moduleInfo_y7rot_909">
+                                                        <p class="_newModuleDescription_y7rot_914 _dark_y7rot_18"> </p>
+                                                        <div class="_moduleProgress_y7rot_924"><span
+                                                                class="_newProgressText_y7rot_928 _dark_y7rot_18">0%
+                                                                Solved</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="_lessonsContainer_y7rot_845">
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO69/problems/PATMAT01C"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Boyer-Moore
+                                                            Algorithm</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO70/problems/RABINKARP1"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Rabin
+                                                            Karp</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO71/problems/CLGKMP01"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Knuth
+                                                            Morris Pratt algorithm</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO72/problems/SUFFIXARR1"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Suffix
+                                                            Array Algorithm</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO73/problems/PATSEARCH"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Practice
+                                                            questions</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="_newModuleCard_y7rot_826 _dark_y7rot_18">
+                                            <div class="_topContainer_y7rot_840">
+                                                <div class="_moduleNumberBadge_y7rot_870 _dark_y7rot_18"><span
+                                                        class="_moduleNumber_y7rot_870 _dark_y7rot_18">12</span></div>
+                                                <div class="_moduleHeader_y7rot_893">
+                                                    <h3 class="_newModuleTitle_y7rot_899 _dark_y7rot_18">Complexity
+                                                        Theory &amp; Approximation</h3>
+                                                    <div class="_moduleInfo_y7rot_909">
+                                                        <p class="_newModuleDescription_y7rot_914 _dark_y7rot_18"> </p>
+                                                        <div class="_moduleProgress_y7rot_924"><span
+                                                                class="_newProgressText_y7rot_928 _dark_y7rot_18">0%
+                                                                Solved</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="_lessonsContainer_y7rot_845">
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO74/problems/MDDYQ228"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Overview
+                                                            of P, NP and NP-Complete Problems</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO75/problems/MDDYQ242"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Bin
+                                                            packing problem</a></div>
+                                                </div>
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KCJNO76/problems/VOTING"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Practice
+                                                            questions</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="_newModuleCard_y7rot_826 _dark_y7rot_18">
+                                            <div class="_topContainer_y7rot_840">
+                                                <div class="_moduleNumberBadge_y7rot_870 _dark_y7rot_18"><span
+                                                        class="_moduleNumber_y7rot_870 _dark_y7rot_18">13</span></div>
+                                                <div class="_moduleHeader_y7rot_893">
+                                                    <h3 class="_newModuleTitle_y7rot_899 _dark_y7rot_18">Lab Problems
+                                                    </h3>
+                                                    <div class="_moduleInfo_y7rot_909">
+                                                        <p class="_newModuleDescription_y7rot_914 _dark_y7rot_18"> </p>
+                                                        <div class="_moduleProgress_y7rot_924"><span
+                                                                class="_newProgressText_y7rot_928 _dark_y7rot_18">0%
+                                                                Solved</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="_lessonsContainer_y7rot_845">
+                                                <div class="_lessonItem_y7rot_934">
+                                                    <div class="_lessonStatusContainer_y7rot_940">
+                                                        <div class="_pendingStatusCircle_y7rot_958 _dark_y7rot_18">
+                                                        </div>
+                                                    </div>
+                                                    <div class="_lessonContent_y7rot_993"><a
+                                                            href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026/KAREPROB/problems/ASM120"
+                                                            class="_newLessonTitle_y7rot_1003 _dark_y7rot_18">Lab
+                                                            Problems</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="_rightContainer_y7rot_2539">
+                                    <div class="_roadmapCertification_1l26c_2  _dark_1l26c_14"><i
+                                            class="_certificateTemplate_1l26c_19"></i>
+                                        <div class="_certificationAvailableText_1l26c_42 _dark_1l26c_14">
+                                            <span>Certification available</span><span
+                                                class="_includedInPremium_1l26c_63 _dark_1l26c_14">Included in
+                                                premium</span></div><span class="_certificateDescription_1l26c_75">On
+                                            Completing all the lessons in this course, you'll get a course completion
+                                            certificate</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="_lRow1200_y7rot_1956 _lRow_y7rot_1952 _mainContainer_y7rot_41">
+                                <div class="_leftContainer_y7rot_46"></div>
+                                <div class="_rightContainer_y7rot_2539"></div>
+                            </div>
+                        </div>
+                        <div class="_moreReviewsContainerWrapper_y7rot_1568"></div>
+                        <div class="_faqContainerWrapper_x3r51_2"></div>
+                        <script
+                            type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"Design and Analysis of Algorithms","description":"Practical course on Design & Analysis of Algorithms based on the syllabus followed at Engineering colleges in India. Solutions and approaches explained using C++, Java & Python","provider":[{"@type":"Organization","name":"CodeChef"}],"publisher":{"@type":"Organization","name":"CodeChef","url":"https://www.codechef.com"},"inLanguage":"en","image":"https://cdn.codechef.com/images/self-learning/icons/kare-cse3301-daa-2026.svg","offers":[{"@type":"Offer","category":"Freemium","price":333,"priceCurrency":"INR"}],"hasCourseInstance":{"@type":"CourseInstance","courseMode":"Online","courseWorkload":"P6M"},"aggregateRating":{"@type":"AggregateRating","ratingValue":4.6,"ratingCount":68},"review":[],"syllabusSections":[{"@type":"Syllabus","name":"Pre-requisites","description":""},{"@type":"Syllabus","name":"Basic programs & Time complexity","description":""},{"@type":"Syllabus","name":"Recursion","description":""},{"@type":"Syllabus","name":"Brute Force and Elementary sorting","description":""},{"@type":"Syllabus","name":"Divide and Conquer","description":""},{"@type":"Syllabus","name":"Graph Fundamentals & Traversal","description":""},{"@type":"Syllabus","name":"Greedy techniques","description":""},{"@type":"Syllabus","name":"Dynamic Programming","description":""},{"@type":"Syllabus","name":"Backtracking","description":""},{"@type":"Syllabus","name":"Branch and Bound","description":""},{"@type":"Syllabus","name":"String Matching Algorithms","description":" "},{"@type":"Syllabus","name":"Complexity Theory & Approximation","description":" "},{"@type":"Syllabus","name":"Lab Problems","description":" "}]}</script>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Payment Scripts
+        if (['pro', 'getting-started', 'dashboard', 'roadmap'].includes(window.location.pathname.split('/')[1])) {
+            const razorPay = document.createElement('script');
+            razorPay.setAttribute('src', 'https://checkout.razorpay.com/v1/checkout.js');
+            document.head.appendChild(razorPay);
+
+            // const instamojo = document.createElement('script');
+            // instamojo.setAttribute('src', 'https://js.instamojo.com/v1/checkout.js');
+            // document.head.appendChild(instamojo);
+
+        }
+        const scriptElement = document.createElement('script');
+        scriptElement.setAttribute('src',
+            "/sites/all/modules/codechef_alerts/codechef_alerts.js?v=649c43b6894169b33b5557aa0374459d"
+        );
+        scriptElement.setAttribute('async', '');
+        document.body.appendChild(scriptElement);
+    </script>
+    <script src="/sites/all/modules/codechef_alerts/codechef_alerts.js?v=649c43b6894169b33b5557aa0374459d"
+        async=""></script>
+    <script type="text/javascript" async=""
+        src="/sites/all/themes/mallow/src/js/cookies.js?v=c0c952b5f5af42bd78098f00c77cfa63"></script>
+    <script>
+        const loadingMessages = [
+            'Transform every day with the habit of learning',
+            'Explored our courses yet? Enroll now! Over 500k learners have already enrolled.',
+            'Pro tip: Facing a challenge while solving problem? Tap into AI Help',
+            'Set the pace, set the goal, Maintain your streak by solving problem everyday',
+            'Set your own goal to finish each modules',
+            'Pro tip: Pseudo code first, then code with ease.',
+            'Coding is not difficult, you need to try hard enough',
+            '1% better everyday can lead to big results.',
+            'Hard work and consistency is the only way to success',
+            'Don\'t stop until you are in the top 1%',
+            'Becoming the best coder is easy! Just keep doing CodeChef.',
+            'Compete in the XP Weekly Leaderboard and see where you rank!',
+        ];
+        const randomIndex = Math.floor(Math.random() * loadingMessages.length);
+        document.getElementById('initialLoadingMessage').innerText = loadingMessages[randomIndex];
+    </script>
+
+
+
+    <script>
+        window.CDN_URL = 'https://cdn.codechef.com';
+        window.csrfToken = "590d8fad5c7cf371dafa32977b3fdd3f7ef683e2150d06890cc6176a48ec8ba0";
+        window.APPS_URL = 'https://www.codechef-apps.com';
+        window.DISCUSS_URL = 'https://discuss.codechef.com';
+        window.tawkPropertyId = '668d037a7a36f5aaec9634a5';
+        window.widgetId = '1i2bdb6dt';
+        try {
+            window.codeChefUserData = { "status": "success", "user": { "username": "klu99240040465", "uid": "6551727", "email": "99240040465@klu.ac.in", "profileImage": null, "profileImagePath": "https:\/\/cdn.codechef.com\/sites\/all\/themes\/abessive\/images\/user_default_thumb.jpg", "oauth_buttons": null, "oauthData": null, "html_handle": "klu99240040465", "userRatingStar": 0, "userRatingStarColor": "black", "isAdmin": false, "isCollegeOfferingAdmin": false, "isHYCAdmin": false, "canLockProblems": false, "hasAnySpecialPermission": false, "isPremiumUser": false, "isVerifiedUser": true, "user_consented_privacy_policy_version": null, "user_consented_privacy_policy_on": null, "current_privacy_policy_version": null, "visitedContests": ["KCJNO04", "KCJNO02", "KCJNO01"], "rating": 0, "userStarHtml": "", "proDiscount": null, "theme": "dark", "fullName": "ESAMBADI GOUTHAM REDDY", "pro_plan": null, "sale": { "saleEndDateIST": "2026-07-19 05:59:59", "saleTitle": "FLASH SALE", "saleDescription": "CODECHEF FLASH SALE IS ACTIVE", "isSaleOngoing": false, "saleDaysLeft": -0, "saleEndDateUTC": "2026-07-19T00:29:59" }, "isUserPartOfAnyUserGroup": true, "userSelectedProgrammingLanguage": "SQL", "country": "India", "isNumberVerified": false, "isJobProfileComplete": false, "league": 1, "credits": 0, "aiChatLanguage": "English" }, "time": 1784445306, "ip": "103.238.230.130", "adStrip": null };
+        } catch (e) {
+            window.codeChefUserData = {};
+        }
+        try {
+            window.userMessages = { "status": "success", "messages": null };
+        } catch (e) {
+            window.userMessages = {};
+        }
+    </script>
+    <div
+        style="top: 0px; left: 0px; position: fixed; display: none; place-items: center; height: 100vh; width: 100vw; z-index: 10000; line-height: 1.5; font-size: 16px; backdrop-filter: blur(2px); background: rgba(0, 0, 0, 0.1); box-sizing: border-box;">
+    </div>
+</body>
+
+</html>

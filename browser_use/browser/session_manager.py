@@ -188,7 +188,10 @@ class SessionManager:
 		"""
 		page_targets = []
 		for target in self._targets.values():
-			if target.target_type in ('page', 'tab'):
+			if target.target_type in ('page', 'tab') and not target.url.startswith('chrome-extension://'):
+				# Exclude the main Electron browser shell window from agent visibility
+				if 'renderer/index.html' in target.url:
+					continue
 				page_targets.append(target)
 		return page_targets
 

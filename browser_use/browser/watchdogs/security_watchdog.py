@@ -187,6 +187,10 @@ class SecurityWatchdog(BaseWatchdog):
 		if url in ['about:blank', 'chrome://new-tab-page/', 'chrome://new-tab-page', 'chrome://newtab/']:
 			return True
 
+		# Allow Pluto internal pages loaded via file protocol
+		if url.startswith('file://') and ('pluto-browser' in url or 'browser-use' in url):
+			return True
+
 		# Parse the URL to extract components
 		from urllib.parse import urlparse
 

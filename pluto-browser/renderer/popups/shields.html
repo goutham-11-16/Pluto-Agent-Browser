@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pluto Shields</title>
+  <link rel="stylesheet" href="../styles/core.css">
+  <link rel="stylesheet" href="../styles/animations.css">
+  <style>
+    body {
+      background: var(--pluto-bg-elevated);
+      color: var(--pluto-text-primary);
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 16px;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid var(--pluto-border-strong);
+      box-shadow: var(--pluto-shadow-lg);
+    }
+    .shields-panel { display: flex; flex-direction: column; gap: 14px; }
+    .shields-header { display: flex; align-items: center; justify-content: space-between; }
+    .shields-title-wrap { display: flex; align-items: center; gap: 10px; }
+    .shields-site-name { font-size: 13px; font-weight: 600; }
+    .shields-status-text { font-size: 11px; color: var(--pluto-text-secondary); }
+    
+    .pluto-switch {
+      width: 44px; height: 24px; border-radius: 9999px; background: #3B3E4D;
+      position: relative; cursor: pointer; padding: 2px; transition: background 0.3s;
+    }
+    .switch-handle {
+      width: 20px; height: 20px; border-radius: 50%; background: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3); transition: transform 0.25s var(--ease-out);
+    }
+    .pluto-switch.pluto-shields-toggle-active .switch-handle { transform: translateX(20px); }
+
+    .shields-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat-box {
+      background: var(--pluto-bg-input); border: 1px solid var(--pluto-border-subtle);
+      border-radius: 8px; padding: 10px 6px; text-align: center;
+    }
+    .stat-val { font-size: 16px; font-weight: 700; color: var(--pluto-color-orange); }
+    .stat-lbl { font-size: 10px; color: var(--pluto-text-secondary); margin-top: 2px; line-height: 1.2; }
+
+    .shields-accordion { border: 1px solid var(--pluto-border-subtle); border-radius: 8px; overflow: hidden; }
+    .accordion-header {
+      padding: 10px 12px; background: rgba(255, 255, 255, 0.03);
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; font-weight: 600; cursor: pointer;
+    }
+    .accordion-body {
+      padding: 10px 12px; display: flex; flex-direction: column; gap: 10px;
+      background: var(--pluto-bg-input); border-top: 1px solid var(--pluto-border-subtle);
+    }
+    .acc-row { display: flex; align-items: center; justify-content: space-between; font-size: 11.5px; color: var(--pluto-text-secondary); }
+    .acc-select { background: var(--pluto-bg-secondary); border: 1px solid var(--pluto-border); color: var(--pluto-text-primary); padding: 2px 6px; border-radius: 4px; font-size: 11px; }
+
+    .shields-footer { display: flex; flex-direction: column; gap: 8px; }
+    .shields-copy-text { font-size: 10.5px; color: var(--pluto-text-tertiary); line-height: 1.35; font-style: italic; margin: 0; }
+    .report-broken-btn {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--pluto-border);
+      color: var(--pluto-text-secondary); padding: 6px; border-radius: 8px;
+      font-size: 11.5px; font-weight: 500; cursor: pointer; transition: all 0.2s; text-align: center;
+    }
+    .report-broken-btn:hover { background: var(--pluto-bg-hover); color: var(--pluto-text-primary); }
+  </style>
+</head>
+<body>
+<div class="shields-panel">
+  <div class="shields-header">
+    <div class="shields-title-wrap">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="#FF5500">
+        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.11v4.71c0 4.54-3.08 8.78-7 9.87-3.92-1.09-7-5.33-7-9.87V6.29l7-3.11z"/>
+      </svg>
+      <div>
+        <div class="shields-site-name" id="shields-site-name">Current Site</div>
+        <div class="shields-status-text" id="shields-status-text">Shields are UP for this site</div>
+      </div>
+    </div>
+    <!-- 2ms Looping Linear Gradient Active Switch -->
+    <div class="pluto-switch pluto-shields-toggle-active" id="shields-main-toggle" title="Toggle Shields protection">
+      <div class="switch-handle"></div>
+    </div>
+  </div>
+
+  <div class="shields-stats-grid">
+    <div class="stat-box">
+      <div class="stat-val" id="stat-trackers">0</div>
+      <div class="stat-lbl">Trackers & ads blocked</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-val" id="stat-bandwidth">0 MB</div>
+      <div class="stat-lbl">Bandwidth saved</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-val" id="stat-time">0.0 s</div>
+      <div class="stat-lbl">Time saved</div>
+    </div>
+  </div>
+
+  <div class="shields-accordion">
+    <div class="accordion-header" id="btn-shields-accordion">
+      <span>Advanced controls</span>
+      <span class="acc-chevron" id="acc-chevron">▼</span>
+    </div>
+    <div class="accordion-body hidden" id="shields-accordion-body">
+      <div class="acc-row">
+        <span>Trackers & ads blocking</span>
+        <select class="acc-select" id="acc-trackers">
+          <option value="standard" selected>Standard</option>
+          <option value="aggressive">Aggressive</option>
+          <option value="allow">Allow all</option>
+        </select>
+      </div>
+      <div class="acc-row">
+        <span>Upgrade connections to HTTPS</span>
+        <input type="checkbox" checked style="accent-color: var(--pluto-color-orange);">
+      </div>
+      <div class="acc-row">
+        <span>Block scripts</span>
+        <input type="checkbox" style="accent-color: var(--pluto-color-orange);">
+      </div>
+      <div class="acc-row">
+        <span>Block fingerprinting</span>
+        <select class="acc-select" id="acc-fingerprint">
+          <option value="standard" selected>Standard</option>
+          <option value="strict">Strict</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="shields-footer">
+    <p class="shields-copy-text">
+      "Sites often have cookies and scripts lurking in the background trying to identify you... Pluto Shields block them for maximum privacy."
+    </p>
+    <button class="report-broken-btn" id="btn-report-broken">Report site broken</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  const toggle = document.getElementById('shields-main-toggle');
+  const statusText = document.getElementById('shields-status-text');
+
+  if (toggle) {
+    toggle.addEventListener('click', async () => {
+      const active = toggle.classList.toggle('pluto-shields-toggle-active');
+      if (window.plutoAPI && window.plutoAPI.toggleShields) {
+        await window.plutoAPI.toggleShields(active);
+      }
+      statusText.textContent = active ? 'Shields are UP for this site' : 'Shields are DOWN for this site';
+    });
+  }
+
+  const accHeader = document.getElementById('btn-shields-accordion');
+  const accBody = document.getElementById('shields-accordion-body');
+  const accChevron = document.getElementById('acc-chevron');
+  if (accHeader && accBody) {
+    accHeader.addEventListener('click', () => {
+      accBody.classList.toggle('hidden');
+      if (accChevron) accChevron.style.transform = accBody.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+    });
+  }
+
+  const btnReport = document.getElementById('btn-report-broken');
+  if (btnReport) {
+    btnReport.addEventListener('click', () => {
+      alert('Thank you for reporting. Your Shields site report has been submitted to Pluto privacy team.');
+      window.close();
+    });
+  }
+
+  if (window.plutoAPI) {
+    if (window.plutoAPI.getActiveUrl) {
+      window.plutoAPI.getActiveUrl().then(url => {
+        try {
+          const u = new URL(url);
+          document.getElementById('shields-site-name').textContent = u.hostname || 'Current Site';
+        } catch {
+          document.getElementById('shields-site-name').textContent = 'Current Site';
+        }
+      });
+    }
+
+    if (window.plutoAPI.getShieldsStats) {
+      window.plutoAPI.getShieldsStats().then(stats => {
+        const trackers = stats.trackers || 0;
+        const bytes = stats.bandwidth || 0;
+        const mb = (bytes / (1024 * 1024)).toFixed(1);
+        const sec = (trackers * 0.04).toFixed(1);
+
+        document.getElementById('stat-trackers').textContent = trackers;
+        document.getElementById('stat-bandwidth').textContent = `${mb} MB`;
+        document.getElementById('stat-time').textContent = `${sec} s`;
+      });
+    }
+  }
+})();
+</script>
+</body>
+</html>

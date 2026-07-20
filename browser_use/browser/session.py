@@ -2287,6 +2287,34 @@ class BrowserSession(BaseModel):
 
 		for i, target in enumerate(page_targets):
 			target_id = target.target_id
+			try:
+				session = await self.get_or_create_cdp_session(target_id, focus=False)
+				# Query URL
+				res_url = await asyncio.wait_for(
+					session.cdp_client.send.Runtime.evaluate(
+						params={'expression': 'window.location.href'},
+						session_id=session.session_id,
+					),
+					timeout=0.5
+				)
+				val_url = res_url.get('result', {}).get('value')
+				if val_url:
+					target.url = val_url
+
+				# Query Title
+				res_title = await asyncio.wait_for(
+					session.cdp_client.send.Runtime.evaluate(
+						params={'expression': 'document.title'},
+						session_id=session.session_id,
+					),
+					timeout=0.5
+				)
+				val_title = res_title.get('result', {}).get('value')
+				if val_title is not None:
+					target.title = val_title
+			except Exception:
+				pass
+
 			url = target.url
 			title = target.title
 
@@ -2356,6 +2384,20 @@ class BrowserSession(BaseModel):
 		"""Get the URL of the current page."""
 		if self.agent_focus_target_id:
 			target = self.session_manager.get_target(self.agent_focus_target_id)
+			try:
+				session = await self.get_or_create_cdp_session(self.agent_focus_target_id, focus=False)
+				res = await asyncio.wait_for(
+					session.cdp_client.send.Runtime.evaluate(
+						params={'expression': 'window.location.href'},
+						session_id=session.session_id,
+					),
+					timeout=0.5
+				)
+				val = res.get('result', {}).get('value')
+				if val:
+					target.url = val
+			except Exception:
+				pass
 			return target.url
 		return 'about:blank'
 
@@ -2363,6 +2405,20 @@ class BrowserSession(BaseModel):
 		"""Get the title of the current page."""
 		if self.agent_focus_target_id:
 			target = self.session_manager.get_target(self.agent_focus_target_id)
+			try:
+				session = await self.get_or_create_cdp_session(self.agent_focus_target_id, focus=False)
+				res = await asyncio.wait_for(
+					session.cdp_client.send.Runtime.evaluate(
+						params={'expression': 'document.title'},
+						session_id=session.session_id,
+					),
+					timeout=0.5
+				)
+				val = res.get('result', {}).get('value')
+				if val is not None:
+					target.title = val
+			except Exception:
+				pass
 			return target.title
 		return 'Unknown page title'
 

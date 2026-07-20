@@ -1,0 +1,1294 @@
+<html lang="en">
+
+<head>
+    <meta name="emotion-insertion-point" content="">
+    <link rel="icon" href="https://www.codechef.com/favicon.ico" type="image/x-icon">
+    <title>College program</title>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="Learn to code for free using our beginner friendly and interactive learning courses. Get all the practical skills required to excel at computer science. Start learning with CodeChef today and unlock your potential as a developer!">
+    <meta name="og:image" content="https://cdn.codechef.com/sites/all/themes/abessive/cc-logo.png">
+    <meta name="og:type" content="website">
+    <meta name="theme-color" content="#000000">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.codechef.com/college/dashboard">
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" async=""
+        src="https://www.googletagmanager.com/gtag/js?id=G-C8RQQ7NY18&amp;cx=c&amp;gtm=4e67f0"></script>
+    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-TV5X2M"></script>
+    <script src="https://accounts.google.com/gsi/client" async=""></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="prefetch" href="https://cdn.codechef.com/images/cc-logo.svg" as="image" type="image/svg+xml">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;family=Roboto+Mono:wght@100;300;400;500;700&amp;family=Fustat:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- Initial loader classes -->
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loadingIcon {
+            border: 0.4em solid rgba(0, 0, 0, 0.0);
+            border-top: 0.4em solid #2A67B1;
+            border-radius: 50%;
+            width: 4em;
+            height: 4em;
+            animation: spin 1s linear infinite;
+            color: #2A67B1;
+        }
+
+        .loading {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: rgb(108, 116, 134);
+            background: inherit;
+            z-index: 100;
+            position: absolute;
+        }
+
+        .message {
+            padding: 16px;
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        /* Dark Mode styles */
+        .loader-icon-dark {
+            border-top: 0.4em solid #5780b0;
+        }
+
+        .dark {
+            background: #1d1e23;
+            color: rgb(255 255 255 / 60%);
+        }
+    </style>
+    <script>
+
+        const languageIdeRoutes = [
+            'python', 'java', 'cpp', 'c', 'pypy', 'csharp', 'javascript', 'go', 'php', 'kotlin', 'rust', 'r', 'sql', 'html',
+            'oracledb', 'react'
+        ];
+
+        if (
+            (['faq', 'pro', 'contests'].includes(window.location.pathname.split('/').filter(Boolean).pop())) ||
+            (['learn', 'games', 'viewsolution',
+                'submit', 'practice', 'dashboard', 'getting-started', 'college-program', 'practice-old',
+                'roadmap', 'blogs', 'roadmaps', 'blogs', 'skill-tests', 'ide', 'mobile'
+            ].includes(window.location.pathname.split('/').filter(Boolean)[0])) ||
+            (['submit'].includes(window.location.pathname.split('/').filter(Boolean)[1])) ||
+            (['status'].includes(window.location.pathname.split('/').filter(Boolean).slice(-2, -1).pop())) || [
+                // Regex to match the practice and contest submit routes
+                /^\/(submit\/([A-Z]+[A-Z0-9_]*)+|problems\/([A-Z]+[A-Z0-9_]*)+|([A-Z]+[A-Z0-9_]*)+\/submit\/([A-Z]+[A-Z0-9_]*)+|([A-Z]+[A-Z0-9_]*)+\/problems\/([A-Z]+[A-Z0-9_]*)+)$/
+            ].some((regexp) => (regexp.test(window.location.pathname))) ||
+            (languageIdeRoutes.some(lang => window.location.pathname.includes(`${lang}-online-compiler`)))
+        ) {
+            const metaElement = document.createElement('meta');
+            metaElement.setAttribute('name', 'viewport');
+            metaElement.setAttribute('content', 'width=device-width, initial-scale=1');
+            document.head.appendChild(metaElement);
+        }
+
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TV5X2M');
+    </script>
+    <script type="module" crossorigin="" src="/build/react2/assets/index-BnYAzZ1s.js"></script>
+    <link rel="modulepreload" crossorigin="" href="/build/react2/assets/__commonjsHelpers__-BosuxZz1.js">
+    <link rel="modulepreload" crossorigin="" href="/build/react2/assets/vendor-mui-D95mtM6a.js">
+    <link rel="modulepreload" crossorigin="" href="/build/react2/assets/vendor-sweetalert2-CokzRhbv.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/index-8JvKpkpw.css">
+    <style data-emotion="css-global" data-s=""></style>
+    <style data-emotion="css" data-s=""></style>
+    <style type="text/css">
+        .alert-box p {
+            font-size: 16px;
+        }
+    </style>
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/CollegeProgram-CXbz8mLZ.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/SelectDropdown-CwxURZQV.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/SelectDropdown-DO-u6-Ti.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/HorizontalTabPanel-BXnxhpY-.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/HorizontalTabPanel-D4piIELt.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/vendor-mui-datatables-Dwb0WgoA.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/DataTable-Bml0HdpG.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/index.es-CLmToPHp.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Select-BQ2RRiJh.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/InputFields-CqIP1Hc2.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/CheckBox-vJqPHD_u.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/CheckBox-sUUsLIgT.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/InputFields-pCVQAfih.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/Select-TNscl6W_.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/DataTable-BLA4jPYA.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/ManagePageLayout-D53MNiMt.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Alert-phvIw5ya.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/ManageTabs-C_-Ewkp0.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/ManageTabs-Blno6tyP.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Constants-DJ8Tdgdj.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/HYCContainer-B220n9Iq.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/TwoColumnLayout-CjWODJY9.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/TopBanner-Cim82mfa.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/vendor-react-csv-3bLN_KhX.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/BreadCrumbs-CtMfbTtF.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/BreadCrumbs-9soXbGl9.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/TopBanner.module--qQpYJq9.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/TopBanner-CKeyNyjs.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/TopBanner-BpRysXSk.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/TwoColumnBox-XuiU_HeX.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/TwoColumnBox-5vVwf4VZ.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/TwoColumnLayout-C79wEPJe.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/ColumnChart-BjVuf9mU.js">
+    <link rel="modulepreload" as="script" crossorigin=""
+        href="/build/react2/assets/vendor-react-apexcharts-Cks2guqN.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/DateTimePicker-DxtTGzPQ.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/DragNDrop-DYuUcLfT.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Autocomplete-ByNK6GPr.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/TextEditor-Lpv4D2la.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/ChipsArray-BG62E5Na.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/ChipsArray-CX_5yOpS.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/ModerateContestCards-CM9brJ2x.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/ModerateContestCards-B8kKVZDA.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/ManagePageLayout-CiNgGq2d.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/CohortAssessmentApi-Ctm1djV_.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/MarkdownEditor-BXGJtXUK.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/index-Xn02dZn3.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/vendor-ace-CwHVNqeR.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/MarkdownPreviewLite-B-rDaSrV.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/index-QslV1xX0.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/vendor-react-markdown-Bk3ka440.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/vendor-katex-CfUp33UP.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/vendor-prismjs-D0H7Xg_B.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/MarkdownPreviewLite-BN6Z5l65.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/katex-DSyo5k8n.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/prism-vs-dark-B-GUGs9_.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/ProblemSolution.module-B8G4Vgx3.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/ProblemSolution-Bxg2lSIZ.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/MarkdownEditor-B3YlOZ8u.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Hints-Bvnur_N9.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/server.browser-D5eypmcn.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/CodeVisualizer-0zeVuzX3.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/CodeVisualizer-7Anurih9.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/FeatureToolTip-2FCEdq2J.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/FeatureToolTip-VveDvckU.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/index.es-bpfQcFYD.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/LearningContest-DPIwZ22w.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Constant-ChAz5tWE.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/LearningContest-j7hYIqEq.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Badges-hlyGjTpe.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/Badges-BtA0P8JH.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Constants-B9RSyKda.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/SubmitResult-BxN9oIPc.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Constants-CsOP_ErY.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/SubmitResult-Bq1dwiFl.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/UserStar-C_G9MdcE.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/UserStar-DVebVVJp.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/FeedbackComponent-C1_Gmx3S.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/FeedbackComponent-ClgYIttc.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/MobileHorizontalTab-C_dgWoch.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Bookmark-Cqv-2cs6.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/Bookmark-CG3kOXzE.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/MySubmissions-BWBwbRrs.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/TablePagination-D60syNBM.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/TablePagination-CLYgiw_w.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/PremiumBanners-QmU2v-43.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/PremiumBanners-BbLQiGaF.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/DataGrid-oGryTX0-.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/MySubmissions-DN-wAxrh.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/ProblemSolution-tq_QXQOB.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/VideoPlayer-BUlSCNM2.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/ProblemSolution-DNsXnEDg.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/Hints-Drr6uyaC.css">
+    <link rel="modulepreload" as="script" crossorigin=""
+        href="/build/react2/assets/ManageProblemsPageLayout-CO_dDiP-.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/ProblemManageOptions-B9yIygg6.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/useProblemTaxonomy-Qub7bSDd.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/UploadImage-Bm-BR0d8.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/UploadImage-BsIP4aXV.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Constants-FwpD2CII.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/ManageProblemsPageLayout-Doszjmbc.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="/build/react2/assets/Accordion-CFQxBZX-.js">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/Accordion-Dn_9x2AT.css">
+    <link rel="stylesheet" crossorigin="" href="/build/react2/assets/CollegeProgram-C_xNi960.css">
+    <style id="googleidentityservice_button_styles">
+        .qJTHM {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            color: #202124;
+            direction: ltr;
+            -webkit-touch-callout: none;
+            font-family: Roboto-Regular, arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 400;
+            margin: 0;
+            overflow: hidden;
+            -webkit-text-size-adjust: 100%
+        }
+
+        .ynRLnc {
+            left: -9999px;
+            position: absolute;
+            top: -9999px
+        }
+
+        .L6cTce {
+            display: none
+        }
+
+        .bltWBb {
+            overflow-wrap: break-word;
+            word-break: break-word
+        }
+
+        .hSRGPd {
+            color: #1a73e8;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none
+        }
+
+        .Bz112c-W3lGp {
+            height: 16px;
+            width: 16px
+        }
+
+        .Bz112c-E3DyYd {
+            height: 20px;
+            width: 20px
+        }
+
+        .Bz112c-r9oPif {
+            height: 24px;
+            width: 24px
+        }
+
+        .Bz112c-u2z5K {
+            height: 36px;
+            width: 36px
+        }
+
+        .Bz112c-uaxL4e {
+            border-radius: 10px
+        }
+
+        .LgbsSe-Bz112c {
+            display: block
+        }
+
+        .S9gUrf-YoZ4jf {
+            border: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .S9gUrf-YoZ4jf * {
+            border: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .fFW7wc-ibnC6b>.aZ2wEe>div {
+            border-color: #4285f4
+        }
+
+        .P1ekSe-ZMv3u {
+            -webkit-transition: height .2s linear;
+            transition: height .2s linear
+        }
+
+        .P1ekSe-ZMv3u>div:first-child {
+            background-color: #1a73e8 !important;
+            -webkit-transition: width .3s linear;
+            transition: width .3s linear
+        }
+
+        .P1ekSe-ZMv3u>div:nth-child(2) {
+            background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, .7)), to(rgba(255, 255, 255, .7))), -webkit-gradient(linear, left top, right top, from(#1a73e8), to(#1a73e8)) !important;
+            background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), -webkit-linear-gradient(left, #1a73e8, #1a73e8) !important;
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), linear-gradient(90deg, #1a73e8, #1a73e8) !important
+        }
+
+        .P1ekSe-ZMv3u>div:nth-child(3) {
+            background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, .7)), to(rgba(255, 255, 255, .7))), -webkit-gradient(linear, left top, right top, from(#1a73e8), to(#1a73e8)) !important;
+            background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), -webkit-linear-gradient(left, #1a73e8, #1a73e8) !important;
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), linear-gradient(90deg, #1a73e8, #1a73e8) !important
+        }
+
+        .haAclf {
+            display: inline-block
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe {
+            border-radius: 4px;
+            box-sizing: border-box;
+            -webkit-transition: background-color .218s, border-color .218s;
+            transition: background-color .218s, border-color .218s;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -webkit-appearance: none;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #dadce0;
+            color: #3c4043;
+            cursor: pointer;
+            font-family: Google Sans, arial, sans-serif;
+            font-size: .875rem;
+            height: 40px;
+            letter-spacing: .25px;
+            outline: none;
+            overflow: hidden;
+            padding: 0 12px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+            width: auto
+        }
+
+        @media screen and (-ms-high-contrast:active) {
+            .nsm7Bb-HzV7m-LgbsSe {
+                border: 2px solid windowText;
+                color: windowText
+            }
+        }
+
+        @media screen and (preferes-contrast:more) {
+            .nsm7Bb-HzV7m-LgbsSe {
+                color: #000
+            }
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe {
+            font-size: .875rem;
+            height: 32px;
+            letter-spacing: .25px;
+            padding: 0 10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe {
+            font-size: .6875rem;
+            height: 20px;
+            letter-spacing: .3px;
+            padding: 0 8px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe {
+            padding: 0;
+            width: 40px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.pSzOP-SxQuSe {
+            width: 32px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.purZT-SxQuSe {
+            width: 20px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK {
+            border-radius: 20px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK.pSzOP-SxQuSe {
+            border-radius: 16px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK.purZT-SxQuSe {
+            border-radius: 10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.i5vt6e-to915-Ia7Qfc {
+            border: 1px solid #8e918f;
+            background-color: #131314;
+            color: #e3e3e3
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc {
+            border: none;
+            color: #fff
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-v3pZbf-Ia7Qfc {
+            background-color: #1a73e8
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-JaPV2b-Ia7Qfc {
+            background-color: #202124;
+            color: #e8eaed
+        }
+
+        @media screen and (prefers-contrast:more) {
+            .nsm7Bb-HzV7m-LgbsSe.MFS4be-JaPV2b-Ia7Qfc {
+                color: #fff
+            }
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            height: 18px;
+            margin-right: 8px;
+            min-width: 18px;
+            width: 18px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            height: 14px;
+            min-width: 14px;
+            width: 14px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            height: 10px;
+            min-width: 10px;
+            width: 10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            margin-left: 8px;
+            margin-right: -4px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            margin: 0;
+            padding: 10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            padding: 8px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            padding: 4px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            background-color: #fff;
+            height: 36px;
+            margin-left: -10px;
+            margin-right: 12px;
+            min-width: 36px;
+            width: 36px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf .nsm7Bb-HzV7m-LgbsSe-Bz112c,
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+            margin: 0;
+            padding: 0
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            height: 28px;
+            margin-left: -8px;
+            margin-right: 10px;
+            min-width: 28px;
+            width: 28px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            height: 16px;
+            margin-left: -6px;
+            margin-right: 8px;
+            min-width: 16px;
+            width: 16px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 3px;
+            margin-left: 2px;
+            margin-right: 0;
+            padding: 0
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 18px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 14px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 8px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-bN97Pc-sM5MNb {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-flex-direction: row;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            flex-direction: row;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            height: 100%;
+            position: relative;
+            width: 100%
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .oXtfBe-l4eHX {
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-BPrWId {
+            -webkit-flex-grow: 1;
+            -webkit-box-flex: 1;
+            flex-grow: 1;
+            font-family: Google Sans, arial, sans-serif;
+            font-weight: 500;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: top
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-BPrWId {
+            font-weight: 300
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .oXtfBe-l4eHX .nsm7Bb-HzV7m-LgbsSe-BPrWId {
+            -webkit-flex-grow: 0;
+            -webkit-box-flex: 0;
+            flex-grow: 0
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            -webkit-transition: background-color .218s;
+            transition: background-color .218s;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe:focus,
+        .nsm7Bb-HzV7m-LgbsSe:hover {
+            box-shadow: none;
+            border-color: rgb(210, 227, 252);
+            outline: none
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe:focus-within {
+            outline: 2px solid #00639b;
+            border-color: transparent
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe:hover .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(66, 133, 244, .08)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe:active .nsm7Bb-HzV7m-LgbsSe-MJoBVe,
+        .nsm7Bb-HzV7m-LgbsSe:focus .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(66, 133, 244, .1)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.i5vt6e-to915-Ia7Qfc:hover .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(255, 255, 255, .08)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.i5vt6e-to915-Ia7Qfc:active .nsm7Bb-HzV7m-LgbsSe-MJoBVe,
+        .nsm7Bb-HzV7m-LgbsSe.i5vt6e-to915-Ia7Qfc:focus .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(255, 255, 255, .12)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:hover .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(255, 255, 255, .24)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:active .nsm7Bb-HzV7m-LgbsSe-MJoBVe,
+        .nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:focus .nsm7Bb-HzV7m-LgbsSe-MJoBVe {
+            background: rgba(255, 255, 255, .32)
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe .n1UuX-DkfjY {
+            border-radius: 50%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            height: 20px;
+            margin-left: -4px;
+            margin-right: 8px;
+            min-width: 20px;
+            width: 20px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId {
+            font-family: Roboto;
+            font-size: 12px;
+            text-align: left
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff .fmcmS,
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .ssJRIf {
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            -webkit-box-align: center;
+            align-items: center;
+            color: #5f6368;
+            fill: #5f6368;
+            font-size: 11px;
+            font-weight: 400
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe.i5vt6e-to915-Ia7Qfc .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff {
+            color: #c4c7c5;
+            fill: #c4c7c5
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe.MFS4be-Ia7Qfc .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff {
+            color: #e8eaed;
+            fill: #e8eaed
+        }
+
+        @media screen and (prefers-contrast:more) {
+
+            .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff,
+            .nsm7Bb-HzV7m-LgbsSe.jVeSEe.MFS4be-Ia7Qfc .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff {
+                color: #000;
+                fill: #000
+            }
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff .Bz112c {
+            height: 18px;
+            margin: -3px -3px -3px 2px;
+            min-width: 18px;
+            width: 18px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            margin-left: 12px;
+            margin-right: -10px
+        }
+
+        .nsm7Bb-HzV7m-LgbsSe.jVeSEe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf {
+            border-radius: 18px
+        }
+
+        .L5Fo6c-sM5MNb {
+            border: 0;
+            display: block;
+            left: 0;
+            position: relative;
+            top: 0
+        }
+
+        .L5Fo6c-bF1uUb {
+            border-radius: 4px;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0
+        }
+
+        .L5Fo6c-bF1uUb:focus {
+            border: none;
+            outline: none
+        }
+
+        sentinel {}
+    </style>
+    <script type="text/javascript" async=""
+        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/16598187415/?random=1784444992104&amp;cv=11&amp;fst=1784444992104&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;en=gtag.config&amp;gtm=45je67f0v879754718z871598775za20gzb71598775zd71598775xec&amp;gcd=13l3l3l3l1l1&amp;dma=0&amp;tag_exp=115938465~115938469~118131809~118897920~118897930~119527019~119996999&amp;u_w=1536&amp;u_h=960&amp;url=https%3A%2F%2Fwww.codechef.com%2Fcollege%2Fdashboard&amp;ref=https%3A%2F%2Fwww.codechef.com%2Fdashboard&amp;rcb=17&amp;frm=0&amp;tiba=College%20program&amp;userId=6551727&amp;ga_uid=G-C8RQQ7NY18.6551727&amp;hn=www.googleadservices.com&amp;npa=0&amp;pscdl=noapi&amp;auid=412053982.1784179890&amp;uaa=x86&amp;uab=64&amp;uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&amp;uamb=0&amp;uam=&amp;uap=Windows&amp;uapv=19.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;ept=9&amp;rfmt=3&amp;fmt=4"></script>
+    <style data-emotion="tss" data-s=""></style>
+</head>
+
+<body style="">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div id="root">
+        <div>
+            <div aria-hidden="true" class="MuiBackdrop-root _backdrop_pm713_1 css-11m57ox"
+                style="opacity: 0; visibility: hidden;"><span
+                    class="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate _progress_pm713_7 css-1bkwg0l"
+                    role="progressbar"><span
+                        class="MuiLinearProgress-bar MuiLinearProgress-bar1 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-y6kna5"></span><span
+                        class="MuiLinearProgress-bar MuiLinearProgress-bar2 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-mddmmv"></span></span>
+            </div>
+            <header class="_m-header-one_phs6a_640">
+                <div class="_l-header_phs6a_653">
+                    <div class="_l-header__logo_phs6a_692">
+                        <div id="headerLogo" class="_l-header__image-2_phs6a_697"><a
+                                href="https://www.codechef.com"><img
+                                    class="_m-header__image_phs6a_707 _m-header__image--pc_phs6a_711"
+                                    src="https://cdn.codechef.com/images/cc-logo.svg" alt="CodeChef Logo" width="150"
+                                    height="50"><img
+                                    class="_m-header__image_phs6a_707 _m-header__image--mobile_phs6a_719"
+                                    src="https://cdn.codechef.com/images/cc-logo-mobile.svg" alt="CodeChef Logo"
+                                    width="52" height="52"></a></div>
+                        <div class="_user__fullname_phs6a_1161">Hello, ESAMBADI GOUTHAM REDDY</div>
+                        <div class="_desktopNavigation_14jtp_30">
+                            <div class="_headerNavigation_14jtp_30">
+                                <div class="_navigationRow_14jtp_34">
+                                    <div class="_dropdownNavigationItem_14jtp_39" role="button" tabindex="0"><span
+                                            class="_navigationLink_14jtp_53">Courses</span>
+                                        <div class="_usernameDropdownContainer_14jtp_3"><i
+                                                class="_i-dropdown-down_14jtp_620"></i></div>
+                                        <div class="_courseDropdown_14jtp_200 _is-closed_14jtp_608">
+                                            <div class="_topLayout_14jtp_230">
+                                                <div class="_leftColumn_14jtp_246">
+                                                    <div class="_categoryItem_14jtp_264  _activeCategory_14jtp_275">
+                                                        <h3 class="_categoryTitle_14jtp_286">Programming and DSA</h3>
+                                                        <p class="_categoryDescription_14jtp_297">Learn to think like a
+                                                            programmer. Develop your problem-solving skills with
+                                                            essential data structures and algorithms.</p>
+                                                    </div>
+                                                    <div class="_categoryItem_14jtp_264  ">
+                                                        <h3 class="_categoryTitle_14jtp_286">Career Paths</h3>
+                                                        <p class="_categoryDescription_14jtp_297">From beginner to
+                                                            job-ready. Explore our curated career paths designed to help
+                                                            you succeed in the tech industry.</p>
+                                                    </div>
+                                                    <div class="_categoryItem_14jtp_264  ">
+                                                        <h3 class="_categoryTitle_14jtp_286">Other Courses</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="_rightColumn_14jtp_421">
+                                                    <h2 class="_categoryHeader_14jtp_431">Programming and DSA</h2><a
+                                                        class="_courseListContainer_14jtp_453"
+                                                        href="https://www.codechef.com/roadmap/python-dsa">
+                                                        <div class="_courseList_14jtp_453"><span
+                                                                class="_topics_14jtp_480">Learn Python</span><span
+                                                                class="_coursesCount_14jtp_488">460k learners</span>
+                                                        </div>
+                                                    </a><a class="_courseListContainer_14jtp_453"
+                                                        href="https://www.codechef.com/roadmap/cpp-dsa">
+                                                        <div class="_courseList_14jtp_453"><span
+                                                                class="_topics_14jtp_480">Learn C++</span><span
+                                                                class="_coursesCount_14jtp_488">285k learners</span>
+                                                        </div>
+                                                    </a><a class="_courseListContainer_14jtp_453"
+                                                        href="https://www.codechef.com/roadmap/c-dsa">
+                                                        <div class="_courseList_14jtp_453"><span
+                                                                class="_topics_14jtp_480">Learn C</span><span
+                                                                class="_coursesCount_14jtp_488">306k learners</span>
+                                                        </div>
+                                                    </a><a class="_courseListContainer_14jtp_453"
+                                                        href="https://www.codechef.com/roadmap/java-dsa">
+                                                        <div class="_courseList_14jtp_453"><span
+                                                                class="_topics_14jtp_480">Learn Java</span><span
+                                                                class="_coursesCount_14jtp_488">365.6k learners</span>
+                                                        </div>
+                                                    </a><a class="_courseListContainer_14jtp_453"
+                                                        href="https://www.codechef.com/roadmap/javascript-dsa">
+                                                        <div class="_courseList_14jtp_453"><span
+                                                                class="_topics_14jtp_480">Learn JavaScript</span><span
+                                                                class="_coursesCount_14jtp_488">196k learners</span>
+                                                        </div>
+                                                    </a><a class="_courseListContainer_14jtp_453"
+                                                        href="https://www.codechef.com/roadmap/data-structures-and-algorithms">
+                                                        <div class="_courseList_14jtp_453"><span
+                                                                class="_topics_14jtp_480">Data Structures &amp;
+                                                                Algorithms</span><span
+                                                                class="_coursesCount_14jtp_488">80k learners</span>
+                                                        </div>
+                                                    </a><a class="_courseListContainer_14jtp_453"
+                                                        href="https://www.codechef.com/roadmap/become-5-star">
+                                                        <div class="_courseList_14jtp_453"><span
+                                                                class="_topics_14jtp_480">Competitive
+                                                                Programming</span><span
+                                                                class="_coursesCount_14jtp_488">100.8k learners</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="_bottomLayout_14jtp_372"><a class="_completeCourseCta_14jtp_331"
+                                                    href="/learn#header">Explore courses<span
+                                                        class="_externalLink__iconContainer_14jtp_344"><i
+                                                            class="_externalLink__rightIcon_14jtp_363"></i></span></a>
+                                            </div>
+                                        </div>
+                                    </div><a class="_navigationItem_14jtp_74" href="/practice"><span
+                                            class="_navigationLink_14jtp_53 ">Practice</span></a><a
+                                        class="_navigationItem_14jtp_74" href="/contests"><span
+                                            class="_navigationLink_14jtp_53 ">Compete</span></a><a
+                                        class="_navigationItem_14jtp_74" href="/ide"><span
+                                            class="_navigationLink_14jtp_53 ">Compiler</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="_headerRightContainer_phs6a_734">
+                        <div class="_l-header__user-block_phs6a_946">
+                            <div class="_l-header__user-block_phs6a_946">
+                                <div class="_m-logout-button-container_phs6a_1056"><a href="/pro#header" target="_blank"
+                                        rel="noopener noreferrer" style="text-decoration: none;"><button type="button"
+                                            class="_m-premium-text-container_phs6a_951"><i
+                                                class="_i-premium-icon_phs6a_1098"></i>
+                                            <div class="_m-premium-text_phs6a_951">Upgrade To Pro</div>
+                                        </button></a>
+                                    <hr class="_m-divider--vertical_phs6a_795">
+                                    <div class="_userDropdown_phs6a_737">
+                                        <div class="_m-logout-username_phs6a_740">
+                                            <div class="_pendingTaskIndicator_phs6a_1067"><i
+                                                    class="_pendingTaskIcon_phs6a_1076"></i></div><img
+                                                alt="user profile"
+                                                src="https://cdn.codechef.com/sites/all/themes/abessive/images/user_default_thumb.jpg"
+                                                width="30px" height="30px" class="_profileImage_phs6a_1083">
+                                        </div>
+                                        <div class="_l-username_phs6a_19">
+                                            <div class="_l-dropdown-container--username_phs6a_636"><i
+                                                    class="_i-dropdown-down_phs6a_621"></i></div>
+                                            <div class="_l-username-dropdown_phs6a_66 _is-closed_phs6a_609">
+                                                <div class="_usernameContainer_phs6a_746"><span
+                                                        class="_on-link-hover--username_phs6a_69 undefined undefined _username_phs6a_4 ">klu99240040465</span>
+                                                </div><a class="_m-dropdown__item_phs6a_538"
+                                                    href="https://www.codechef.com/users/klu99240040465">
+                                                    <p class="_m-dropdown__i-head_phs6a_563">My Profile</p>
+                                                </a><a class="_m-dropdown__item_phs6a_538"
+                                                    href="https://www.codechef.com/users/klu99240040465/edit">
+                                                    <p class="_m-dropdown__i-head_phs6a_563">Edit Profile</p>
+                                                </a><a class="_m-dropdown__item_phs6a_538"
+                                                    href="https://www.codechef.com/users/klu99240040465/edit#job_profile">
+                                                    <p class="_m-dropdown__i-head_phs6a_563">Update Job Profile<span
+                                                            class="_redDot_phs6a_547"></span></p>
+                                                </a><a class="_m-dropdown__item_phs6a_538 _hoverClass_2pyv4_10"
+                                                    href="https://discuss.codechef.com/session/sso?return_path=%2Fnew-topic%3Fcategory%3Dbug-reports"
+                                                    target="_blank" rel="noopener noreferrer">
+                                                    <p class="_m-dropdown__i-head_phs6a_563">Report a bug</p>
+                                                </a><a class="_m-dropdown__item_phs6a_538 _hoverClass_2pyv4_10"
+                                                    href="https://www.codechef.com/users/klu99240040465/certificates"
+                                                    target="_blank" rel="noopener noreferrer">
+                                                    <p class="_m-dropdown__i-head_phs6a_563">My Certificates</p>
+                                                </a><a class="_m-dropdown__item_phs6a_538"
+                                                    href="https://www.codechef.com/practice/bookmarks">
+                                                    <p class="_m-dropdown__i-head_phs6a_563">My Bookmarks</p>
+                                                </a><a class="_m-dropdown__item_phs6a_538"
+                                                    href="https://www.codechef.com/practice/explanations">
+                                                    <p class="_m-dropdown__i-head_phs6a_563">My Explanations</p>
+                                                </a>
+                                                <div class="_logoutContainer_phs6a_892">
+                                                    <hr class="_logoutDivider_phs6a_895">
+                                                    <div class="_logoutButtonContainer_phs6a_901"><button
+                                                            class="_logoutButton_phs6a_901"
+                                                            type="button">Logout</button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="_mobileNavigation_14jtp_30">
+                <div class="_headerNavigation_14jtp_30">
+                    <div class="_navigationRow_14jtp_34">
+                        <div class="_dropdownNavigationItem_14jtp_39" role="button" tabindex="0"><span
+                                class="_navigationLink_14jtp_53">Courses</span>
+                            <div class="_usernameDropdownContainer_14jtp_3"><i class="_i-dropdown-down_14jtp_620"></i>
+                            </div>
+                            <div class="_courseDropdown_14jtp_200 _is-closed_14jtp_608">
+                                <div class="_topLayout_14jtp_230">
+                                    <div class="_leftColumn_14jtp_246">
+                                        <div class="_categoryItem_14jtp_264  _activeCategory_14jtp_275">
+                                            <h3 class="_categoryTitle_14jtp_286">Programming and DSA</h3>
+                                            <p class="_categoryDescription_14jtp_297">Learn to think like a programmer.
+                                                Develop your problem-solving skills with essential data structures and
+                                                algorithms.</p>
+                                        </div>
+                                        <div class="_categoryItem_14jtp_264  ">
+                                            <h3 class="_categoryTitle_14jtp_286">Career Paths</h3>
+                                            <p class="_categoryDescription_14jtp_297">From beginner to job-ready.
+                                                Explore our curated career paths designed to help you succeed in the
+                                                tech industry.</p>
+                                        </div>
+                                        <div class="_categoryItem_14jtp_264  ">
+                                            <h3 class="_categoryTitle_14jtp_286">Other Courses</h3>
+                                        </div>
+                                    </div>
+                                    <div class="_rightColumn_14jtp_421">
+                                        <h2 class="_categoryHeader_14jtp_431">Programming and DSA</h2><a
+                                            class="_courseListContainer_14jtp_453"
+                                            href="https://www.codechef.com/roadmap/python-dsa">
+                                            <div class="_courseList_14jtp_453"><span class="_topics_14jtp_480">Learn
+                                                    Python</span><span class="_coursesCount_14jtp_488">460k
+                                                    learners</span></div>
+                                        </a><a class="_courseListContainer_14jtp_453"
+                                            href="https://www.codechef.com/roadmap/cpp-dsa">
+                                            <div class="_courseList_14jtp_453"><span class="_topics_14jtp_480">Learn
+                                                    C++</span><span class="_coursesCount_14jtp_488">285k learners</span>
+                                            </div>
+                                        </a><a class="_courseListContainer_14jtp_453"
+                                            href="https://www.codechef.com/roadmap/c-dsa">
+                                            <div class="_courseList_14jtp_453"><span class="_topics_14jtp_480">Learn
+                                                    C</span><span class="_coursesCount_14jtp_488">306k learners</span>
+                                            </div>
+                                        </a><a class="_courseListContainer_14jtp_453"
+                                            href="https://www.codechef.com/roadmap/java-dsa">
+                                            <div class="_courseList_14jtp_453"><span class="_topics_14jtp_480">Learn
+                                                    Java</span><span class="_coursesCount_14jtp_488">365.6k
+                                                    learners</span></div>
+                                        </a><a class="_courseListContainer_14jtp_453"
+                                            href="https://www.codechef.com/roadmap/javascript-dsa">
+                                            <div class="_courseList_14jtp_453"><span class="_topics_14jtp_480">Learn
+                                                    JavaScript</span><span class="_coursesCount_14jtp_488">196k
+                                                    learners</span></div>
+                                        </a><a class="_courseListContainer_14jtp_453"
+                                            href="https://www.codechef.com/roadmap/data-structures-and-algorithms">
+                                            <div class="_courseList_14jtp_453"><span class="_topics_14jtp_480">Data
+                                                    Structures &amp; Algorithms</span><span
+                                                    class="_coursesCount_14jtp_488">80k learners</span></div>
+                                        </a><a class="_courseListContainer_14jtp_453"
+                                            href="https://www.codechef.com/roadmap/become-5-star">
+                                            <div class="_courseList_14jtp_453"><span
+                                                    class="_topics_14jtp_480">Competitive Programming</span><span
+                                                    class="_coursesCount_14jtp_488">100.8k learners</span></div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="_bottomLayout_14jtp_372"><a class="_completeCourseCta_14jtp_331"
+                                        href="/learn#header">Explore courses<span
+                                            class="_externalLink__iconContainer_14jtp_344"><i
+                                                class="_externalLink__rightIcon_14jtp_363"></i></span></a></div>
+                            </div>
+                        </div><a class="_navigationItem_14jtp_74" href="/practice"><span
+                                class="_navigationLink_14jtp_53 ">Practice</span></a><a class="_navigationItem_14jtp_74"
+                            href="/contests"><span class="_navigationLink_14jtp_53 ">Compete</span></a><a
+                            class="_navigationItem_14jtp_74" href="/ide"><span
+                                class="_navigationLink_14jtp_53 ">Compiler</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="_pageContainer_1se0b_3" style="max-width: 100%;">
+                <div style="display: block;">
+                    <div class="_banner_b9rnv_2">
+                        <div class="_banner__content_b9rnv_12">
+                            <div><span class="_title_b9rnv_24">College Dashboard - </span><span
+                                    class="_college__name_b9rnv_29">Kalasalingam Academy of Research and
+                                    Education</span><span class="_description_b9rnv_34">CodeChef has collaborated with
+                                    your college for an integrated learning program</span></div><a
+                                class="_mainDashboardLink_b9rnv_40" href="/dashboard?college-user=true">View Your
+                                CodeChef Dashboard</a>
+                        </div>
+                    </div>
+                    <div class="_page__container_b9rnv_51 undefined">
+                        <div class="_tabPanel_15j3k_2 MuiBox-root css-0">
+                            <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1b3w2pg"
+                                style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);">
+                                <div class="MuiTabs-root _tab__container_b9rnv_58 css-9c3ep5">
+                                    <div class="MuiTabs-scroller MuiTabs-fixed css-w94xpu"
+                                        style="overflow: hidden; margin-bottom: 0px;">
+                                        <div role="tablist" class="MuiTabs-list MuiTabs-flexContainer css-162tvoi">
+                                            <button
+                                                class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected _tab__title_b9rnv_62 css-6p016c"
+                                                tabindex="0" type="button" role="tab" aria-selected="true"
+                                                id="vertical-tab-panel-0" aria-controls="vertical-tab-panel-0"><span
+                                                    class="MuiTab-wrapper">Dashboard</span></button><button
+                                                class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary _tab__title_b9rnv_62 css-6p016c"
+                                                tabindex="-1" type="button" role="tab" aria-selected="false"
+                                                id="vertical-tab-panel-1" aria-controls="vertical-tab-panel-1"><span
+                                                    class="MuiTab-wrapper">Overview</span></button><button
+                                                class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary _tab__title_b9rnv_62 css-6p016c"
+                                                tabindex="-1" type="button" role="tab" aria-selected="false"
+                                                id="vertical-tab-panel-2" aria-controls="vertical-tab-panel-2"><span
+                                                    class="MuiTab-wrapper">Courses</span></button><button
+                                                class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary _tab__title_b9rnv_62 css-6p016c"
+                                                tabindex="-1" type="button" role="tab" aria-selected="false"
+                                                id="vertical-tab-panel-3" aria-controls="vertical-tab-panel-3"><span
+                                                    class="MuiTab-wrapper">Reports</span></button>
+                                        </div><span class="MuiTabs-indicator css-jkmkwa"
+                                            style="left: 0px; width: 134.688px; background: rgb(90, 134, 220);"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="vertical-tab-panel-0" aria-labelledby="vertical-tab-panel-0"
+                                class="_tab__content_b9rnv_55">
+                                <div class="MuiBox-root css-0">
+                                    <div class="_container_b05x1_176">
+                                        <div class="_content_b05x1_179">
+                                            <div class="_cohort__dropdown-container_b9rnv_76">
+                                                <div class="_dropdown_b9rnv_89">
+                                                    <div class="_dropdown__label_b9rnv_109">Select Cohort:</div>
+                                                    <div
+                                                        class="MuiFormControl-root MuiFormControl-fullWidth css-17qa0m8">
+                                                        <div
+                                                            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl _select__dropdown_1ti5z_2 MuiSelect-root css-1wkgj3z">
+                                                            <div tabindex="0" role="combobox" aria-expanded="false"
+                                                                aria-haspopup="listbox"
+                                                                class="MuiSelect-select MuiSelect-standard MuiInputBase-input MuiInput-input css-1wcjd45">
+                                                                KARE - CSE3301 - DAA - 2026</div><input
+                                                                aria-invalid="false" aria-hidden="true" tabindex="-1"
+                                                                class="MuiSelect-nativeInput css-147e5lo"
+                                                                value="1040"><svg
+                                                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconStandard css-86oyf8"
+                                                                focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                                data-testid="ArrowDropDownIcon">
+                                                                <path d="M7 10l5 5 5-5z"></path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="_title__container_b05x1_206"><span
+                                                        class="_section__title_b05x1_211">Learn</span></div>
+                                                <div class="_table_b05x1_228">
+                                                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 tss-11quiee-MUIDataTable-paper tss-1x5mjc5-MUIDataTable-root css-110i50s"
+                                                        style="--Paper-shadow: none;">
+                                                        <div class="tss-1vsygk-MUIDataTableFilterList-root"></div>
+                                                        <div class="tss-1cdcmys-MUIDataTable-responsiveBase"
+                                                            style="position: relative; height: auto;">
+                                                            <table role="grid"
+                                                                class="MuiTable-root tss-900muf-MUIDataTable-tableRoot _table__container_b05x1_241 css-11wtp55"
+                                                                tabindex="0">
+                                                                <caption class="tss-1opebqo-MUIDataTable-caption">
+                                                                </caption>
+                                                                <thead
+                                                                    class="MuiTableHead-root tss-pw90p9-MUIDataTableHead-responsiveStacked tss-1937jnc-MUIDataTableHead-main css-s4zxv0">
+                                                                    <tr
+                                                                        class="MuiTableRow-root MuiTableRow-head tss-1832qqn-MUIDataTableHeadRow-root css-1rz7w7v">
+                                                                        <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium tss-10syd3x-MUIDataTableHeadCell-root css-195ypl5"
+                                                                            scope="col" data-colindex="0"
+                                                                            data-tableid="06703649288587887">
+                                                                            <div>S.No</div>
+                                                                        </th>
+                                                                        <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium tss-10syd3x-MUIDataTableHeadCell-root css-195ypl5"
+                                                                            scope="col" data-colindex="1"
+                                                                            data-tableid="06703649288587887">
+                                                                            <div>Course</div>
+                                                                        </th>
+                                                                        <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium tss-10syd3x-MUIDataTableHeadCell-root css-195ypl5"
+                                                                            scope="col" data-colindex="2"
+                                                                            data-tableid="06703649288587887">
+                                                                            <div>Action</div>
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody class="MuiTableBody-root css-y6j1my">
+                                                                    <tr class="MuiTableRow-root MuiTableRow-hover tss-mwfche-MUIDataTableBodyRow-root undefined tss-uoxchv-MUIDataTableBodyRow-responsiveStacked tss-1cibt4j-MUIDataTableBodyRow-root-MUIDataTableBody-lastStackedCell css-1rz7w7v"
+                                                                        data-testid="MUIDataTableBodyRow-0"
+                                                                        id="MUIDataTableBodyRow-06703649288587887-0">
+                                                                        <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tss-1qtl85h-MUIDataTableBodyCell-root tss-1y3wvy9-MUIDataTableBodyCell-stackedParent tss-iwylj0-MUIDataTableBodyCell-responsiveStackedSmallParent css-1plsf6o"
+                                                                            data-colindex="0"
+                                                                            data-tableid="06703649288587887"
+                                                                            data-testid="MuiDataTableBodyCell-0-0">
+                                                                            <div
+                                                                                class="tss-1qtl85h-MUIDataTableBodyCell-root tss-1ej321f-MUIDataTableBodyCell-cellHide tss-1t2q2nr-MUIDataTableBodyCell-stackedHeader tss-1vd39vz-MUIDataTableBodyCell-stackedCommon">
+                                                                                S.No</div>
+                                                                            <div
+                                                                                class="tss-1qtl85h-MUIDataTableBodyCell-root tss-1vd39vz-MUIDataTableBodyCell-stackedCommon">
+                                                                                <span>1</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tss-1qtl85h-MUIDataTableBodyCell-root tss-1y3wvy9-MUIDataTableBodyCell-stackedParent tss-iwylj0-MUIDataTableBodyCell-responsiveStackedSmallParent css-1plsf6o"
+                                                                            data-colindex="1"
+                                                                            data-tableid="06703649288587887"
+                                                                            data-testid="MuiDataTableBodyCell-1-0">
+                                                                            <div
+                                                                                class="tss-1qtl85h-MUIDataTableBodyCell-root tss-1ej321f-MUIDataTableBodyCell-cellHide tss-1t2q2nr-MUIDataTableBodyCell-stackedHeader tss-1vd39vz-MUIDataTableBodyCell-stackedCommon">
+                                                                                Course</div>
+                                                                            <div
+                                                                                class="tss-1qtl85h-MUIDataTableBodyCell-root tss-1vd39vz-MUIDataTableBodyCell-stackedCommon">
+                                                                                <span>Design and Analysis of
+                                                                                    Algorithms</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tss-1qtl85h-MUIDataTableBodyCell-root tss-1y3wvy9-MUIDataTableBodyCell-stackedParent tss-iwylj0-MUIDataTableBodyCell-responsiveStackedSmallParent css-1plsf6o"
+                                                                            data-colindex="2"
+                                                                            data-tableid="06703649288587887"
+                                                                            data-testid="MuiDataTableBodyCell-2-0">
+                                                                            <div
+                                                                                class="lastColumn tss-1qtl85h-MUIDataTableBodyCell-root tss-1ej321f-MUIDataTableBodyCell-cellHide tss-1t2q2nr-MUIDataTableBodyCell-stackedHeader tss-1vd39vz-MUIDataTableBodyCell-stackedCommon">
+                                                                                Action</div>
+                                                                            <div
+                                                                                class="tss-1qtl85h-MUIDataTableBodyCell-root tss-1vd39vz-MUIDataTableBodyCell-stackedCommon">
+                                                                                <a class="_action__link_b05x1_289"
+                                                                                    href="https://www.codechef.com/learn/course/kare-cse3301-daa-2026">View
+                                                                                    Path</a>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <table
+                                                            class="MuiTable-root tss-5jmwmz-MUIDataTableFooter-root css-11wtp55">
+                                                        </table>
+                                                        <div class="tss-hwdp7s-MUIDataTable-liveAnnounce"
+                                                            aria-live="polite"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="_title_1ec38_13">Ongoing/Upcoming Assessments</div>
+                                                <div class="_container_1ec38_1">
+                                                    <div class="_noAssessments_1ec38_25">No ongoing or upcoming
+                                                        assessments</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div hidden="" id="vertical-tab-panel-1" aria-labelledby="vertical-tab-panel-1"
+                                class="_tab__content_b9rnv_55"></div>
+                            <div hidden="" id="vertical-tab-panel-2" aria-labelledby="vertical-tab-panel-2"
+                                class="_tab__content_b9rnv_55"></div>
+                            <div hidden="" id="vertical-tab-panel-3" aria-labelledby="vertical-tab-panel-3"
+                                class="_tab__content_b9rnv_55"></div>
+                        </div>
+                        <footer class="_l-footer__social_16r12_2">
+                            <div class="_m-footer__social_16r12_11">
+                                <div><a class="_m-footer__site_16r12_31 _is-link-hovered_16r12_39"
+                                        href="https://www.codechef.com">www.codechef.com</a></div>
+                                <div class="_l-footer__follow-sec_16r12_43">
+                                    <div class="_l-footer__follow_16r12_43"><span
+                                            class="_m-footer__follow_16r12_65">Follow Us</span></div>
+                                    <div class="_l-footer__icons_16r12_82"><a
+                                            class="_m-social_16r12_88 _i-youtube_16r12_121"
+                                            href="//youtube.com/c/codechef1"></a><a
+                                            class="_m-social_16r12_88 _i-facebook_16r12_115"
+                                            href="//facebook.com/CodeChef"></a><a
+                                            class="_m-social_16r12_88 _i-instagram_16r12_109"
+                                            href="//instagram.com/codechef"></a><a
+                                            class="_m-social_16r12_88 _i-twitter_16r12_112"
+                                            href="//twitter.com/codechef"></a><a
+                                            class="_m-social_16r12_88 _i-medium_16r12_106"
+                                            href="//medium.com/codechef-official"></a><a
+                                            class="_m-social_16r12_88 _i-quora_16r12_103"
+                                            href="//quora.com/topic/CodeChef"></a><a
+                                            class="_m-social_16r12_88 _i-linkedin_16r12_100"
+                                            href="//linkedin.com/company/codechef"></a></div>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            <div id="gdpr-cookie-notif" class="_global--announcement_xcnwk_1" style="display: none;">
+                <div class="_global--announcement__content_xcnwk_19">
+                    <p>We use cookies to improve your experience and for analytical purposes. Read our <a class=""
+                            href="https://www.codechef.com/privacy-policy">Privacy Policy</a> and <a class=""
+                            href="https://www.codechef.com/terms">Terms</a> to know more. You consent to our cookies if
+                        you continue to use our website.</p>
+                </div>
+                <div class="_global--announcement__action_xcnwk_33"><button type="button"
+                        id="gdpr-i-love-cookies">Okay</button></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Payment Scripts
+        if (['pro', 'getting-started', 'dashboard', 'roadmap'].includes(window.location.pathname.split('/')[1])) {
+            const razorPay = document.createElement('script');
+            razorPay.setAttribute('src', 'https://checkout.razorpay.com/v1/checkout.js');
+            document.head.appendChild(razorPay);
+
+            // const instamojo = document.createElement('script');
+            // instamojo.setAttribute('src', 'https://js.instamojo.com/v1/checkout.js');
+            // document.head.appendChild(instamojo);
+
+        }
+        const scriptElement = document.createElement('script');
+        scriptElement.setAttribute('src',
+            "/sites/all/modules/codechef_alerts/codechef_alerts.js?v=649c43b6894169b33b5557aa0374459d"
+        );
+        scriptElement.setAttribute('async', '');
+        document.body.appendChild(scriptElement);
+    </script>
+    <script src="/sites/all/modules/codechef_alerts/codechef_alerts.js?v=649c43b6894169b33b5557aa0374459d"
+        async=""></script>
+    <script type="text/javascript" async=""
+        src="/sites/all/themes/mallow/src/js/cookies.js?v=c0c952b5f5af42bd78098f00c77cfa63"></script>
+    <script>
+        const loadingMessages = [
+            'Transform every day with the habit of learning',
+            'Explored our courses yet? Enroll now! Over 500k learners have already enrolled.',
+            'Pro tip: Facing a challenge while solving problem? Tap into AI Help',
+            'Set the pace, set the goal, Maintain your streak by solving problem everyday',
+            'Set your own goal to finish each modules',
+            'Pro tip: Pseudo code first, then code with ease.',
+            'Coding is not difficult, you need to try hard enough',
+            '1% better everyday can lead to big results.',
+            'Hard work and consistency is the only way to success',
+            'Don\'t stop until you are in the top 1%',
+            'Becoming the best coder is easy! Just keep doing CodeChef.',
+            'Compete in the XP Weekly Leaderboard and see where you rank!',
+        ];
+        const randomIndex = Math.floor(Math.random() * loadingMessages.length);
+        document.getElementById('initialLoadingMessage').innerText = loadingMessages[randomIndex];
+    </script>
+
+
+
+    <script>
+        window.CDN_URL = 'https://cdn.codechef.com';
+        window.csrfToken = "a72081468f3d7c3022392ac379575056867c5fac8bc7b98faae1c249f26fc350";
+        window.APPS_URL = 'https://www.codechef-apps.com';
+        window.DISCUSS_URL = 'https://discuss.codechef.com';
+        window.tawkPropertyId = '668d037a7a36f5aaec9634a5';
+        window.widgetId = '1i2bdb6dt';
+        try {
+            window.codeChefUserData = { "status": "success", "user": { "username": "klu99240040465", "uid": "6551727", "email": "99240040465@klu.ac.in", "profileImage": null, "profileImagePath": "https:\/\/cdn.codechef.com\/sites\/all\/themes\/abessive\/images\/user_default_thumb.jpg", "oauth_buttons": null, "oauthData": null, "html_handle": "klu99240040465", "userRatingStar": 0, "userRatingStarColor": "black", "isAdmin": false, "isCollegeOfferingAdmin": false, "isHYCAdmin": false, "canLockProblems": false, "hasAnySpecialPermission": false, "isPremiumUser": false, "isVerifiedUser": true, "user_consented_privacy_policy_version": null, "user_consented_privacy_policy_on": null, "current_privacy_policy_version": null, "visitedContests": ["KCJNO04", "KCJNO02", "KCJNO01"], "rating": 0, "userStarHtml": "", "proDiscount": null, "theme": "dark", "fullName": "ESAMBADI GOUTHAM REDDY", "pro_plan": null, "sale": { "saleEndDateIST": "2026-07-19 05:59:59", "saleTitle": "FLASH SALE", "saleDescription": "CODECHEF FLASH SALE IS ACTIVE", "isSaleOngoing": false, "saleDaysLeft": -0, "saleEndDateUTC": "2026-07-19T00:29:59" }, "isUserPartOfAnyUserGroup": true, "userSelectedProgrammingLanguage": "SQL", "country": "India", "isNumberVerified": false, "isJobProfileComplete": false, "league": 1, "credits": 0, "aiChatLanguage": "English" }, "time": 1784444991, "ip": "103.238.230.130", "adStrip": null };
+        } catch (e) {
+            window.codeChefUserData = {};
+        }
+        try {
+            window.userMessages = { "status": "success", "messages": null };
+        } catch (e) {
+            window.userMessages = {};
+        }
+    </script>
+    <div
+        style="top: 0px; left: 0px; position: fixed; display: none; place-items: center; height: 100vh; width: 100vw; z-index: 10000; line-height: 1.5; font-size: 16px; backdrop-filter: blur(2px); background: rgba(0, 0, 0, 0.1); box-sizing: border-box;">
+    </div>
+</body>
+
+</html>
