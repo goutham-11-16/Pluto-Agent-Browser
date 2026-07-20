@@ -751,29 +751,17 @@ async def run_task(task: str, model: str = None, url: str = None):
                 # ── Pre-flight + browser connection ──────────────────────
                 import httpx as _httpx
 
-                # Pre-flight: verify port 9222 is alive with retry loop
-                # Uses raw socket first (most reliable in frozen binaries), then
-                # falls back to urllib (stdlib) instead of httpx (which can fail
-                # inside PyInstaller due to cert/SSL bundle issues).
-                import socket as _socket
+                # Pre-flight: verify CDP port is alive with retry loop
+                # Uses stdlib urllib (not httpx, which can fail in PyInstaller frozen binaries)
                 import urllib.request as _urllib_req
 
                 t0 = _time.monotonic()
                 cdp_ok = False
                 last_err = None
-                for attempt in range(10):  # 10 attempts, ~5-8s total
+                for attempt in range(15):  # 15 attempts, ~15s total
                     try:
-                        # Step 1: raw TCP check (instant, no HTTP overhead)
-                        sock = _socket.socket(_socket.AF_INET, _socket.SOCK_STREAM)
-                        sock.settimeout(0.5)
-                        result = sock.connect_ex(("127.0.0.1", CDP_PORT))
-                        sock.close()
-                        if result != 0:
-                            raise ConnectionError(f"TCP connect returned {result}")
-
-                        # Step 2: HTTP check via stdlib urllib (no httpx dependency)
                         req = _urllib_req.Request(f"{CDP_BASE}/json/version")
-                        with _urllib_req.urlopen(req, timeout=1.5) as resp:
+                        with _urllib_req.urlopen(req, timeout=1.0) as resp:
                             if resp.status == 200:
                                 cdp_ok = True
                                 print(f"[agent] CDP pre-flight OK in {_time.monotonic()-t0:.3f}s (attempt {attempt+1})")
@@ -781,7 +769,7 @@ async def run_task(task: str, model: str = None, url: str = None):
                     except Exception as err:
                         last_err = err
                         print(f"[agent] CDP pre-flight attempt {attempt+1} failed: {err}")
-                        await asyncio.sleep(0.5)
+                        await asyncio.sleep(0.8)
 
                 if not cdp_ok:
                     raise RuntimeError(
