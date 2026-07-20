@@ -172,3 +172,4 @@ Pluto is built upon and incorporates work from the following open-source project
 <div align="center">
   <sub>Built with ❤️ by the Pluto Agent Browser community.</sub>
 </div>
+<!-- run `browser-use skill install` to register the skill -->

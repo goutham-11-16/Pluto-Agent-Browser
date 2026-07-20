@@ -1,6 +1,8 @@
 import asyncio
 import os
+
 from dotenv import load_dotenv
+
 from browser_use import Agent, Browser, ChatOpenAI
 
 # Load environment variables from the .env file (which contains your OPENROUTER_API_KEY)

@@ -1,11 +1,12 @@
 import asyncio
+import logging
 import os
 import re
-import logging
-from fastapi import FastAPI, Request
-from fastapi.responses import StreamingResponse
-from fastapi.middleware.cors import CORSMiddleware
+
 from dotenv import load_dotenv
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 
 # Load browser-use modules
 from browser_use import Agent, Browser, ChatOpenAI
@@ -13,13 +14,15 @@ from browser_use import Agent, Browser, ChatOpenAI
 load_dotenv()
 
 import socket
+
 import httpx
+
 
 def autodetect_antigravity_credentials() -> tuple[str, str] | tuple[None, None]:
     """Inspect running processes to find active Antigravity language server address & CSRF token."""
-    import sys
-    import subprocess
     import re
+    import subprocess
+    import sys
     
     cmd_lines = []
     if sys.platform == "win32":

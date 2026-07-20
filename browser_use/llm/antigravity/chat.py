@@ -1,8 +1,8 @@
 import os
-import httpx
-from collections.abc import Mapping
 from dataclasses import dataclass
 from typing import Any, TypeVar, overload
+
+import httpx
 from pydantic import BaseModel
 
 from browser_use.llm.base import BaseChatModel
@@ -54,9 +54,9 @@ class ChatAntigravity(BaseChatModel):
 
 	def _autodetect_credentials(self) -> tuple[str, str] | tuple[None, None]:
 		"""Inspect running processes to find active Antigravity language server address & CSRF token, and save them."""
-		import sys
-		import subprocess
 		import re
+		import subprocess
+		import sys
 		import time
 		
 		last_time = getattr(self, "_last_autodetect_time", 0.0)

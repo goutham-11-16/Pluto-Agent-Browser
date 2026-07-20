@@ -1,5 +1,8 @@
 """Speed test: Run 'open google' twice to measure first-run vs repeat-run performance."""
-import time, httpx
+import time
+
+import httpx
+
 
 def run_test(label: str):
     print(f"\n{'='*50}")
@@ -36,7 +39,7 @@ time.sleep(2)  # brief pause between runs
 t2 = run_test("RUN 2 (warm — browser already connected)")
 
 print(f"\n{'='*50}")
-print(f"  SUMMARY")
+print("  SUMMARY")
 print(f"{'='*50}")
 print(f"  Run 1 (cold): {t1:.2f}s")
 print(f"  Run 2 (warm): {t2:.2f}s")
