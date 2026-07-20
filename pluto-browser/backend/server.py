@@ -1064,4 +1064,4 @@ async def stop_agent():
 # ── Entrypoint ─────────────────────────────────────────────────
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("server:app", host="127.0.0.1", port=PLUTO_PORT, log_level="info")
+    uvicorn.run(app, host="127.0.0.1", port=PLUTO_PORT, log_level="info")
