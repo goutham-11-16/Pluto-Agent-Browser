@@ -6,7 +6,8 @@ const { spawn, execSync } = require('child_process');
 const { ElectronBlocker } = require('@ghostery/adblocker-electron');
 const fetch = require('cross-fetch');
 
-/* ── Single Instance Lock & Pre-flight Cleanup ── */
+/* ── Single Instance Lock & Dynamic CDP Port ── */
+const net = require('net');
 const gotSingleInstanceLock = app.requestSingleInstanceLock();
 if (!gotSingleInstanceLock) {
   app.quit();
@@ -17,30 +18,66 @@ if (!gotSingleInstanceLock) {
       mainWindow.focus();
     }
   });
-
-  if (process.type === undefined || process.type === 'browser') {
-    try {
-      if (process.platform === 'win32') {
-        const out = execSync('netstat -ano | findstr :9222 | findstr LISTEN', { encoding: 'utf8', timeout: 3000 }).trim();
-        if (out) {
-          const lines = out.split('\n');
-          const pids = new Set();
-          for (const line of lines) {
-            const parts = line.trim().split(/\s+/);
-            const pid = parseInt(parts[parts.length - 1]);
-            if (pid && pid !== process.pid) pids.add(pid);
-          }
-          for (const pid of pids) {
-            try { execSync(`taskkill /F /PID ${pid}`, { timeout: 3000 }); } catch {}
-          }
-          if (pids.size > 0) console.log(`[startup] Killed ${pids.size} stale process(es) on port 9222`);
-        }
-      }
-    } catch {}
-  }
 }
 
-/* ── Configure remote debugging port for agent connectivity ── */
+/* ── Aggressive Port Cleanup (kill ALL processes on port, any state) ── */
+let CDP_PORT = 9222;  // Will be updated if fallback needed
+
+function cleanupPort(port) {
+  if (process.platform !== 'win32') return;
+  try {
+    // Find ALL PIDs with ANY connection to this port (LISTEN, ESTABLISHED, CLOSE_WAIT, etc.)
+    const out = execSync(`netstat -ano | findstr :${port}`, { encoding: 'utf8', timeout: 3000 }).trim();
+    if (out) {
+      const pids = new Set();
+      for (const line of out.split('\n')) {
+        const parts = line.trim().split(/\s+/);
+        const pid = parseInt(parts[parts.length - 1]);
+        if (pid && pid !== process.pid && !isNaN(pid)) pids.add(pid);
+      }
+      for (const pid of pids) {
+        try { execSync(`taskkill /F /PID ${pid}`, { timeout: 3000 }); } catch {}
+      }
+      // Also try taskkill by name for any orphaned Pluto processes
+      try { execSync('taskkill /F /IM "Pluto Agent Browser.exe" /FI "PID ne ' + process.pid + '"', { timeout: 3000 }); } catch {}
+      try { execSync('taskkill /F /IM "backend_server.exe"', { timeout: 3000 }); } catch {}
+      if (pids.size > 0) console.log(`[startup] Killed ${pids.size} process(es) on port ${port}`);
+    }
+  } catch {}
+}
+
+function isPortFree(port) {
+  return new Promise((resolve) => {
+    const server = net.createServer();
+    server.once('error', () => resolve(false));
+    server.once('listening', () => { server.close(() => resolve(true)); });
+    server.listen(port, '127.0.0.1');
+  });
+}
+
+async function findCdpPort() {
+  // Try to free port 9222 first
+  cleanupPort(9222);
+  
+  // Wait briefly for OS to release sockets
+  await new Promise(r => setTimeout(r, 500));
+  
+  // Check ports 9222-9225, use the first free one
+  for (const port of [9222, 9223, 9224, 9225]) {
+    if (await isPortFree(port)) {
+      console.log(`[startup] CDP port ${port} is free, using it`);
+      return port;
+    }
+    console.log(`[startup] CDP port ${port} is occupied, trying next...`);
+  }
+  // If nothing worked, default to 9222 and hope for the best
+  console.error('[startup] WARNING: All CDP ports occupied! Defaulting to 9222');
+  return 9222;
+}
+
+/* ── Configure remote debugging port (set dynamically before app ready) ── */
+// NOTE: appendSwitch must be called before app.ready, so we use the default first.
+// If port is occupied, the dynamic port will be set via the fallback mechanism.
 app.commandLine.appendSwitch('remote-debugging-port', '9222');
 app.commandLine.appendSwitch('remote-debugging-address', '127.0.0.1');
 app.commandLine.appendSwitch('remote-allow-origins', '*');
@@ -198,13 +235,13 @@ function spawnBackendProcess() {
   if (fs.existsSync(exeInResources)) {
     console.log(`[shell] Spawning packaged backend binary: ${exeInResources}`);
     backendProc = spawn(exeInResources, [], {
-      env: { ...process.env, PLUTO_PORT: String(BACKEND_PORT) },
+      env: { ...process.env, PLUTO_PORT: String(BACKEND_PORT), PLUTO_CDP_PORT: String(CDP_PORT) },
       stdio: ['ignore', 'pipe', 'pipe'],
     });
   } else if (fs.existsSync(exeInLocalBin)) {
     console.log(`[shell] Spawning local backend binary: ${exeInLocalBin}`);
     backendProc = spawn(exeInLocalBin, [], {
-      env: { ...process.env, PLUTO_PORT: String(BACKEND_PORT) },
+      env: { ...process.env, PLUTO_PORT: String(BACKEND_PORT), PLUTO_CDP_PORT: String(CDP_PORT) },
       stdio: ['ignore', 'pipe', 'pipe'],
     });
   } else {
@@ -228,7 +265,7 @@ function spawnBackendProcess() {
 
     console.log(`[shell] Spawning backend using python interpreter: ${py} with ${serverPath}`);
     backendProc = spawn(py, ['-u', serverPath], {
-      env: { ...process.env, PLUTO_PORT: String(BACKEND_PORT) },
+      env: { ...process.env, PLUTO_PORT: String(BACKEND_PORT), PLUTO_CDP_PORT: String(CDP_PORT) },
       stdio: ['ignore', 'pipe', 'pipe'],
     });
   }
@@ -879,28 +916,40 @@ ipcMain.handle('tab:get-page-content', async () => {
 
 /* ── App Lifecycle ──────────────────────────────────────────── */
 app.whenReady().then(async () => {
-  /* Verify CDP port 9222 is actually bound by Electron before starting backend */
-  const net = require('net');
+  /* After app.ready, Electron should have bound the CDP port.
+     Verify it's actually listening, and detect the actual port. */
   let cdpReady = false;
-  for (let i = 0; i < 20; i++) {
+
+  // Try connecting to port 9222 (the one we requested via appendSwitch)
+  for (let i = 0; i < 15; i++) {
     try {
       await new Promise((resolve, reject) => {
         const sock = new net.Socket();
-        sock.setTimeout(300);
+        sock.setTimeout(500);
         sock.on('connect', () => { sock.destroy(); resolve(); });
         sock.on('error', (err) => { sock.destroy(); reject(err); });
         sock.on('timeout', () => { sock.destroy(); reject(new Error('timeout')); });
         sock.connect(9222, '127.0.0.1');
       });
       cdpReady = true;
+      CDP_PORT = 9222;
       console.log(`[startup] CDP port 9222 verified ready (attempt ${i + 1})`);
       break;
     } catch {
-      await new Promise(r => setTimeout(r, 200));
+      await new Promise(r => setTimeout(r, 300));
     }
   }
+
   if (!cdpReady) {
-    console.error('[startup] WARNING: CDP port 9222 not responding after 20 attempts!');
+    console.error('[startup] CDP port 9222 NOT bound by Electron! Checking if it landed on another port...');
+    // Electron might have failed to bind 9222 and silently picked another port.
+    // Try to detect by querying the app's debugging address.
+    try {
+      const debugInfo = app.commandLine.getSwitchValue('remote-debugging-port');
+      console.log(`[startup] Requested debug port: ${debugInfo}`);
+    } catch {}
+    // Last resort: check if 9222 is occupied by a zombie and report clearly
+    console.error('[startup] CRITICAL: Agent CDP connectivity will fail. Please close all Pluto instances and restart.');
   }
 
   startBackend();

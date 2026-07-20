@@ -29,6 +29,11 @@ from browser_use import Agent, Browser, ChatOpenAI, Controller
 from browser_use.agent.views import ActionResult
 from pydantic import BaseModel, Field
 
+# ── Dynamic CDP Port (passed from Electron via environment) ──
+CDP_PORT = int(os.environ.get("PLUTO_CDP_PORT", "9222"))
+CDP_BASE = f"http://127.0.0.1:{CDP_PORT}"
+print(f"[backend] Using CDP port: {CDP_PORT} (base: {CDP_BASE})")
+
 # Monkeypatch BrowserSession.on_NavigateToUrlEvent to route navigation through Electron IPC.
 # This prevents Chromium-only background navigation and ensures pages render in the BrowserView.
 from browser_use.browser.session import BrowserSession
@@ -39,7 +44,7 @@ async def on_NavigateToUrlEvent(self, event):
     try:
         # 1. Query devtools target list to find the shell window (renderer/index.html)
         import httpx as _httpx
-        resp = _httpx.get("http://localhost:9222/json/list", timeout=3.0)
+        resp = _httpx.get(f"{CDP_BASE}/json/list", timeout=3.0)
         targets = resp.json()
         
         shell_target = None
@@ -88,7 +93,7 @@ async def on_NavigateToUrlEvent(self, event):
             
             # Find the new target ID
             try:
-                resp2 = _httpx.get("http://localhost:9222/json/list", timeout=3.0)
+                resp2 = _httpx.get(f"{CDP_BASE}/json/list", timeout=3.0)
                 targets2 = resp2.json()
                 page_targets = [t for t in targets2 if t.get("type") == "page"]
                 
@@ -761,13 +766,13 @@ async def run_task(task: str, model: str = None, url: str = None):
                         # Step 1: raw TCP check (instant, no HTTP overhead)
                         sock = _socket.socket(_socket.AF_INET, _socket.SOCK_STREAM)
                         sock.settimeout(0.5)
-                        result = sock.connect_ex(("127.0.0.1", 9222))
+                        result = sock.connect_ex(("127.0.0.1", CDP_PORT))
                         sock.close()
                         if result != 0:
                             raise ConnectionError(f"TCP connect returned {result}")
 
                         # Step 2: HTTP check via stdlib urllib (no httpx dependency)
-                        req = _urllib_req.Request("http://127.0.0.1:9222/json/version")
+                        req = _urllib_req.Request(f"{CDP_BASE}/json/version")
                         with _urllib_req.urlopen(req, timeout=1.5) as resp:
                             if resp.status == 200:
                                 cdp_ok = True
@@ -780,8 +785,8 @@ async def run_task(task: str, model: str = None, url: str = None):
 
                 if not cdp_ok:
                     raise RuntimeError(
-                        f"CDP port 9222 is not responding after {_time.monotonic()-t0:.1f}s ({last_err}). "
-                        f"Restart the browser or kill stale processes on port 9222."
+                        f"CDP port {CDP_PORT} is not responding after {_time.monotonic()-t0:.1f}s ({last_err}). "
+                        f"Restart the browser or kill stale processes on port {CDP_PORT}."
                     )
 
                 # Always create a fresh Browser() — it's instant (just sets config).
@@ -789,7 +794,7 @@ async def run_task(task: str, model: str = None, url: str = None):
 
                 if fast_mode:
                     browser = Browser(
-                        cdp_url="http://127.0.0.1:9222",
+                        cdp_url=CDP_BASE,
                         keep_alive=True,
                         cross_origin_iframes=False,
                         max_iframes=3,
@@ -800,7 +805,7 @@ async def run_task(task: str, model: str = None, url: str = None):
                     )
                 else:
                     browser = Browser(
-                        cdp_url="http://127.0.0.1:9222",
+                        cdp_url=CDP_BASE,
                         keep_alive=True,
                     )
 
@@ -810,7 +815,7 @@ async def run_task(task: str, model: str = None, url: str = None):
                 # Target discovery: find the correct BrowserView tab to focus on
                 best_target_id = None
                 try:
-                    resp = _httpx.get("http://127.0.0.1:9222/json/list", timeout=1.0)
+                    resp = _httpx.get(f"{CDP_BASE}/json/list", timeout=1.0)
                     targets = resp.json()
                     page_targets = [t for t in targets if t.get("type") == "page"]
 
