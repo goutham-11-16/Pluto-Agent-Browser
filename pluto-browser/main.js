@@ -878,7 +878,31 @@ ipcMain.handle('tab:get-page-content', async () => {
 });
 
 /* ── App Lifecycle ──────────────────────────────────────────── */
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
+  /* Verify CDP port 9222 is actually bound by Electron before starting backend */
+  const net = require('net');
+  let cdpReady = false;
+  for (let i = 0; i < 20; i++) {
+    try {
+      await new Promise((resolve, reject) => {
+        const sock = new net.Socket();
+        sock.setTimeout(300);
+        sock.on('connect', () => { sock.destroy(); resolve(); });
+        sock.on('error', (err) => { sock.destroy(); reject(err); });
+        sock.on('timeout', () => { sock.destroy(); reject(new Error('timeout')); });
+        sock.connect(9222, '127.0.0.1');
+      });
+      cdpReady = true;
+      console.log(`[startup] CDP port 9222 verified ready (attempt ${i + 1})`);
+      break;
+    } catch {
+      await new Promise(r => setTimeout(r, 200));
+    }
+  }
+  if (!cdpReady) {
+    console.error('[startup] WARNING: CDP port 9222 not responding after 20 attempts!');
+  }
+
   startBackend();
   setupShieldsEngine();
   createWindow();
