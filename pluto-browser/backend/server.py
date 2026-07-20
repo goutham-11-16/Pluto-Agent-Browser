@@ -746,17 +746,24 @@ async def run_task(task: str, model: str = None, url: str = None):
                 # ── Pre-flight + browser connection ──────────────────────
                 import httpx as _httpx
 
-                # Pre-flight: verify port 9222 is alive (0.5s timeout)
-                # Uses 127.0.0.1 instead of localhost to avoid 2s IPv6 DNS fallback on Windows
+                # Pre-flight: verify port 9222 is alive with retry loop
                 t0 = _time.monotonic()
-                try:
-                    _preflight = _httpx.get("http://127.0.0.1:9222/json/version", timeout=0.5)
-                    if _preflight.status_code != 200:
-                        raise ConnectionError(f"Port 9222 returned status {_preflight.status_code}")
-                    print(f"[agent] CDP pre-flight OK in {_time.monotonic()-t0:.3f}s")
-                except Exception as pf_err:
+                cdp_ok = False
+                last_err = None
+                for attempt in range(6):
+                    try:
+                        _preflight = _httpx.get("http://127.0.0.1:9222/json/version", timeout=1.5)
+                        if _preflight.status_code == 200:
+                            cdp_ok = True
+                            print(f"[agent] CDP pre-flight OK in {_time.monotonic()-t0:.3f}s (attempt {attempt+1})")
+                            break
+                    except Exception as err:
+                        last_err = err
+                        await asyncio.sleep(0.3)
+
+                if not cdp_ok:
                     raise RuntimeError(
-                        f"CDP port 9222 is not responding ({pf_err}). "
+                        f"CDP port 9222 is not responding ({last_err}). "
                         f"Restart the browser or kill stale processes on port 9222."
                     )
 

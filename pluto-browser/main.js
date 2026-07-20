@@ -6,30 +6,38 @@ const { spawn, execSync } = require('child_process');
 const { ElectronBlocker } = require('@ghostery/adblocker-electron');
 const fetch = require('cross-fetch');
 
-/* ── Pre-flight: kill any process holding port 9222 before Electron binds ── */
-/* This prevents the "bind() error: Only one usage of each socket address"    */
-/* that causes 30-60 second CDP connection timeouts when stale Chrome/Electron */
-/* processes hold the port from previous runs.                                 */
-try {
-  if (process.platform === 'win32') {
-    // Find PID holding port 9222 and kill it
-    const out = execSync('netstat -ano | findstr :9222 | findstr LISTEN', { encoding: 'utf8', timeout: 3000 }).trim();
-    if (out) {
-      const lines = out.split('\n');
-      const pids = new Set();
-      for (const line of lines) {
-        const parts = line.trim().split(/\s+/);
-        const pid = parseInt(parts[parts.length - 1]);
-        if (pid && pid !== process.pid) pids.add(pid);
-      }
-      for (const pid of pids) {
-        try { execSync(`taskkill /F /PID ${pid}`, { timeout: 3000 }); } catch {}
-      }
-      if (pids.size > 0) console.log(`[startup] Killed ${pids.size} stale process(es) on port 9222`);
+/* ── Single Instance Lock & Pre-flight Cleanup ── */
+const gotSingleInstanceLock = app.requestSingleInstanceLock();
+if (!gotSingleInstanceLock) {
+  app.quit();
+} else {
+  app.on('second-instance', () => {
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
     }
+  });
+
+  if (process.type === undefined || process.type === 'browser') {
+    try {
+      if (process.platform === 'win32') {
+        const out = execSync('netstat -ano | findstr :9222 | findstr LISTEN', { encoding: 'utf8', timeout: 3000 }).trim();
+        if (out) {
+          const lines = out.split('\n');
+          const pids = new Set();
+          for (const line of lines) {
+            const parts = line.trim().split(/\s+/);
+            const pid = parseInt(parts[parts.length - 1]);
+            if (pid && pid !== process.pid) pids.add(pid);
+          }
+          for (const pid of pids) {
+            try { execSync(`taskkill /F /PID ${pid}`, { timeout: 3000 }); } catch {}
+          }
+          if (pids.size > 0) console.log(`[startup] Killed ${pids.size} stale process(es) on port 9222`);
+        }
+      }
+    } catch {}
   }
-} catch {
-  // No process on 9222 — this is the normal/expected case
 }
 
 /* ── Configure remote debugging port for agent connectivity ── */
