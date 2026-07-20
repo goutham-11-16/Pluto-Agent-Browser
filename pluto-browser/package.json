@@ -42,6 +42,15 @@
       "createStartMenuShortcut": true,
       "shortcutName": "Pluto Agent Browser"
     },
+    "extraResources": [
+      {
+        "from": "backend_bin/backend_server.exe",
+        "to": "backend_server.exe"
+      }
+    ],
+    "asarUnpack": [
+      "backend/**/*"
+    ],
     "files": [
       "**/*",
       "!debug.log",

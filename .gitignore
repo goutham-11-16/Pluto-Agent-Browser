@@ -19,6 +19,9 @@ Thumbs.db
 # Build & Dependency Artifacts
 dist/
 build/
+pluto-browser/dist/
+pluto-browser/build/
+pluto-browser/backend_bin/
 node_modules/
 pluto-browser/node_modules/
 *.tsbuildinfo

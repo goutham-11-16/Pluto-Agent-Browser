@@ -184,30 +184,52 @@ function startBackend() {
 }
 
 function spawnBackendProcess() {
-  let py = process.platform === 'win32' ? 'python' : 'python3';
-  
-  const venvWin = path.join(__dirname, '..', '.venv', 'Scripts', 'python.exe');
-  const venvNix = path.join(__dirname, '..', '.venv', 'bin', 'python');
-  const appVenvWin = path.join(process.resourcesPath, '.venv', 'Scripts', 'python.exe');
-  const appVenvNix = path.join(process.resourcesPath, '.venv', 'bin', 'python');
+  const exeInResources = path.join(process.resourcesPath, 'backend_server.exe');
+  const exeInLocalBin = path.join(__dirname, 'backend_bin', 'backend_server.exe');
 
-  if (process.platform === 'win32') {
-    if (fs.existsSync(venvWin)) py = venvWin;
-    else if (fs.existsSync(appVenvWin)) py = appVenvWin;
+  if (fs.existsSync(exeInResources)) {
+    console.log(`[shell] Spawning packaged backend binary: ${exeInResources}`);
+    backendProc = spawn(exeInResources, [], {
+      env: { ...process.env, PLUTO_PORT: String(BACKEND_PORT) },
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
+  } else if (fs.existsSync(exeInLocalBin)) {
+    console.log(`[shell] Spawning local backend binary: ${exeInLocalBin}`);
+    backendProc = spawn(exeInLocalBin, [], {
+      env: { ...process.env, PLUTO_PORT: String(BACKEND_PORT) },
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
   } else {
-    if (fs.existsSync(venvNix)) py = venvNix;
-    else if (fs.existsSync(appVenvNix)) py = appVenvNix;
+    let py = process.platform === 'win32' ? 'python' : 'python3';
+    
+    const venvWin = path.join(__dirname, '..', '.venv', 'Scripts', 'python.exe');
+    const venvNix = path.join(__dirname, '..', '.venv', 'bin', 'python');
+    const appVenvWin = path.join(process.resourcesPath, '.venv', 'Scripts', 'python.exe');
+    const appVenvNix = path.join(process.resourcesPath, '.venv', 'bin', 'python');
+
+    if (process.platform === 'win32') {
+      if (fs.existsSync(venvWin)) py = venvWin;
+      else if (fs.existsSync(appVenvWin)) py = appVenvWin;
+    } else {
+      if (fs.existsSync(venvNix)) py = venvNix;
+      else if (fs.existsSync(appVenvNix)) py = appVenvNix;
+    }
+
+    const unpackedDir = __dirname.includes('app.asar') ? __dirname.replace('app.asar', 'app.asar.unpacked') : __dirname;
+    const serverPath = path.join(unpackedDir, 'backend', 'server.py');
+
+    console.log(`[shell] Spawning backend using python interpreter: ${py} with ${serverPath}`);
+    backendProc = spawn(py, ['-u', serverPath], {
+      env: { ...process.env, PLUTO_PORT: String(BACKEND_PORT) },
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
   }
 
-  console.log(`[shell] Spawning backend using python interpreter: ${py}`);
-  const serverPath = path.join(__dirname, 'backend', 'server.py');
-  backendProc = spawn(py, ['-u', serverPath], {
-    env: { ...process.env, PLUTO_PORT: String(BACKEND_PORT) },
-    stdio: ['ignore', 'pipe', 'pipe'],
-  });
-  backendProc.stdout.on('data', d => console.log('[backend]', d.toString().trim()));
-  backendProc.stderr.on('data', d => console.error('[backend]', d.toString().trim()));
-  backendProc.on('close', code => console.log('[backend] exited', code));
+  if (backendProc) {
+    backendProc.stdout.on('data', d => console.log('[backend]', d.toString().trim()));
+    backendProc.stderr.on('data', d => console.error('[backend]', d.toString().trim()));
+    backendProc.on('close', code => console.log('[backend] exited', code));
+  }
 }
 
 /* ── Window ─────────────────────────────────────────────────── */
