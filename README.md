@@ -124,7 +124,7 @@ graph TD
 
 ### Running Pluto Agent Browser
 
-Start the desktop browser application:
+Start the desktop browser application in development mode:
 
 ```bash
 cd pluto-browser
@@ -132,6 +132,25 @@ npm start
 ```
 
 This automatically launches the Electron shell and spawns the FastAPI backend server on `http://127.0.0.1:18420`.
+
+### 📦 Building Windows Application (.EXE)
+
+You can build a standalone Windows Installer executable (`.exe`) or a single-file Portable executable (`.exe`) using `electron-builder`:
+
+```bash
+cd pluto-browser
+
+# Build NSIS Installer (.exe)
+npm run dist
+
+# Build Single-File Portable Application (.exe)
+npm run dist:portable
+```
+
+The output executables are generated in `pluto-browser/dist/`:
+- 📥 **Installer**: `dist/Pluto Agent Browser Setup 1.0.0.exe`
+- ⚡ **Portable App**: `dist/Pluto Agent Browser 1.0.0.exe`
+- 📂 **Unpacked Binary**: `dist/win-unpacked/Pluto Agent Browser.exe`
 
 ---
 

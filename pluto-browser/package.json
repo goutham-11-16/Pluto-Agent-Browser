@@ -1,21 +1,52 @@
 {
-  "name": "pluto-browser",
+  "name": "pluto-agent-browser",
   "version": "1.0.0",
   "description": "Pluto — Agent Browser. An AI-native Chromium browser with integrated agentic automation.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "electron . --enable-logging"
+    "dev": "electron . --enable-logging",
+    "dist": "electron-builder --win nsis",
+    "dist:portable": "electron-builder --win portable",
+    "pack": "electron-builder --dir"
   },
   "author": "Pluto Team",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^35.0.0"
+    "electron": "^35.0.0",
+    "electron-builder": "^26.0.0-alpha.16"
   },
   "dependencies": {
     "@cliqz/adblocker-electron": "^1.34.0",
     "@ghostery/adblocker-electron": "^2.18.1",
     "cross-fetch": "^4.1.0",
     "node-fetch": "^3.3.2"
+  },
+  "build": {
+    "appId": "com.pluto.agentbrowser",
+    "productName": "Pluto Agent Browser",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "renderer/assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Pluto Agent Browser"
+    },
+    "files": [
+      "**/*",
+      "!debug.log",
+      "!info.log",
+      "!scratch/*"
+    ]
   }
 }

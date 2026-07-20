@@ -186,13 +186,17 @@ function startBackend() {
 function spawnBackendProcess() {
   let py = process.platform === 'win32' ? 'python' : 'python3';
   
-  const winVenv = path.join(__dirname, '..', '.venv', 'Scripts', 'python.exe');
-  const nixVenv = path.join(__dirname, '..', '.venv', 'bin', 'python');
-  
-  if (process.platform === 'win32' && fs.existsSync(winVenv)) {
-    py = winVenv;
-  } else if (process.platform !== 'win32' && fs.existsSync(nixVenv)) {
-    py = nixVenv;
+  const venvWin = path.join(__dirname, '..', '.venv', 'Scripts', 'python.exe');
+  const venvNix = path.join(__dirname, '..', '.venv', 'bin', 'python');
+  const appVenvWin = path.join(process.resourcesPath, '.venv', 'Scripts', 'python.exe');
+  const appVenvNix = path.join(process.resourcesPath, '.venv', 'bin', 'python');
+
+  if (process.platform === 'win32') {
+    if (fs.existsSync(venvWin)) py = venvWin;
+    else if (fs.existsSync(appVenvWin)) py = appVenvWin;
+  } else {
+    if (fs.existsSync(venvNix)) py = venvNix;
+    else if (fs.existsSync(appVenvNix)) py = appVenvNix;
   }
 
   console.log(`[shell] Spawning backend using python interpreter: ${py}`);
