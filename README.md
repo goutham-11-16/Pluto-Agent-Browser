@@ -28,19 +28,9 @@ Pluto Agent Browser is a next-generation desktop web browser built from the grou
 
 ---
 
-## 📸 Screenshots & Demos
+## 📸 Screenshots
 
-### 1. Active Agent Control Glow Signal
-While the AI agent is actively interacting with a page, a sleek blue gradient glow signals human operators that agent automation is underway.
-
-![Active Control Glow Signal](docs/assets/verify_fast_mode_glow_1784528776412.webp)
-
-### 2. High-Speed Web Navigation & Execution
-Watch Pluto navigate pages, resolve goals, and display real-time execution step metrics in seconds.
-
-![Agent Execution Verification](docs/assets/verify_agent_run_1784528569860.webp)
-
-### 3. Integrated Agent Sidebar Interface
+### Agent Sidebar Interface
 Interact with the browser side-by-side with the AI assistant, featuring live telemetry logs and performance metrics.
 
 ![Agent Sidebar Workspace](docs/assets/google_page_1784528812034.png)
