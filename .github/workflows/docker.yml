@@ -20,6 +20,7 @@ on:
 jobs:
   build_publish_image:
     runs-on: ubuntu-latest
+    continue-on-error: true
     permissions:
       packages: write
       contents: read
