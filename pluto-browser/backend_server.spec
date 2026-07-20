@@ -5,7 +5,7 @@ a = Analysis(
     ['d:\\project files\\browser-use\\pluto-browser\\backend\\server.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('d:\\project files\\browser-use\\browser_use\\agent\\system_prompts', 'browser_use\\agent\\system_prompts')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
