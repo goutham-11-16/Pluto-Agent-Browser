@@ -71,14 +71,23 @@ def test_browser_use_cli_installs_browser_harness_package_skill(tmp_path):
 	env['PYTHONPATH'] = os.pathsep.join(part for part in (str(ROOT), env.get('PYTHONPATH', '')) if part)
 	env['UV_TOOL_INSTALL_ARGS_FILE'] = str(uv_args)
 
-	result = subprocess.run(
-		[sys.executable, '-m', 'browser_use.cli', 'skill', 'install'],
-		cwd=ROOT,
-		env=env,
-		capture_output=True,
-		text=True,
-		timeout=10,
-	)
+	skill_md = ROOT / 'browser_use' / 'skills' / 'browser-use' / 'SKILL.md'
+	backup = skill_md.with_suffix('.md.bak')
+	if skill_md.exists():
+		skill_md.rename(backup)
+
+	try:
+		result = subprocess.run(
+			[sys.executable, '-m', 'browser_use.cli', 'skill', 'install'],
+			cwd=ROOT,
+			env=env,
+			capture_output=True,
+			text=True,
+			timeout=10,
+		)
+	finally:
+		if backup.exists():
+			backup.rename(skill_md)
 
 	assert result.returncode == 0, result.stderr
 	assert uv_args.read_text(encoding='utf-8') == 'tool install --python 3.12 --upgrade --force browser-use'
