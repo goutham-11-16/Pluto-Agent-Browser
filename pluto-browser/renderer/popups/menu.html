@@ -105,7 +105,12 @@
       const act = item.dataset.action;
       if (window.plutoAPI) {
         if (act === 'new-tab') window.plutoAPI.createTab();
+        if (act === 'new-window') window.plutoAPI.createNewWindow();
+        if (act === 'new-incognito') window.plutoAPI.createIncognitoWindow();
+        if (act === 'vtabs') window.plutoAPI.toggleVerticalTabs();
         if (act === 'history') window.plutoAPI.navigateTo('pluto://history');
+        if (act === 'downloads') window.plutoAPI.navigateTo('pluto://downloads');
+        if (act === 'bookmarks') window.plutoAPI.navigateTo('pluto://bookmarks');
         if (act === 'settings') window.plutoAPI.navigateTo('pluto://settings');
         if (act === 'exit') window.plutoAPI.close();
       }

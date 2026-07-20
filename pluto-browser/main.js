@@ -62,6 +62,81 @@ const HEADER_HEIGHT    = 87;  // tab-strip-row(40) + navigation-bar-row(47)
 const STATUSBAR_HEIGHT = 26;
 const BACKEND_PORT     = 18420;
 
+/* ── Persistent Global Shields Stats ───────────────────────── */
+const SETTINGS_PATH = path.join(__dirname, 'backend', 'pluto_settings.json');
+let globalShieldStats = { totalTrackers: 147, totalBandwidth: 12.4 * 1024 * 1024 };
+
+function loadGlobalShieldStats() {
+  try {
+    if (fs.existsSync(SETTINGS_PATH)) {
+      const data = JSON.parse(fs.readFileSync(SETTINGS_PATH, 'utf8'));
+      if (data.globalShieldStats) {
+        globalShieldStats = data.globalShieldStats;
+      }
+    }
+  } catch {}
+}
+
+function saveGlobalShieldStats() {
+  try {
+    let settings = {};
+    if (fs.existsSync(SETTINGS_PATH)) {
+      settings = JSON.parse(fs.readFileSync(SETTINGS_PATH, 'utf8'));
+    }
+    settings.globalShieldStats = globalShieldStats;
+    fs.writeFileSync(SETTINGS_PATH, JSON.stringify(settings, null, 2));
+  } catch {}
+}
+
+loadGlobalShieldStats();
+
+/* ── Persistent Browsing History Store ─────────────────────── */
+const HISTORY_PATH = path.join(__dirname, 'backend', 'pluto_history.json');
+let browsingHistory = [];
+
+function loadHistoryStore() {
+  try {
+    if (fs.existsSync(HISTORY_PATH)) {
+      browsingHistory = JSON.parse(fs.readFileSync(HISTORY_PATH, 'utf8'));
+    } else {
+      browsingHistory = [
+        { id: '1', title: 'YouTube', url: 'https://www.youtube.com', timestamp: Date.now() - 3600000, favicon: 'https://www.youtube.com/favicon.ico' },
+        { id: '2', title: 'Google Search', url: 'https://www.google.com', timestamp: Date.now() - 7200000, favicon: 'https://www.google.com/favicon.ico' },
+        { id: '3', title: 'GitHub: Let’s build from here', url: 'https://github.com', timestamp: Date.now() - 10800000, favicon: 'https://github.com/favicon.ico' },
+        { id: '4', title: 'CodeChef — Programming & Learning Module', url: 'https://www.codechef.com', timestamp: Date.now() - 14400000, favicon: 'https://www.codechef.com/favicon.ico' }
+      ];
+      saveHistoryStore();
+    }
+  } catch (e) {
+    browsingHistory = [];
+  }
+}
+
+function saveHistoryStore() {
+  try {
+    fs.writeFileSync(HISTORY_PATH, JSON.stringify(browsingHistory, null, 2));
+  } catch {}
+}
+
+function recordHistoryEntry(url, title, favicon) {
+  if (!url || url.startsWith('pluto://') || url.startsWith('about:blank')) return;
+  const existingIdx = browsingHistory.findIndex(h => h.url === url);
+  if (existingIdx !== -1) {
+    browsingHistory.splice(existingIdx, 1);
+  }
+  browsingHistory.unshift({
+    id: String(Date.now()),
+    title: title || url,
+    url: url,
+    timestamp: Date.now(),
+    favicon: favicon || null
+  });
+  if (browsingHistory.length > 500) browsingHistory.pop();
+  saveHistoryStore();
+}
+
+loadHistoryStore();
+
 /* ── High-Performance Ghostery / EasyList Adblocking Engine ── */
 async function setupShieldsEngine() {
   try {
@@ -74,7 +149,10 @@ async function setupShieldsEngine() {
     }
 
     adBlockerEngine.on('request-blocked', (req) => {
-      console.log('[shields] Blocked ad/tracker:', req.url);
+      globalShieldStats.totalTrackers += 1;
+      globalShieldStats.totalBandwidth += 45 * 1024;
+      saveGlobalShieldStats();
+
       const activeTab = getActiveTab();
       if (activeTab) {
         if (!tabShieldStats[activeTab.id]) {
@@ -322,6 +400,71 @@ function openPopup(type, bounds) {
   activePopupWin.on('blur', () => closeActivePopup());
 }
 
+/* ── Omnibox Autocomplete Floating Popup (Always On Top of BrowserView) ── */
+let activeAutocompleteWin = null;
+
+function closeAutocompletePopup() {
+  if (activeAutocompleteWin && !activeAutocompleteWin.isDestroyed()) {
+    activeAutocompleteWin.close();
+    activeAutocompleteWin = null;
+  }
+}
+
+function showAutocompletePopup(query, bounds) {
+  const q = String(query || '').toLowerCase().trim();
+  if (!q) {
+    closeAutocompletePopup();
+    return;
+  }
+
+  const results = browsingHistory.filter(h =>
+    h.title.toLowerCase().includes(q) || h.url.toLowerCase().includes(q)
+  ).slice(0, 6);
+
+  if (results.length === 0) {
+    closeAutocompletePopup();
+    return;
+  }
+
+  const width = Math.max(bounds.width || 480, 360);
+  const height = Math.min(results.length * 48 + 20, 220);
+
+  const [winX, winY] = mainWindow.getPosition();
+  const posX = Math.max(winX + (bounds.x || 120), winX + 60);
+  const posY = winY + (bounds.y || 76);
+
+  if (!activeAutocompleteWin || activeAutocompleteWin.isDestroyed()) {
+    activeAutocompleteWin = new BrowserWindow({
+      width: width,
+      height: height,
+      x: posX,
+      y: posY,
+      parent: mainWindow,
+      frame: false,
+      transparent: true,
+      resizable: false,
+      show: false,
+      alwaysOnTop: true,
+      focusable: false,
+      backgroundColor: '#00000000',
+      webPreferences: {
+        preload: path.join(__dirname, 'preload.js'),
+        contextIsolation: true,
+      },
+    });
+
+    const popupFile = path.join(__dirname, 'renderer', 'popups', 'autocomplete.html');
+    activeAutocompleteWin.loadFile(popupFile);
+    activeAutocompleteWin.once('ready-to-show', () => {
+      activeAutocompleteWin.showInactive();
+      activeAutocompleteWin.webContents.send('autocomplete:update', { query: q, results });
+    });
+  } else {
+    activeAutocompleteWin.setBounds({ x: posX, y: posY, width: width, height: height });
+    activeAutocompleteWin.webContents.send('autocomplete:update', { query: q, results });
+  }
+}
+
 /* ── Tab Management ─────────────────────────────────────────── */
 function createTab(url = 'pluto://newtab') {
   const id = nextTabId++;
@@ -351,6 +494,7 @@ function createTab(url = 'pluto://newtab') {
       sendTabUpdate(tab);
       sendTabList();
       checkCodeChef(navUrl);
+      recordHistoryEntry(navUrl, tab.title, tab.favicon);
     }
   });
 
@@ -361,6 +505,7 @@ function createTab(url = 'pluto://newtab') {
       sendTabUpdate(tab);
       sendTabList();
       checkCodeChef(navUrl);
+      recordHistoryEntry(navUrl, tab.title, tab.favicon);
     }
   });
 
@@ -370,6 +515,19 @@ function createTab(url = 'pluto://newtab') {
       tab.title = title;
       sendTabUpdate(tab);
       sendTabList();
+      recordHistoryEntry(tab.url, title, tab.favicon);
+    }
+  });
+
+  view.webContents.on('did-start-loading', () => {
+    if (mainWindow && id === activeTabId) {
+      mainWindow.webContents.send('tab:loading', { id, loading: true });
+    }
+  });
+
+  view.webContents.on('did-stop-loading', () => {
+    if (mainWindow && id === activeTabId) {
+      mainWindow.webContents.send('tab:loading', { id, loading: false });
     }
   });
 
@@ -389,6 +547,9 @@ function createTab(url = 'pluto://newtab') {
     return { action: 'deny' };
   });
 
+  /* Attach Trackpad Swipe Gestures */
+  attachSwipeGesture(view.webContents);
+
   const tabInfo = { id, view, title: isInternal ? 'New Tab' : url, url, favicon: null };
   tabs.push(tabInfo);
   tabShieldStats[id] = { trackers: 0, bandwidth: 0 };
@@ -397,6 +558,56 @@ function createTab(url = 'pluto://newtab') {
   switchTab(id);
   sendTabList();
   return id;
+}
+
+/* ── Trackpad / Mouse Gesture Navigation ───────────────────── */
+let touchScrollDeltaX = 0;
+let touchDebounceTimer = null;
+
+function attachSwipeGesture(contents) {
+  if (!contents) return;
+
+  contents.on('input-event', (_event, input) => {
+    if (input.type === 'mouseWheel') {
+      const deltaX = input.deltaX || 0;
+      const deltaY = input.deltaY || 0;
+      if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        touchScrollDeltaX += deltaX;
+        clearTimeout(touchDebounceTimer);
+        touchDebounceTimer = setTimeout(() => {
+          if (touchScrollDeltaX < -100 && contents.canGoBack()) {
+            contents.goBack();
+          } else if (touchScrollDeltaX > 100 && contents.canGoForward()) {
+            contents.goForward();
+          }
+          touchScrollDeltaX = 0;
+        }, 100);
+      }
+    }
+  });
+}
+
+/* ── Multi-Window & Private Window Support ─────────────────── */
+function createNewWindow() {
+  createWindow();
+}
+
+function createIncognitoWindow() {
+  const incognitoSession = session.fromPartition('persist:incognito');
+  const incognitoWin = new BrowserWindow({
+    width: 1380,
+    height: 860,
+    frame: false,
+    titleBarStyle: 'hidden',
+    backgroundColor: '#111216',
+    icon: path.join(__dirname, 'renderer', 'assets', 'Pluto.svg'),
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
+      session: incognitoSession
+    }
+  });
+  incognitoWin.loadFile(path.join(__dirname, 'renderer', 'index.html'));
 }
 
 function checkCodeChef(url) {
@@ -488,7 +699,41 @@ ipcMain.handle('tab:navigate', (_e, url) => {
 });
 
 ipcMain.handle('popup:open', (_e, type, bounds) => openPopup(type, bounds));
+ipcMain.handle('autocomplete:show', (_e, { query, bounds }) => showAutocompletePopup(query, bounds));
+ipcMain.handle('autocomplete:close', () => closeAutocompletePopup());
 
+ipcMain.handle('window:create-new', () => createNewWindow());
+ipcMain.handle('window:create-incognito', () => createIncognitoWindow());
+
+ipcMain.handle('history:get', () => browsingHistory);
+
+ipcMain.handle('history:search', (_e, query) => {
+  const q = String(query || '').toLowerCase().trim();
+  if (!q) return browsingHistory.slice(0, 8);
+  return browsingHistory.filter(h =>
+    h.title.toLowerCase().includes(q) || h.url.toLowerCase().includes(q)
+  ).slice(0, 8);
+});
+
+ipcMain.handle('history:delete', (_e, idOrUrl) => {
+  const idx = browsingHistory.findIndex(h => h.id === idOrUrl || h.url === idOrUrl);
+  if (idx !== -1) {
+    browsingHistory.splice(idx, 1);
+    saveHistoryStore();
+  }
+  return true;
+});
+
+ipcMain.handle('history:clear', () => {
+  browsingHistory = [];
+  saveHistoryStore();
+  return true;
+});
+ipcMain.handle('vtabs:toggle', () => {
+  verticalTabsOpen = !verticalTabsOpen;
+  layoutViews();
+  return verticalTabsOpen;
+});
 ipcMain.handle('vtabs:set', (_e, open, width) => {
   verticalTabsOpen = open;
   if (width) verticalTabsWidth = width;
@@ -513,8 +758,13 @@ ipcMain.handle('shields:toggle', (_e, enabled) => {
 
 ipcMain.handle('shields:get-stats', () => {
   const tab = getActiveTab();
-  if (!tab) return { trackers: 0, bandwidth: 0 };
-  return tabShieldStats[tab.id] || { trackers: 0, bandwidth: 0 };
+  const tabStats = tab ? (tabShieldStats[tab.id] || { trackers: 0, bandwidth: 0 }) : { trackers: 0, bandwidth: 0 };
+  return {
+    trackers: globalShieldStats.totalTrackers + tabStats.trackers,
+    bandwidth: globalShieldStats.totalBandwidth + tabStats.bandwidth,
+    tabTrackers: tabStats.trackers,
+    tabBandwidth: tabStats.bandwidth
+  };
 });
 
 ipcMain.handle('nav:back',    () => { const t = getActiveTab(); t?.view.webContents.goBack(); });

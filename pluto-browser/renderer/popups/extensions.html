@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Extensions</title>
+  <title>Extensions — Pluto</title>
   <link rel="stylesheet" href="../styles/core.css">
   <style>
     body {
@@ -10,13 +10,66 @@
       color: var(--pluto-text-primary);
       font-family: var(--font-sans);
       margin: 0;
-      padding: 16px;
+      padding: 14px 16px;
       overflow: hidden;
       border-radius: 12px;
       border: 1px solid var(--pluto-border-strong);
       box-shadow: var(--pluto-shadow-lg);
+      user-select: none;
     }
-    .popup-title { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+    .popup-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--pluto-text-primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ext-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ext-row {
+      display: flex;
+      align-items: center;
+      padding: 8px 10px;
+      background: var(--pluto-bg-secondary);
+      border: 1px solid var(--pluto-border-subtle);
+      border-radius: 8px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .ext-row:hover {
+      background: var(--pluto-bg-hover);
+      border-color: var(--pluto-border);
+    }
+    .ext-icon {
+      font-size: 15px;
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+    .ext-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .ext-name {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--pluto-text-primary);
+    }
+    .ext-desc {
+      font-size: 10.5px;
+      color: var(--pluto-text-tertiary);
+    }
+    .ext-toggle {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--pluto-color-orange);
+      cursor: pointer;
+    }
     .ext-footer {
       margin-top: 14px;
       padding-top: 10px;
@@ -47,17 +100,40 @@
 </head>
 <body>
 <div>
-  <div class="popup-title">Extensions</div>
-  <div class="ext-row">
-    <span>🛡️</span>
-    <div class="ext-name">Pluto Shields Engine v2.0</div>
-    <input type="checkbox" checked style="accent-color: var(--pluto-color-orange);">
+  <div class="popup-title">
+    <span>🧩 Extensions</span>
+    <span style="font-size: 11px; font-weight: 500; color: var(--pluto-color-lime);">Active</span>
   </div>
-  <div class="ext-row">
-    <span>🔑</span>
-    <div class="ext-name">Pluto Password Manager</div>
-    <input type="checkbox" checked style="accent-color: var(--pluto-color-orange);">
+
+  <div class="ext-list">
+    <div class="ext-row">
+      <span class="ext-icon">🛡️</span>
+      <div class="ext-info">
+        <span class="ext-name">Pluto Shields Engine</span>
+        <span class="ext-desc">EasyList + uBlock Adblocker</span>
+      </div>
+      <input type="checkbox" class="ext-toggle" checked>
+    </div>
+
+    <div class="ext-row">
+      <span class="ext-icon">🔑</span>
+      <div class="ext-info">
+        <span class="ext-name">Pluto Password Manager</span>
+        <span class="ext-desc">Secure vault & auto-fill</span>
+      </div>
+      <input type="checkbox" class="ext-toggle" checked>
+    </div>
+
+    <div class="ext-row">
+      <span class="ext-icon">⚡</span>
+      <div class="ext-info">
+        <span class="ext-name">Fast Mode CoT Turbo</span>
+        <span class="ext-desc">Sub-5s Agent Accelerator</span>
+      </div>
+      <input type="checkbox" class="ext-toggle" checked>
+    </div>
   </div>
+
   <div class="ext-footer">
     <button class="manage-ext-btn" id="btn-manage-extensions">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.4 0 2.5 1.1 2.5 2.5s-1.1 2.5-2.5 2.5H2v4c0 1.1.9 2 2 2h3.8v-1.5c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5V21H17c1.1 0 2-.9 2-2v-4h1.5c1.4 0 2.5-1.1 2.5-2.5s-1.1-2.5-2.5-2.5z"/></svg>
@@ -70,6 +146,7 @@
     if (window.plutoAPI && window.plutoAPI.createTab) {
       window.plutoAPI.createTab('pluto://settings');
     }
+    window.close();
   });
 </script>
 </body>

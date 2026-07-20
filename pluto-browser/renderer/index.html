@@ -152,7 +152,7 @@
       <div class="sidebar-header">
         <div class="sidebar-brand">
           <div class="pluto-leo-badge">
-            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2L14.7 9.3L22 12L14.7 14.7L12 22L9.3 14.7L2 12L9.3 9.3Z" fill="#FF5500"/></svg>
+            <img src="assets/Pluto.svg" width="18" height="18" alt="Pluto Logo">
           </div>
           <div>
             <span class="sidebar-brand-text">PLUTO AI v2.0</span>
@@ -163,9 +163,29 @@
           <button class="sidebar-btn" id="btn-new-chat" title="New Conversation">
             <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/></svg>
           </button>
-          <button class="sidebar-btn" id="btn-sidebar-settings" title="AI Settings">
+          <button class="sidebar-btn" id="btn-sidebar-settings" title="Agent Options">
             <svg viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="currentColor"/></svg>
           </button>
+        </div>
+
+        <!-- Agent Options Popover Dropdown -->
+        <div class="agent-options-popover hidden" id="agent-options-popover">
+          <div class="popover-item" id="pop-new-chat">
+            <span class="pop-icon">💬</span>
+            <span>Clear Conversation</span>
+          </div>
+          <div class="popover-item" id="pop-toggle-agent-mode">
+            <span class="pop-icon">🚀</span>
+            <span>Toggle Agent Fast Mode</span>
+          </div>
+          <div class="popover-item" id="pop-view-skills">
+            <span class="pop-icon">🧰</span>
+            <span>Custom Agent Skills</span>
+          </div>
+          <div class="popover-item" id="pop-open-settings">
+            <span class="pop-icon">⚙️</span>
+            <span>Open Browser Settings</span>
+          </div>
         </div>
       </div>
 

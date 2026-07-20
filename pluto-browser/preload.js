@@ -29,7 +29,10 @@ contextBridge.exposeInMainWorld('plutoAPI', {
   getSidebarState: () => ipcRenderer.invoke('sidebar:state'),
   setAgentState: (isRunning, glowEnabled) => ipcRenderer.invoke('agent:state', isRunning, glowEnabled),
 
-  /* Window Controls */
+  /* Window Controls & Private Windows */
+  createNewWindow: () => ipcRenderer.invoke('window:create-new'),
+  createIncognitoWindow: () => ipcRenderer.invoke('window:create-incognito'),
+  toggleVerticalTabs: () => ipcRenderer.invoke('vtabs:toggle'),
   minimize: () => ipcRenderer.invoke('window:minimize'),
   maximize: () => ipcRenderer.invoke('window:maximize'),
   close:    () => ipcRenderer.invoke('window:close'),
@@ -37,6 +40,15 @@ contextBridge.exposeInMainWorld('plutoAPI', {
   /* Backend & Skills */
   getBackendPort: () => ipcRenderer.invoke('app:get-backend-port'),
   getSkills:      () => ipcRenderer.invoke('app:get-skills'),
+
+  /* History API & Autocomplete */
+  getHistory:        () => ipcRenderer.invoke('history:get'),
+  searchHistory:     (query) => ipcRenderer.invoke('history:search', query),
+  deleteHistoryItem: (idOrUrl) => ipcRenderer.invoke('history:delete', idOrUrl),
+  clearHistory:      () => ipcRenderer.invoke('history:clear'),
+  showAutocomplete:  (query, bounds) => ipcRenderer.invoke('autocomplete:show', { query, bounds }),
+  closeAutocomplete: () => ipcRenderer.invoke('autocomplete:close'),
+  onAutocompleteData:(cb) => ipcRenderer.on('autocomplete:update', (_e, data) => cb(data)),
 
   /* Event Listeners */
   onTabsUpdated: (cb) => {
@@ -50,5 +62,8 @@ contextBridge.exposeInMainWorld('plutoAPI', {
   },
   onFocusOmnibox: (cb) => {
     ipcRenderer.on('focus-omnibox', () => cb());
+  },
+  onTabLoading: (cb) => {
+    ipcRenderer.on('tab:loading', (_e, info) => cb(info));
   },
 });

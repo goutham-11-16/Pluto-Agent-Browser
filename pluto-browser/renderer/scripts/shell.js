@@ -189,15 +189,70 @@
   /* ── Navigation Handlers ─────────────────────────────────── */
   btnBack.addEventListener('click', () => plutoAPI.goBack());
   btnForward.addEventListener('click', () => plutoAPI.goForward());
-  btnReload.addEventListener('click', () => plutoAPI.reload());
+  btnReload.addEventListener('click', () => {
+    btnReload.classList.add('reloading');
+    plutoAPI.reload();
+  });
+  if (window.plutoAPI && window.plutoAPI.onTabLoading) {
+    window.plutoAPI.onTabLoading((info) => {
+      if (btnReload) {
+        if (info.loading) btnReload.classList.add('reloading');
+        else btnReload.classList.remove('reloading');
+      }
+    });
+  }
   btnHome.addEventListener('click', () => plutoAPI.navigateTo('pluto://newtab'));
   btnNewTab.addEventListener('click', () => plutoAPI.createTab());
   if (btnVtabNew) btnVtabNew.addEventListener('click', () => plutoAPI.createTab());
 
+  /* Omnibox History Autocomplete Popup Trigger */
+  async function updateOmniboxAutocomplete() {
+    if (!addressInput) return;
+    const query = addressInput.value.trim();
+    if (!query || query.startsWith('pluto://')) {
+      if (window.plutoAPI && window.plutoAPI.closeAutocomplete) {
+        window.plutoAPI.closeAutocomplete();
+      }
+      return;
+    }
+
+    const rect = addressInput.getBoundingClientRect();
+    if (window.plutoAPI && window.plutoAPI.showAutocomplete) {
+      window.plutoAPI.showAutocomplete(query, {
+        x: rect.left,
+        y: 78,
+        width: rect.width,
+        height: 200
+      });
+    }
+  }
+
+  addressInput.addEventListener('input', updateOmniboxAutocomplete);
+
+  addressInput.addEventListener('focus', () => {
+    setTimeout(() => addressInput.select(), 50);
+    if (addressInput.value.trim()) updateOmniboxAutocomplete();
+  });
+
+  addressInput.addEventListener('blur', () => {
+    setTimeout(() => {
+      if (window.plutoAPI && window.plutoAPI.closeAutocomplete) {
+        window.plutoAPI.closeAutocomplete();
+      }
+    }, 200);
+  });
+
   /* Omnibox Address Submit */
   addressInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Escape') {
+      if (window.plutoAPI && window.plutoAPI.closeAutocomplete) {
+        window.plutoAPI.closeAutocomplete();
+      }
+    } else if (e.key === 'Enter') {
       e.preventDefault();
+      if (window.plutoAPI && window.plutoAPI.closeAutocomplete) {
+        window.plutoAPI.closeAutocomplete();
+      }
       const input = addressInput.value.trim();
       if (!input) return;
 
@@ -212,10 +267,6 @@
       plutoAPI.navigateTo(url);
       addressInput.blur();
     }
-  });
-
-  addressInput.addEventListener('focus', () => {
-    setTimeout(() => addressInput.select(), 50);
   });
 
   /* Bookmark Star Toggle */

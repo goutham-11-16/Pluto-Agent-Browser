@@ -234,6 +234,59 @@
   fill: currentColor;
 }
 
+/* ── Omnibox Autocomplete Dropdown ────────────────────────── */
+.omnibox-dropdown {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  right: 0;
+  background: var(--pluto-bg-elevated);
+  border: 1px solid var(--pluto-border-strong);
+  border-radius: 0 0 12px 12px;
+  box-shadow: var(--pluto-shadow-lg);
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0;
+}
+.omnibox-dropdown.hidden { display: none; }
+.omnibox-suggestion-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.omnibox-suggestion-item:hover, .omnibox-suggestion-item.selected {
+  background: var(--pluto-bg-hover);
+}
+.suggestion-icon {
+  font-size: 13px;
+  color: var(--pluto-text-tertiary);
+  width: 16px;
+  text-align: center;
+}
+.suggestion-title {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--pluto-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+.suggestion-url {
+  font-size: 11px;
+  color: var(--pluto-color-orange);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}
+
 /* ── Actions & Window Controls ────────────────────────────── */
 .titlebar-actions {
   display: flex;

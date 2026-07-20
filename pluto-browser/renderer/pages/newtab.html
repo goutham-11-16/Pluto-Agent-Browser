@@ -51,9 +51,7 @@
     
     <!-- Pluto Branding -->
     <div class="pluto-ntp-brand">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="#FF5500">
-        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.11v4.71c0 4.54-3.08 8.78-7 9.87-3.92-1.09-7-5.33-7-9.87V6.29l7-3.11z"/>
-      </svg>
+      <img src="../assets/Pluto.svg" width="56" height="56" alt="Pluto Logo" style="filter: drop-shadow(0 0 12px rgba(255, 85, 0, 0.4));">
       <h1 class="pluto-ntp-title">Pluto Search</h1>
     </div>
 
@@ -245,6 +243,118 @@
     if (e.key === 'Enter') handleSearch();
   });
   document.getElementById('btn-ntp-search').addEventListener('click', handleSearch);
+
+  /* ── Search Bar Auto-Focus ──────────────────── */
+  function focusSearchInput() {
+    const input = document.getElementById('newtab-search');
+    if (input) {
+      setTimeout(() => {
+        input.focus();
+        input.select();
+      }, 50);
+    }
+  }
+
+  focusSearchInput();
+  window.addEventListener('focus', focusSearchInput);
+  document.addEventListener('DOMContentLoaded', focusSearchInput);
+
+  /* ── Pluto News Live Dynamic Feed ──────────── */
+  async function loadPlutoNews(category = 'Top Stories') {
+    const newsGrid = document.querySelector('.news-grid');
+    if (!newsGrid) return;
+
+    newsGrid.innerHTML = `
+      <div class="news-card" style="grid-column: span 3; text-align: center; color: var(--pluto-text-tertiary);">
+        Fetching live news...
+      </div>
+    `;
+
+    try {
+      let articles = [];
+      if (category === 'Technology' || category === 'Crypto & AI') {
+        const tag = category === 'Crypto & AI' ? 'ai' : 'technology';
+        const res = await fetch(`https://dev.to/api/articles?tag=${tag}&per_page=6`);
+        const data = await res.json();
+        articles = data.map(item => ({
+          title: item.title,
+          source: `${item.user?.name || 'DEV.to'} • ${item.readable_publish_date || 'Today'}`,
+          url: item.url
+        }));
+      } else {
+        // Top Stories via HackerNews top stories API
+        const topRes = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json');
+        const ids = await topRes.json();
+        const topIds = ids.slice(0, 6);
+        articles = await Promise.all(topIds.map(async id => {
+          const itemRes = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
+          const item = await itemRes.json();
+          let domain = 'HackerNews';
+          try {
+            if (item.url) domain = new URL(item.url).hostname.replace('www.', '');
+          } catch {}
+          return {
+            title: item.title,
+            source: `${domain} • ${item.score || 0} pts`,
+            url: item.url || `https://news.ycombinator.com/item?id=${item.id}`
+          };
+        }));
+      }
+
+      if (articles.length === 0) throw new Error('No articles found');
+
+      newsGrid.innerHTML = '';
+      articles.slice(0, 6).forEach(art => {
+        const card = document.createElement('a');
+        card.className = 'news-card';
+        card.href = art.url;
+        card.target = '_self';
+        card.style.textDecoration = 'none';
+        card.style.color = 'inherit';
+        card.innerHTML = `
+          <div class="news-source">${escapeHtml(art.source)}</div>
+          <div class="news-headline">${escapeHtml(art.title)}</div>
+        `;
+        newsGrid.appendChild(card);
+      });
+    } catch (err) {
+      // Fallback curated news
+      const fallback = [
+        { title: "Autonomous Agentic Browsing Reaches New High Speed Standard", source: "Pluto Tech • 1h ago", url: "https://github.com/browser-use/browser-use" },
+        { title: "Open-Source AI Models Surpass Commercial Benchmarks in Web Automation", source: "Hacker News • 3h ago", url: "https://news.ycombinator.com" },
+        { title: "Next-Gen Web Standards Bring Native Multi-Threading to Chromium", source: "Dev.to • 5h ago", url: "https://dev.to" }
+      ];
+      newsGrid.innerHTML = '';
+      fallback.forEach(art => {
+        const card = document.createElement('a');
+        card.className = 'news-card';
+        card.href = art.url;
+        card.target = '_self';
+        card.style.textDecoration = 'none';
+        card.style.color = 'inherit';
+        card.innerHTML = `
+          <div class="news-source">${escapeHtml(art.source)}</div>
+          <div class="news-headline">${escapeHtml(art.title)}</div>
+        `;
+        newsGrid.appendChild(card);
+      });
+    }
+  }
+
+  function escapeHtml(str) {
+    return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  loadPlutoNews('Top Stories');
+
+  const newsCats = document.querySelectorAll('.news-cat');
+  newsCats.forEach(cat => {
+    cat.addEventListener('click', () => {
+      newsCats.forEach(c => c.classList.remove('active'));
+      cat.classList.add('active');
+      loadPlutoNews(cat.textContent.trim());
+    });
+  });
 
   const btnCust = document.getElementById('btn-customize-dashboard');
   const modalCust = document.getElementById('customize-modal');

@@ -1,6 +1,6 @@
-# 🪐 Pluto Agent Browser
-
 <div align="center">
+  <img src="docs/assets/Pluto.svg" width="160" alt="Pluto Agent Browser Logo">
+  <h1>🪐 Pluto Agent Browser</h1>
   <h3>The AI-Native, Ultra-Fast Autonomous Chromium Browser</h3>
   <p><i>Execute web automation tasks at unprecedented speeds with integrated visual glow signals, stealth adblocking, and multi-model intelligence.</i></p>
 
@@ -11,8 +11,6 @@
     <a href="#-getting-started"><img src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-orange?style=for-the-badge" alt="Platform"></a>
   </p>
 </div>
-
-> 🎨 **Note**: Official Pluto logo brand assets will be added soon!
 
 ---
 

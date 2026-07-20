@@ -5,17 +5,17 @@
   <title>History — Pluto</title>
   <link rel="stylesheet" href="../styles/core.css">
   <style>
-    body { background: var(--pluto-bg-deep); padding: 40px; font-family: var(--font-sans); }
+    body { background: var(--pluto-bg-deep); padding: 40px; font-family: var(--font-sans); color: var(--pluto-text-primary); }
     .history-page { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
     .history-header { display: flex; align-items: center; justify-content: space-between; }
-    .history-title { font-size: 24px; font-weight: 700; color: var(--pluto-text-primary); }
+    .history-title { font-size: 24px; font-weight: 700; color: var(--pluto-text-primary); margin: 0; }
     .clear-history-btn {
       background: var(--pluto-color-orange); color: #FFF; border-radius: 8px; padding: 8px 16px;
-      font-size: 12.5px; font-weight: 600; cursor: pointer; transition: background 0.2s;
+      font-size: 12.5px; font-weight: 600; cursor: pointer; border: none; transition: background 0.2s;
     }
     .clear-history-btn:hover { background: #e04b00; }
     .history-search {
-      width: 100%; padding: 12px 18px;
+      width: 100%; padding: 12px 18px; box-sizing: border-box;
       background: var(--pluto-bg-secondary);
       border: 1px solid var(--pluto-border);
       border-radius: 9999px;
@@ -23,6 +23,7 @@
       outline: none; transition: border-color 0.2s;
     }
     .history-search:focus { border-color: var(--pluto-color-orange); box-shadow: 0 0 0 3px rgba(255, 85, 0, 0.2); }
+    .history-container { display: flex; flex-direction: column; gap: 16px; }
     .history-group {
       background: var(--pluto-bg-secondary);
       border: 1px solid var(--pluto-border);
@@ -42,8 +43,12 @@
       cursor: pointer; transition: background 0.15s;
     }
     .history-item:hover { background: var(--pluto-bg-hover); }
-    .history-checkbox { width: 15px; height: 15px; accent-color: var(--pluto-color-orange); cursor: pointer; }
-    .history-favicon { width: 16px; height: 16px; border-radius: 2px; }
+    .history-icon {
+      width: 20px; height: 20px; border-radius: 4px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255, 255, 255, 0.08); font-size: 10px; font-weight: 700;
+    }
+    .history-icon img { width: 16px; height: 16px; border-radius: 2px; }
     .history-info { flex: 1; overflow: hidden; display: flex; flex-direction: column; gap: 2px; }
     .history-info-title { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .history-info-url { font-size: 11px; color: var(--pluto-text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -53,6 +58,7 @@
     }
     .history-item:hover .history-item-del { opacity: 1; }
     .history-item-del:hover { background: rgba(247, 36, 28, 0.15); color: #F7241C; }
+    .empty-history { text-align: center; padding: 40px; color: var(--pluto-text-tertiary); font-size: 14px; }
   </style>
 </head>
 <body>
@@ -63,62 +69,113 @@
   </div>
   <input class="history-search" type="text" placeholder="Search history..." id="history-search">
   
-  <div class="history-group">
-    <div class="history-group-title">Today — Sunday, July 19, 2026</div>
-    <div class="history-item">
-      <input type="checkbox" class="history-checkbox">
-      <div class="history-favicon" style="background:#5B4534; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; color:#fff;">CC</div>
-      <div class="history-info">
-        <span class="history-info-title">CodeChef — Programming & Learning Module</span>
-        <span class="history-info-url">https://www.codechef.com/learn/course/kare-cse3301-daa-2026</span>
-      </div>
-      <span class="history-time">09:05 PM</span>
-      <span class="history-item-del" title="Remove from history">✕</span>
-    </div>
-    <div class="history-item">
-      <input type="checkbox" class="history-checkbox">
-      <div class="history-favicon" style="background:#333; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; color:#fff;">G</div>
-      <div class="history-info">
-        <span class="history-info-title">GitHub — pluto/leo Design Tokens</span>
-        <span class="history-info-url">https://github.com/pluto/leo</span>
-      </div>
-      <span class="history-time">08:42 PM</span>
-      <span class="history-item-del" title="Remove from history">✕</span>
-    </div>
-    <div class="history-item">
-      <input type="checkbox" class="history-checkbox">
-      <div class="history-favicon" style="background:#FF5500; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; color:#fff;">P</div>
-      <div class="history-info">
-        <span class="history-info-title">Pluto Search — Autonomous AI Agents 2026</span>
-        <span class="history-info-url">https://search.pluto.com/search?q=AI+Agents+2026</span>
-      </div>
-      <span class="history-time">07:15 PM</span>
-      <span class="history-item-del" title="Remove from history">✕</span>
-    </div>
+  <div class="history-container" id="history-container">
+    <div class="empty-history">Loading history entries...</div>
   </div>
 </div>
 
 <script>
 (function() {
-  document.getElementById('btn-clear-history').addEventListener('click', () => {
-    if (confirm('Are you sure you want to clear browsing history?')) {
-      document.querySelectorAll('.history-group').forEach(g => g.remove());
-    }
-  });
-
-  document.querySelectorAll('.history-item-del').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      btn.closest('.history-item').remove();
-    });
-  });
-
+  const container = document.getElementById('history-container');
   const searchInput = document.getElementById('history-search');
-  searchInput.addEventListener('input', () => {
-    const q = searchInput.value.toLowerCase().trim();
-    document.querySelectorAll('.history-item').forEach(item => {
-      item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';
-    });
+
+  async function renderHistory(query = '') {
+    if (!window.plutoAPI || !window.plutoAPI.getHistory) return;
+    try {
+      const items = await window.plutoAPI.getHistory();
+      const filtered = query.trim()
+        ? items.filter(i => (i.title || '').toLowerCase().includes(query.toLowerCase()) || (i.url || '').toLowerCase().includes(query.toLowerCase()))
+        : items;
+
+      if (!filtered || filtered.length === 0) {
+        container.innerHTML = '<div class="empty-history">No history entries found.</div>';
+        return;
+      }
+
+      // Group items by date
+      const groups = {};
+      filtered.forEach(item => {
+        const d = new Date(item.timestamp || Date.now());
+        const dateKey = d.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+        if (!groups[dateKey]) groups[dateKey] = [];
+        groups[dateKey].push(item);
+      });
+
+      container.innerHTML = '';
+      Object.keys(groups).forEach(dateStr => {
+        const groupEl = document.createElement('div');
+        groupEl.className = 'history-group';
+
+        const titleEl = document.createElement('div');
+        titleEl.className = 'history-group-title';
+        titleEl.textContent = dateStr;
+        groupEl.appendChild(titleEl);
+
+        groups[dateStr].forEach(item => {
+          const row = document.createElement('div');
+          row.className = 'history-item';
+
+          const d = new Date(item.timestamp);
+          const timeStr = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+          const iconContent = item.favicon
+            ? `<img src="${escapeAttr(item.favicon)}" alt="">`
+            : escapeHtml((item.title || 'P').substring(0, 2).toUpperCase());
+
+          row.innerHTML = `
+            <div class="history-icon">${iconContent}</div>
+            <div class="history-info">
+              <span class="history-info-title">${escapeHtml(item.title || item.url)}</span>
+              <span class="history-info-url">${escapeHtml(item.url)}</span>
+            </div>
+            <span class="history-time">${escapeHtml(timeStr)}</span>
+            <span class="history-item-del" title="Remove from history">✕</span>
+          `;
+
+          row.addEventListener('click', (e) => {
+            if (e.target.closest('.history-item-del')) return;
+            if (window.plutoAPI && window.plutoAPI.navigateTo) {
+              window.plutoAPI.navigateTo(item.url);
+            }
+          });
+
+          row.querySelector('.history-item-del').addEventListener('click', async (e) => {
+            e.stopPropagation();
+            if (window.plutoAPI && window.plutoAPI.deleteHistoryItem) {
+              await window.plutoAPI.deleteHistoryItem(item.id || item.url);
+              renderHistory(searchInput.value);
+            }
+          });
+
+          groupEl.appendChild(row);
+        });
+
+        container.appendChild(groupEl);
+      });
+    } catch (e) {
+      container.innerHTML = '<div class="empty-history">Error loading history.</div>';
+    }
+  }
+
+  function escapeHtml(str) {
+    return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function escapeAttr(str) {
+    return String(str || '').replace(/"/g, '&quot;');
+  }
+
+  renderHistory();
+
+  searchInput.addEventListener('input', () => renderHistory(searchInput.value));
+
+  document.getElementById('btn-clear-history').addEventListener('click', async () => {
+    if (confirm('Are you sure you want to clear browsing history?')) {
+      if (window.plutoAPI && window.plutoAPI.clearHistory) {
+        await window.plutoAPI.clearHistory();
+        renderHistory();
+      }
+    }
   });
 })();
 </script>

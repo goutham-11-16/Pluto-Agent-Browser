@@ -1,0 +1,51 @@
+[
+  {
+    "id": "1784543049856",
+    "title": "New Tab — Pluto",
+    "url": "file:///D:/project%20files/browser-use/pluto-browser/renderer/pages/newtab.html",
+    "timestamp": 1784543049856,
+    "favicon": "https://sis.kalasalingam.ac.in/favicon.png"
+  },
+  {
+    "id": "1784543028304",
+    "title": "Student Information System - KARE-SIS",
+    "url": "https://sis.kalasalingam.ac.in/login",
+    "timestamp": 1784543028304,
+    "favicon": null
+  },
+  {
+    "id": "1784542516045",
+    "title": "Settings — Pluto",
+    "url": "file:///D:/project%20files/browser-use/pluto-browser/renderer/pages/settings.html",
+    "timestamp": 1784542516045,
+    "favicon": null
+  },
+  {
+    "id": "1",
+    "title": "YouTube",
+    "url": "https://www.youtube.com",
+    "timestamp": 1784538859169,
+    "favicon": "https://www.youtube.com/favicon.ico"
+  },
+  {
+    "id": "2",
+    "title": "Google Search",
+    "url": "https://www.google.com",
+    "timestamp": 1784535259169,
+    "favicon": "https://www.google.com/favicon.ico"
+  },
+  {
+    "id": "3",
+    "title": "GitHub: Let’s build from here",
+    "url": "https://github.com",
+    "timestamp": 1784531659169,
+    "favicon": "https://github.com/favicon.ico"
+  },
+  {
+    "id": "4",
+    "title": "CodeChef — Programming & Learning Module",
+    "url": "https://www.codechef.com",
+    "timestamp": 1784528059169,
+    "favicon": "https://www.codechef.com/favicon.ico"
+  }
+]

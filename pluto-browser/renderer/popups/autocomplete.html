@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Omnibox Suggestions</title>
+  <link rel="stylesheet" href="../styles/core.css">
+  <style>
+    body {
+      background: var(--pluto-bg-elevated);
+      color: var(--pluto-text-primary);
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 6px;
+      overflow-y: auto;
+      border-radius: 12px;
+      border: 1px solid var(--pluto-border-strong);
+      box-shadow: var(--pluto-shadow-lg);
+      user-select: none;
+    }
+    .suggestion-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .suggestion-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.12s;
+    }
+    .suggestion-item:hover, .suggestion-item.selected {
+      background: var(--pluto-bg-hover);
+    }
+    .suggestion-icon {
+      font-size: 13px;
+      color: var(--pluto-text-tertiary);
+      width: 16px;
+      text-align: center;
+    }
+    .suggestion-content {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .suggestion-title {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--pluto-text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .suggestion-url {
+      font-size: 11px;
+      color: var(--pluto-color-orange);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .empty-msg {
+      padding: 12px;
+      font-size: 12px;
+      color: var(--pluto-text-tertiary);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="suggestion-list" id="suggestion-list">
+  <div class="empty-msg">Searching history...</div>
+</div>
+
+<script>
+(function() {
+  const listEl = document.getElementById('suggestion-list');
+
+  function render(query, results) {
+    if (!results || results.length === 0) {
+      listEl.innerHTML = '<div class="empty-msg">No matching history found</div>';
+      return;
+    }
+
+    listEl.innerHTML = '';
+    results.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'suggestion-item';
+      row.innerHTML = `
+        <span class="suggestion-icon">🕒</span>
+        <div class="suggestion-content">
+          <span class="suggestion-title">${escapeHtml(item.title || item.url)}</span>
+          <span class="suggestion-url">${escapeHtml(item.url)}</span>
+        </div>
+      `;
+
+      row.addEventListener('click', () => {
+        if (window.plutoAPI && window.plutoAPI.navigateTo) {
+          window.plutoAPI.navigateTo(item.url);
+        }
+        window.close();
+      });
+
+      listEl.appendChild(row);
+    });
+  }
+
+  function escapeHtml(str) {
+    return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  if (window.plutoAPI && window.plutoAPI.onAutocompleteData) {
+    window.plutoAPI.onAutocompleteData((data) => {
+      render(data.query, data.results);
+    });
+  }
+})();
+</script>
+</body>
+</html>

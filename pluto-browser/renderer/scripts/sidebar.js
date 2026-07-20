@@ -105,6 +105,51 @@
         console.error('[codechef suggest registration error]', e);
       }
     }
+
+    /* ── Agent Options Popover Handlers ── */
+    const agentPopover = $('#agent-options-popover');
+    if (btnSideSettings && agentPopover) {
+      btnSideSettings.addEventListener('click', (e) => {
+        e.stopPropagation();
+        agentPopover.classList.toggle('hidden');
+      });
+      document.addEventListener('click', () => {
+        agentPopover.classList.add('hidden');
+      });
+    }
+
+    const popNewChat = $('#pop-new-chat');
+    if (popNewChat) {
+      popNewChat.addEventListener('click', () => {
+        if (btnNewChat) btnNewChat.click();
+        agentPopover?.classList.add('hidden');
+      });
+    }
+
+    const popToggleFast = $('#pop-toggle-agent-mode');
+    if (popToggleFast) {
+      popToggleFast.addEventListener('click', () => {
+        if (btnAgentMode) btnAgentMode.click();
+        agentPopover?.classList.add('hidden');
+      });
+    }
+
+    const popSkills = $('#pop-view-skills');
+    if (popSkills) {
+      popSkills.addEventListener('click', () => {
+        const btnSkills = $('#btn-skills');
+        if (btnSkills) btnSkills.click();
+        agentPopover?.classList.add('hidden');
+      });
+    }
+
+    const popOpenSettings = $('#pop-open-settings');
+    if (popOpenSettings) {
+      popOpenSettings.addEventListener('click', () => {
+        plutoAPI.createTab('pluto://settings');
+        agentPopover?.classList.add('hidden');
+      });
+    }
   }
 
   async function loadSkills() {
@@ -719,11 +764,6 @@
       attachmentsBar.appendChild(el);
     });
   }
-
-  /* ── AI Settings Button → Navigate to settings ───────────── */
-  btnSideSettings.addEventListener('click', () => {
-    plutoAPI.navigateTo('pluto://settings');
-  });
 
   /* ── UI Helpers ──────────────────────────────────────────── */
   function appendUserBubble(text, atts) {
