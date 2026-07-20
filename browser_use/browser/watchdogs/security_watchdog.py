@@ -188,7 +188,8 @@ class SecurityWatchdog(BaseWatchdog):
 			return True
 
 		# Allow Pluto internal pages loaded via file protocol
-		if url.startswith('file://') and ('pluto-browser' in url or 'browser-use' in url):
+		url_lower = url.lower()
+		if url_lower.startswith('file://') and ('pluto' in url_lower or 'browser-use' in url_lower or 'app.asar' in url_lower or 'renderer' in url_lower):
 			return True
 
 		# Parse the URL to extract components
